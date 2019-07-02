@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microting.eFormCaseTemplateBase", "Microting.eFormCaseTemplateBase\Microting.eFormCaseTemplateBase.csproj", "{CCFD5F08-F23B-4B61-970E-5BA71F5BB809}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D84F005B-185C-45F2-A4A4-77E6CC74614C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMigrator", "DBMigrator\DBMigrator.csproj", "{EA6794FA-8EBA-4227-9667-EEE657DAF071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microting.eFormCaseTemplateCase.Unit.Tests", "Microting.eFormCaseTemplateCase.Unit.Tests\Microting.eFormCaseTemplateCase.Unit.Tests.csproj", "{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCFD5F08-F23B-4B61-970E-5BA71F5BB809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFD5F08-F23B-4B61-970E-5BA71F5BB809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFD5F08-F23B-4B61-970E-5BA71F5BB809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFD5F08-F23B-4B61-970E-5BA71F5BB809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6794FA-8EBA-4227-9667-EEE657DAF071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6794FA-8EBA-4227-9667-EEE657DAF071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6794FA-8EBA-4227-9667-EEE657DAF071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6794FA-8EBA-4227-9667-EEE657DAF071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A} = {D84F005B-185C-45F2-A4A4-77E6CC74614C}
+	EndGlobalSection
+EndGlobal
