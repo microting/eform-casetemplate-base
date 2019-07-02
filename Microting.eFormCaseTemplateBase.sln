@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D84F005B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMigrator", "DBMigrator\DBMigrator.csproj", "{EA6794FA-8EBA-4227-9667-EEE657DAF071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microting.eFormCaseTemplateCase.Unit.Tests", "Microting.eFormCaseTemplateCase.Unit.Tests\Microting.eFormCaseTemplateCase.Unit.Tests.csproj", "{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microting.eFormCaseTemplateBase.Unit.Tests", "Microting.eFormCaseTemplateBase.Unit.Tests\Microting.eFormCaseTemplateBase.Unit.Tests.csproj", "{42BE51A8-FEA3-4AAB-AA3B-3F11B107609A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
