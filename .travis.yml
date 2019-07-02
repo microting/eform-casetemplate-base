@@ -1,0 +1,13 @@
+dist: xenial
+branches:
+  only:
+    - master
+language: csharp
+mono: none
+dotnet: 2.2
+services:
+- mysql
+script:
+  - dotnet restore
+  - dotnet build Microting.eFormCaseTemplateBase.sln
+  - dotnet test -v n Microting.eFormCaseTemplateBase.Unit.Tests/Microting.eFormCaseTemplateBase.Unit.Tests.csproj
