@@ -84,8 +84,22 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         private void ClearDb()
         {
             List<string> modelNames = new List<string>();
-            modelNames.Add("PluginConfigurationValues");
             modelNames.Add("PluginConfigurationValueVersions");
+            modelNames.Add("PluginConfigurationValues");
+            modelNames.Add("CaseTemplateSiteVersions");
+            modelNames.Add("CaseTemplateSites");
+            modelNames.Add("CaseTemplateSiteGroupVersions");
+            modelNames.Add("CaseTemplateSiteGroups");
+            modelNames.Add("CaseVersions");
+            modelNames.Add("Cases");
+            modelNames.Add("CaseTemplateUploadedDatas");
+            modelNames.Add("CaseTemplateUploadedDataVersions");
+            modelNames.Add("CaseTemplateVersions");
+            modelNames.Add("CaseTemplates");
+            modelNames.Add("DescriptionFolderVersions");
+            modelNames.Add("DescriptionFolders");
+            modelNames.Add("UploadedDataVersions");
+            modelNames.Add("UploadedDatas");
 
             foreach (var modelName in modelNames)
             {

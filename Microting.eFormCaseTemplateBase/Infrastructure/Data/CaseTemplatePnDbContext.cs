@@ -19,8 +19,10 @@ SOFTWARE.
 */
 
 using Microsoft.EntityFrameworkCore;
+using Microting.eForm.Dto;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
+using Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
 {
@@ -33,6 +35,21 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
             : base(options)
         {
         }
+        
+        public DbSet<Cases> Cases { get; set; }
+        public DbSet<CaseVersions> CaseVersionses { get; set; }
+        public DbSet<CaseTemplates> CaseTemplateses { get; set; }
+        public DbSet<CaseTemplateVersions> CaseTemplateseVersions { get; set; }
+        public DbSet<CaseTemplateSites> CaseTemplateSites { get; set; }
+        public DbSet<CaseTemplateSiteVersions> CaseTemplateSiteVersions { get; set; }
+        public DbSet<CaseTemplateSiteGroups> CaseTemplateSiteGroups { get; set; }
+        public DbSet<CaseTemplateSiteGroupVersions> CaseTemplateSiteGroupVersions { get; set; }
+        public DbSet<DescriptionFolders> DescriptionFolderse { get; set; }
+        public DbSet<DescriptionFolderVersions> DescriptionFoldersVersions { get; set; }
+        public DbSet<UploadedDatas> UploadedDatas { get; set; }
+        public DbSet<UploadedDataVersions> UploadedDataVersions { get; set; }
+        public DbSet<CaseTemplateUploadedDatas> CaseTemplateUploadedDatas { get; set; }
+        public DbSet<CaseTemplateUploadedDataVersions> CaseTemplateUploadedDataVersions { get; set; }
         
         // plugin settings
         public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
