@@ -82,344 +82,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("PluginConfigurationValueVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteGroupVersions", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<int>("CaseTemplateSiteGroupId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<int>("SdkSiteGroupId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CaseTemplateSiteGroupVersions");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteGroups", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<int>("SdkSiteGroupId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CaseTemplateSiteGroups");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteVersions", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<int>("CaseTemplateSiteId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<int>("SdkSiteId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CaseTemplateSiteVersions");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSites", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<int>("SdkSiteId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CaseTemplateSites");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersions", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<bool>("Approvable");
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<int>("CaseTemplateUploadedDataId");
-
-                    b.Property<int?>("CaseTemplatesId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<bool>("RetractIfApproved");
-
-                    b.Property<string>("Title");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("UploadedDataId");
-
-                    b.Property<int?>("UploadedDatasId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CaseTemplatesId");
-
-                    b.HasIndex("UploadedDatasId");
-
-                    b.ToTable("CaseTemplateUploadedDataVersions");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDatas", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<bool>("Approvable");
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<bool>("RetractIfApproved");
-
-                    b.Property<string>("Title");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("UploadedDataId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CaseTemplateId");
-
-                    b.HasIndex("UploadedDataId");
-
-                    b.ToTable("CaseTemplateUploadedDatas");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateVersions", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<bool>("AlwaysShow");
-
-                    b.Property<bool>("Approvable");
-
-                    b.Property<string>("Body");
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<int>("DescriptionFolderId");
-
-                    b.Property<DateTime>("EndAt");
-
-                    b.Property<string>("PdfTitle");
-
-                    b.Property<bool>("RetractIfApproved");
-
-                    b.Property<DateTime>("StartAt");
-
-                    b.Property<string>("Title");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CaseTemplateseVersions");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplates", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<bool>("AlwaysShow");
-
-                    b.Property<bool>("Approvable");
-
-                    b.Property<string>("Body");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<int>("DescriptionFolderId");
-
-                    b.Property<DateTime>("EndAt");
-
-                    b.Property<string>("PdfTitle");
-
-                    b.Property<bool>("RetractIfApproved");
-
-                    b.Property<DateTime>("StartAt");
-
-                    b.Property<string>("Title");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CaseTemplateses");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersions", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<int>("CaseId");
-
-                    b.Property<int>("CaseTemplateId");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<DateTime?>("DoneAt");
-
-                    b.Property<bool>("FetchedByTablet");
-
-                    b.Property<DateTime>("FetchedByTabletAt");
-
-                    b.Property<bool>("ReceiptRetrievedFromUser");
-
-                    b.Property<DateTime>("ReceiptRetrievedFromUserAt");
-
-                    b.Property<int?>("SiteId");
-
-                    b.Property<int?>("Status");
-
-                    b.Property<string>("Type")
-                        .HasMaxLength(255);
-
-                    b.Property<int?>("UnitId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<int?>("WorkerId");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.Property<int?>("eFormId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CaseTemplateId");
-
-                    b.ToTable("CaseVersionses");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Cases", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Case", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -470,7 +133,372 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("Cases");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolderVersions", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<bool>("AlwaysShow");
+
+                    b.Property<bool>("Approvable");
+
+                    b.Property<string>("Body");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("DescriptionFolderId");
+
+                    b.Property<DateTime>("EndAt");
+
+                    b.Property<string>("PdfTitle");
+
+                    b.Property<bool>("RetractIfApproved");
+
+                    b.Property<DateTime>("StartAt");
+
+                    b.Property<string>("Title");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplates");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("SdkSiteId");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplateSites");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("SdkSiteGroupId");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplateSiteGroups");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteGroupVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<int>("CaseTemplateSiteGroupId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("SdkSiteGroupId");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplateSiteGroupVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<int>("CaseTemplateSiteId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("SdkSiteId");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplateSiteVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<bool>("Approvable");
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<bool>("RetractIfApproved");
+
+                    b.Property<string>("Title");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("UploadedDataId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaseTemplateId");
+
+                    b.HasIndex("UploadedDataId");
+
+                    b.ToTable("CaseTemplateUploadedDatas");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<bool>("Approvable");
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<int>("CaseTemplateUploadedDataId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<bool>("RetractIfApproved");
+
+                    b.Property<string>("Title");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("UploadedDataId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaseTemplateId");
+
+                    b.HasIndex("UploadedDataId");
+
+                    b.ToTable("CaseTemplateUploadedDataVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<bool>("AlwaysShow");
+
+                    b.Property<bool>("Approvable");
+
+                    b.Property<string>("Body");
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("DescriptionFolderId");
+
+                    b.Property<DateTime>("EndAt");
+
+                    b.Property<string>("PdfTitle");
+
+                    b.Property<bool>("RetractIfApproved");
+
+                    b.Property<DateTime>("StartAt");
+
+                    b.Property<string>("Title");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplateVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<int>("CaseId");
+
+                    b.Property<int>("CaseTemplateId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<DateTime?>("DoneAt");
+
+                    b.Property<bool>("FetchedByTablet");
+
+                    b.Property<DateTime>("FetchedByTabletAt");
+
+                    b.Property<bool>("ReceiptRetrievedFromUser");
+
+                    b.Property<DateTime>("ReceiptRetrievedFromUserAt");
+
+                    b.Property<int?>("SiteId");
+
+                    b.Property<int?>("Status");
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(255);
+
+                    b.Property<int?>("UnitId");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<int?>("WorkerId");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.Property<int?>("eFormId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaseTemplateId");
+
+                    b.ToTable("CaseVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("ParentId");
+
+                    b.Property<int>("SdkFolderId");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("DescriptionFolders");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolderVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -502,25 +530,43 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("DescriptionFoldersVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolders", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
 
+                    b.Property<string>("Checksum")
+                        .HasMaxLength(255);
+
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<int>("CreatedByUserId");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("CurrentFile")
+                        .HasMaxLength(255);
 
-                    b.Property<int?>("ParentId");
+                    b.Property<DateTime?>("ExpirationDate");
 
-                    b.Property<int>("SdkFolderId");
+                    b.Property<string>("Extension")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("FileLocation")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("FileName")
+                        .HasMaxLength(255);
+
+                    b.Property<short?>("Local");
+
+                    b.Property<string>("OriginalFileName");
 
                     b.Property<DateTime?>("UpdatedAt");
 
                     b.Property<int>("UpdatedByUserId");
+
+                    b.Property<string>("UploaderType")
+                        .HasMaxLength(255);
 
                     b.Property<int>("Version");
 
@@ -529,12 +575,10 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("DescriptionFolderse");
+                    b.ToTable("UploadedDatas");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedDataVersions", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedDataVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -584,97 +628,51 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("UploadedDataVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedDatas", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Case", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<string>("Checksum")
-                        .HasMaxLength(255);
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<string>("CurrentFile")
-                        .HasMaxLength(255);
-
-                    b.Property<DateTime?>("ExpirationDate");
-
-                    b.Property<string>("Extension")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("FileLocation")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("FileName")
-                        .HasMaxLength(255);
-
-                    b.Property<short?>("Local");
-
-                    b.Property<string>("OriginalFileName");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<string>("UploaderType")
-                        .HasMaxLength(255);
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UploadedDatas");
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
+                        .WithMany()
+                        .HasForeignKey("CaseTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersions", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedData", b =>
                 {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplates", "CaseTemplates")
-                        .WithMany()
-                        .HasForeignKey("CaseTemplatesId");
-
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedDatas", "UploadedDatas")
-                        .WithMany()
-                        .HasForeignKey("UploadedDatasId");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDatas", b =>
-                {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplates", "CaseTemplates")
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
                         .WithMany("CaseTemplateUploadedDatas")
                         .HasForeignKey("CaseTemplateId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedDatas", "UploadedDatas")
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
                         .WithMany()
                         .HasForeignKey("UploadedDataId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersions", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersion", b =>
                 {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplates", "CaseTemplate")
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
+                        .WithMany()
+                        .HasForeignKey("CaseTemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
+                        .WithMany()
+                        .HasForeignKey("UploadedDataId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersion", b =>
+                {
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
                         .WithMany()
                         .HasForeignKey("CaseTemplateId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Cases", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolder", b =>
                 {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplates", "CaseTemplate")
-                        .WithMany()
-                        .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolders", b =>
-                {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolders", "Parent")
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolder", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId");
                 });

@@ -3,13 +3,13 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseTemplateSiteVersions : BaseEntity
+    public class CaseTemplateSiteGroupVersion : BaseEntity
     {
         public int CaseTemplateId { get; set; }
         
-        public int SdkSiteId { get; set; }
+        public int SdkSiteGroupId { get; set; }
         
-        [ForeignKey("CaseTemplateSites")]
-        public int CaseTemplateSiteId { get; set; }
+        [ForeignKey("CaseTemplateSiteGroups")]
+        public int CaseTemplateSiteGroupId { get; set; }
     }
 }

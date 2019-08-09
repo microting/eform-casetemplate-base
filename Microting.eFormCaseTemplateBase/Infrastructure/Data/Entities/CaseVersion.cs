@@ -5,7 +5,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseVersions : BaseEntity
+    public class CaseVersion : BaseEntity
     {
         
         public int? Status { get; set; }
@@ -25,7 +25,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         
         public int CaseTemplateId { get; set; }
         
-        public virtual CaseTemplates CaseTemplate { get; set; }
+        public virtual CaseTemplate CaseTemplate { get; set; }
         
         public bool FetchedByTablet { get; set; }
         

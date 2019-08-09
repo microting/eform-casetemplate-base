@@ -6,7 +6,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class UploadedDataVersions : BaseEntity
+    public class UploadedDataVersion : BaseEntity
     {
         
         [StringLength(255)]

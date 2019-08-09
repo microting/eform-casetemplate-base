@@ -90,7 +90,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             modelNames.Add("CaseTemplateSites");
             modelNames.Add("CaseTemplateSiteGroupVersions");
             modelNames.Add("CaseTemplateSiteGroups");
-            modelNames.Add("CaseVersionses");
+            modelNames.Add("CaseVersions");
             modelNames.Add("Cases");
             modelNames.Add("CaseTemplateUploadedDatas");
             modelNames.Add("CaseTemplateUploadedDataVersions");

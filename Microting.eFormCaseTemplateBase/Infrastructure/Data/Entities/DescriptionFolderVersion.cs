@@ -4,7 +4,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class DescriptionFolderVersions : BaseEntity
+    public class DescriptionFolderVersion : BaseEntity
     {
         public string Name { get; set; }
         

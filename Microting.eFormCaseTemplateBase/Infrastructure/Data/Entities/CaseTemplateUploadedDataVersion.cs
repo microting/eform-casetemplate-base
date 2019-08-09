@@ -3,7 +3,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseTemplateUploadedDataVersions : BaseEntity
+    public class CaseTemplateUploadedDataVersion : BaseEntity
     {
         public int CaseTemplateId { get; set; }
         
@@ -15,9 +15,9 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         
         public bool RetractIfApproved { get; set; }
         
-        public virtual CaseTemplates CaseTemplates { get; set; }
+        public virtual CaseTemplate CaseTemplate { get; set; }
         
-        public virtual UploadedDatas UploadedDatas { get; set; }
+        public virtual UploadedData UploadedData { get; set; }
         
         [ForeignKey("CaseTemplateUploadedDatas")]
         public int CaseTemplateUploadedDataId { get; set; }

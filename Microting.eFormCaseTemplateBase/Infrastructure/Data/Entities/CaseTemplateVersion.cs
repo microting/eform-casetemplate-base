@@ -4,7 +4,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseTemplateVersions : BaseEntity
+    public class CaseTemplateVersion : BaseEntity
     {
         
         public string Title { get; set; }

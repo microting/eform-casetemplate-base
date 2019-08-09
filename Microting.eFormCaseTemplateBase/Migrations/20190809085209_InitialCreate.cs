@@ -9,19 +9,19 @@ namespace Microting.eFormCaseTemplateBase.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             //Setup for SQL Server Provider
-           
-            string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
-            object autoIDGenStrategyValue= SqlServerValueGenerationStrategy.IdentityColumn;
+
+            var autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
+            object autoIDGenStrategyValue = SqlServerValueGenerationStrategy.IdentityColumn;
 
             // Setup for MySQL Provider
-            if (migrationBuilder.ActiveProvider=="Pomelo.EntityFrameworkCore.MySql")
+            if (migrationBuilder.ActiveProvider == "Pomelo.EntityFrameworkCore.MySql")
             {
                 DbConfig.IsMySQL = true;
                 autoIDGenStrategy = "MySql:ValueGenerationStrategy";
                 autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
             }
             migrationBuilder.CreateTable(
-                name: "CaseTemplateses",
+                name: "CaseTemplates",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -44,35 +44,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CaseTemplateses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CaseTemplateseVersions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation(autoIDGenStrategy, autoIDGenStrategyValue),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
-                    WorkflowState = table.Column<string>(maxLength: 255, nullable: true),
-                    CreatedByUserId = table.Column<int>(nullable: false),
-                    UpdatedByUserId = table.Column<int>(nullable: false),
-                    Version = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: true),
-                    Body = table.Column<string>(nullable: true),
-                    StartAt = table.Column<DateTime>(nullable: false),
-                    EndAt = table.Column<DateTime>(nullable: false),
-                    PdfTitle = table.Column<string>(nullable: true),
-                    Approvable = table.Column<bool>(nullable: false),
-                    RetractIfApproved = table.Column<bool>(nullable: false),
-                    AlwaysShow = table.Column<bool>(nullable: false),
-                    DescriptionFolderId = table.Column<int>(nullable: false),
-                    CaseTemplateId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CaseTemplateseVersions", x => x.Id);
+                    table.PrimaryKey("PK_CaseTemplates", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,7 +130,35 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DescriptionFolderse",
+                name: "CaseTemplateVersions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation(autoIDGenStrategy, autoIDGenStrategyValue),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    WorkflowState = table.Column<string>(maxLength: 255, nullable: true),
+                    CreatedByUserId = table.Column<int>(nullable: false),
+                    UpdatedByUserId = table.Column<int>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Body = table.Column<string>(nullable: true),
+                    StartAt = table.Column<DateTime>(nullable: false),
+                    EndAt = table.Column<DateTime>(nullable: false),
+                    PdfTitle = table.Column<string>(nullable: true),
+                    Approvable = table.Column<bool>(nullable: false),
+                    RetractIfApproved = table.Column<bool>(nullable: false),
+                    AlwaysShow = table.Column<bool>(nullable: false),
+                    DescriptionFolderId = table.Column<int>(nullable: false),
+                    CaseTemplateId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CaseTemplateVersions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DescriptionFolders",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -175,11 +175,11 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DescriptionFolderse", x => x.Id);
+                    table.PrimaryKey("PK_DescriptionFolders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DescriptionFolderse_DescriptionFolderse_ParentId",
+                        name: "FK_DescriptionFolders_DescriptionFolders_ParentId",
                         column: x => x.ParentId,
-                        principalTable: "DescriptionFolderse",
+                        principalTable: "DescriptionFolders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -330,15 +330,15 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     table.PrimaryKey("PK_Cases", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cases_CaseTemplateses_CaseTemplateId",
+                        name: "FK_Cases_CaseTemplates_CaseTemplateId",
                         column: x => x.CaseTemplateId,
-                        principalTable: "CaseTemplateses",
+                        principalTable: "CaseTemplates",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CaseVersionses",
+                name: "CaseVersions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -365,11 +365,82 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CaseVersionses", x => x.Id);
+                    table.PrimaryKey("PK_CaseVersions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CaseVersionses_CaseTemplateses_CaseTemplateId",
+                        name: "FK_CaseVersions_CaseTemplates_CaseTemplateId",
                         column: x => x.CaseTemplateId,
-                        principalTable: "CaseTemplateses",
+                        principalTable: "CaseTemplates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CaseTemplateUploadedDatas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation(autoIDGenStrategy, autoIDGenStrategyValue),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    WorkflowState = table.Column<string>(maxLength: 255, nullable: true),
+                    CreatedByUserId = table.Column<int>(nullable: false),
+                    UpdatedByUserId = table.Column<int>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
+                    CaseTemplateId = table.Column<int>(nullable: false),
+                    UploadedDataId = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Approvable = table.Column<bool>(nullable: false),
+                    RetractIfApproved = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CaseTemplateUploadedDatas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CaseTemplateUploadedDatas_CaseTemplates_CaseTemplateId",
+                        column: x => x.CaseTemplateId,
+                        principalTable: "CaseTemplates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CaseTemplateUploadedDatas_UploadedDatas_UploadedDataId",
+                        column: x => x.UploadedDataId,
+                        principalTable: "UploadedDatas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CaseTemplateUploadedDataVersions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation(autoIDGenStrategy, autoIDGenStrategyValue),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    WorkflowState = table.Column<string>(maxLength: 255, nullable: true),
+                    CreatedByUserId = table.Column<int>(nullable: false),
+                    UpdatedByUserId = table.Column<int>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
+                    CaseTemplateId = table.Column<int>(nullable: false),
+                    UploadedDataId = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Approvable = table.Column<bool>(nullable: false),
+                    RetractIfApproved = table.Column<bool>(nullable: false),
+                    CaseTemplateUploadedDataId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CaseTemplateUploadedDataVersions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CaseTemplateUploadedDataVersions_CaseTemplates_CaseTemplateId",
+                        column: x => x.CaseTemplateId,
+                        principalTable: "CaseTemplates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CaseTemplateUploadedDataVersions_UploadedDatas_UploadedDataId",
+                        column: x => x.UploadedDataId,
+                        principalTable: "UploadedDatas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -380,13 +451,33 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 column: "CaseTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CaseVersionses_CaseTemplateId",
-                table: "CaseVersionses",
+                name: "IX_CaseTemplateUploadedDatas_CaseTemplateId",
+                table: "CaseTemplateUploadedDatas",
                 column: "CaseTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DescriptionFolderse_ParentId",
-                table: "DescriptionFolderse",
+                name: "IX_CaseTemplateUploadedDatas_UploadedDataId",
+                table: "CaseTemplateUploadedDatas",
+                column: "UploadedDataId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CaseTemplateUploadedDataVersions_CaseTemplateId",
+                table: "CaseTemplateUploadedDataVersions",
+                column: "CaseTemplateId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CaseTemplateUploadedDataVersions_UploadedDataId",
+                table: "CaseTemplateUploadedDataVersions",
+                column: "UploadedDataId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CaseVersions_CaseTemplateId",
+                table: "CaseVersions",
+                column: "CaseTemplateId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DescriptionFolders_ParentId",
+                table: "DescriptionFolders",
                 column: "ParentId");
         }
 
@@ -394,9 +485,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Cases");
-
-            migrationBuilder.DropTable(
-                name: "CaseTemplateseVersions");
 
             migrationBuilder.DropTable(
                 name: "CaseTemplateSiteGroups");
@@ -411,10 +499,19 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 name: "CaseTemplateSiteVersions");
 
             migrationBuilder.DropTable(
-                name: "CaseVersionses");
+                name: "CaseTemplateUploadedDatas");
 
             migrationBuilder.DropTable(
-                name: "DescriptionFolderse");
+                name: "CaseTemplateUploadedDataVersions");
+
+            migrationBuilder.DropTable(
+                name: "CaseTemplateVersions");
+
+            migrationBuilder.DropTable(
+                name: "CaseVersions");
+
+            migrationBuilder.DropTable(
+                name: "DescriptionFolders");
 
             migrationBuilder.DropTable(
                 name: "DescriptionFoldersVersions");
@@ -426,13 +523,13 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 name: "PluginConfigurationValueVersions");
 
             migrationBuilder.DropTable(
-                name: "UploadedDatas");
-
-            migrationBuilder.DropTable(
                 name: "UploadedDataVersions");
 
             migrationBuilder.DropTable(
-                name: "CaseTemplateses");
+                name: "UploadedDatas");
+
+            migrationBuilder.DropTable(
+                name: "CaseTemplates");
         }
     }
 }
