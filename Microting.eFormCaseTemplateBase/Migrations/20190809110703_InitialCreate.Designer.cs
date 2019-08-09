@@ -10,7 +10,7 @@ using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 namespace Microting.eFormCaseTemplateBase.Migrations
 {
     [DbContext(typeof(CaseTemplatePnDbContext))]
-    [Migration("20190809085209_InitialCreate")]
+    [Migration("20190809110703_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -529,7 +529,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DescriptionFoldersVersions");
+                    b.ToTable("DescriptionFolderVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", b =>

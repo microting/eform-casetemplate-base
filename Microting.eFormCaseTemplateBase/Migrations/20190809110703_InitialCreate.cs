@@ -185,7 +185,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DescriptionFoldersVersions",
+                name: "DescriptionFolderVersions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -203,7 +203,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DescriptionFoldersVersions", x => x.Id);
+                    table.PrimaryKey("PK_DescriptionFolderVersions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -514,7 +514,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 name: "DescriptionFolders");
 
             migrationBuilder.DropTable(
-                name: "DescriptionFoldersVersions");
+                name: "DescriptionFolderVersions");
 
             migrationBuilder.DropTable(
                 name: "PluginConfigurationValues");

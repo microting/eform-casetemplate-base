@@ -36,7 +36,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
             dbContext.DescriptionFolders.Add(this);
             dbContext.SaveChanges();
 
-            dbContext.DescriptionFoldersVersions.Add(MapVersions(dbContext, this));
+            dbContext.DescriptionFolderVersions.Add(MapVersions(dbContext, this));
             dbContext.SaveChanges();
         }
 
@@ -60,7 +60,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
                 descriptionFolder.UpdatedAt = DateTime.Now;
                 descriptionFolder.Version += 1;
                 
-                dbContext.DescriptionFoldersVersions.Add(MapVersions(dbContext, this));
+                dbContext.DescriptionFolderVersions.Add(MapVersions(dbContext, this));
                 dbContext.SaveChanges();
                 
             }
@@ -82,7 +82,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
                 descriptionFolder.UpdatedAt = DateTime.Now;
                 descriptionFolder.Version += 1;
                 
-                dbContext.DescriptionFoldersVersions.Add(MapVersions(dbContext, this));
+                dbContext.DescriptionFolderVersions.Add(MapVersions(dbContext, this));
                 dbContext.SaveChanges();
                 
             } 

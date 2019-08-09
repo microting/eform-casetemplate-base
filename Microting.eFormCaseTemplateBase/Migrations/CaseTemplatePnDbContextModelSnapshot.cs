@@ -527,7 +527,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DescriptionFoldersVersions");
+                    b.ToTable("DescriptionFolderVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", b =>
