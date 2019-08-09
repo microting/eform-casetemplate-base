@@ -43,16 +43,16 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(2, dbDescriptionFolderVersions.Count);
             
             
-            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[0].Id);
-            Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[0].Version);
-            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[0].CreatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolders[0].UpdatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolders[0].CreatedByUserId);
-            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolders[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolders[0].WorkflowState);
-            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolders[0].Name);
-            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolders[0].ParentId);
-            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolders[0].SdkFolderId);
+            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[1].Id);
+            Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[1].Version);
+            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolders[1].UpdatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolders[1].CreatedByUserId);
+            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolders[1].UpdatedByUserId);
+            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolders[1].WorkflowState);
+            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolders[1].Name);
+            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolders[1].ParentId);
+            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolders[1].SdkFolderId);
 
             //Versions
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[1].Id);
@@ -104,20 +104,20 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.NotNull(dbDescriptionFolders);
             Assert.NotNull(dbDescriptionFolderVersions);
             
-            Assert.AreEqual(1, dbDescriptionFolders.Count);
-            Assert.AreEqual(2, dbDescriptionFolderVersions.Count);
+            Assert.AreEqual(2, dbDescriptionFolders.Count);
+            Assert.AreEqual(3, dbDescriptionFolderVersions.Count);
             
             
-            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[0].Id);
-            Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[0].Version);
-            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[0].CreatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolders[0].UpdatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolders[0].CreatedByUserId);
-            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolders[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolders[0].WorkflowState);
-            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolders[0].Name);
-            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolders[0].ParentId);
-            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolders[0].SdkFolderId);
+            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[1].Id);
+            Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[1].Version);
+            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolders[1].UpdatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolders[1].CreatedByUserId);
+            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolders[1].UpdatedByUserId);
+            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolders[1].WorkflowState);
+            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolders[1].Name);
+            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolders[1].ParentId);
+            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolders[1].SdkFolderId);
 
             //Old Version
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[1].DescriptionFolderId);
@@ -132,16 +132,16 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(oldSdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
             
             //New Version
-            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[1].DescriptionFolderId);
-            Assert.AreEqual(2, dbDescriptionFolderVersions[1].Version);
-            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolderVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolderVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolderVersions[1].CreatedByUserId);
-            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolderVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolderVersions[1].WorkflowState);
-            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolderVersions[1].Name);
-            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolderVersions[1].ParentId);
-            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
+            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[2].DescriptionFolderId);
+            Assert.AreEqual(2, dbDescriptionFolderVersions[2].Version);
+            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolderVersions[2].CreatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolderVersions[2].UpdatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolderVersions[2].CreatedByUserId);
+            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolderVersions[2].UpdatedByUserId);
+            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolderVersions[2].WorkflowState);
+            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolderVersions[2].Name);
+            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolderVersions[2].ParentId);
+            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolderVersions[2].SdkFolderId);
         }
 
         [Test]
@@ -176,20 +176,20 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.NotNull(dbDescriptionFolders);
             Assert.NotNull(dbDescriptionFolderVersions);
             
-            Assert.AreEqual(1, dbDescriptionFolders.Count);
-            Assert.AreEqual(2, dbDescriptionFolderVersions.Count);
+            Assert.AreEqual(2, dbDescriptionFolders.Count);
+            Assert.AreEqual(3, dbDescriptionFolderVersions.Count);
             
             
-            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[0].Id);
-            Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[0].Version);
-            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[0].CreatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolders[0].UpdatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolders[0].CreatedByUserId);
-            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolders[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbDescriptionFolders[0].WorkflowState);
-            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolders[0].Name);
-            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolders[0].ParentId);
-            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolders[0].SdkFolderId);
+            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[1].Id);
+            Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[1].Version);
+            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolders[1].UpdatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolders[1].CreatedByUserId);
+            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolders[1].UpdatedByUserId);
+            Assert.AreEqual(Constants.WorkflowStates.Removed, dbDescriptionFolders[1].WorkflowState);
+            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolders[1].Name);
+            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolders[1].ParentId);
+            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolders[1].SdkFolderId);
 
             //Old Version
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[1].DescriptionFolderId);
@@ -204,16 +204,16 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
             
             //New Version
-            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[1].DescriptionFolderId);
-            Assert.AreEqual(2, dbDescriptionFolderVersions[1].Version);
-            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolderVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolderVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolderVersions[1].CreatedByUserId);
-            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolderVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbDescriptionFolderVersions[1].WorkflowState);
-            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolderVersions[1].Name);
-            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolderVersions[1].ParentId);
-            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
+            Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[2].DescriptionFolderId);
+            Assert.AreEqual(2, dbDescriptionFolderVersions[2].Version);
+            Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolderVersions[2].CreatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.UpdatedAt.ToString(), dbDescriptionFolderVersions[2].UpdatedAt.ToString());
+            Assert.AreEqual(descriptionFolder.CreatedByUserId, dbDescriptionFolderVersions[2].CreatedByUserId);
+            Assert.AreEqual(descriptionFolder.UpdatedByUserId, dbDescriptionFolderVersions[2].UpdatedByUserId);
+            Assert.AreEqual(Constants.WorkflowStates.Removed, dbDescriptionFolderVersions[2].WorkflowState);
+            Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolderVersions[2].Name);
+            Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolderVersions[2].ParentId);
+            Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolderVersions[2].SdkFolderId);
         }
     }
 }
