@@ -190,7 +190,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(caseTemplateSiteGroup.UpdatedAt.ToString(), dbCaseTemplateSiteGroupVersions[1].UpdatedAt.ToString());
             Assert.AreEqual(caseTemplateSiteGroup.CreatedByUserId, dbCaseTemplateSiteGroupVersions[1].CreatedByUserId);
             Assert.AreEqual(caseTemplateSiteGroup.UpdatedByUserId, dbCaseTemplateSiteGroupVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateSiteGroupVersions[1].WorkflowState);
+            Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateSiteGroupVersions[1].WorkflowState);
             Assert.AreEqual(caseTemplateSiteGroup.CaseTemplateId, dbCaseTemplateSiteGroupVersions[1].CaseTemplateId);
             Assert.AreEqual(caseTemplateSiteGroup.SdkSiteGroupId, dbCaseTemplateSiteGroupVersions[1].SdkSiteGroupId);
         }
