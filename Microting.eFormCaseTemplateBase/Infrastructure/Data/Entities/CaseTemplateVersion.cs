@@ -1,12 +1,12 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseTemplates : BaseEntity
+    public class CaseTemplateVersion : BaseEntity
     {
+        
         public string Title { get; set; }
         
         public string Body { get; set; }
@@ -23,9 +23,9 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         
         public bool AlwaysShow { get; set; }
         
-        [ForeignKey("DescriptionFolders")]
         public int DescriptionFolderId { get; set; }
         
-        public virtual ICollection<CaseTemplateUploadedDatas> CaseTemplateUploadedDatas { get; set; }
+        [ForeignKey("CaseTemplates")]
+        public int CaseTemplateId { get; set; }
     }
 }
