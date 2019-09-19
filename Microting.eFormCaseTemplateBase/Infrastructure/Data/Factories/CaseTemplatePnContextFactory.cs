@@ -30,24 +30,24 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Factories
         public CaseTemplatePnDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<CaseTemplatePnDbContext>();
-//            if (args.Any())
-//            {
-//                if (args.FirstOrDefault().ToLower().Contains("convert zero datetime"))
-//                {
-//                    optionsBuilder.UseMySql(args.FirstOrDefault());
-//                }
-//                else
-//                {
-//                    optionsBuilder.UseSqlServer(args.FirstOrDefault());
-//                }
-//            }
-//            else
-//            {
-//                throw new ArgumentNullException("Connection string not present");
-//            }
-            optionsBuilder.UseSqlServer(@"data source=(LocalDb)\SharedInstance;Initial catalog=eform-case-template-base;Integrated Security=True");
+            if (args.Any())
+            {
+                if (args.FirstOrDefault().ToLower().Contains("convert zero datetime"))
+                {
+                    optionsBuilder.UseMySql(args.FirstOrDefault());
+                }
+                else
+                {
+                    optionsBuilder.UseSqlServer(args.FirstOrDefault());
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException("Connection string not present");
+            }
+//            optionsBuilder.UseSqlServer(@"data source=(LocalDb)\SharedInstance;Initial catalog=eform-case-template-base;Integrated Security=True");
 //            dotnet ef migrations add AddingSdkCaseId --project Microting.eFormCaseTemplateBase --startup-project DBMigrator
-//            optionsBuilder.UseLazyLoadingProxies(true);
+            optionsBuilder.UseLazyLoadingProxies(true);
             return new CaseTemplatePnDbContext(optionsBuilder.Options);
         }
     }
