@@ -20,6 +20,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             CaseTemplateSite caseTemplateSite = new CaseTemplateSite();
             caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
             caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
+            caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
             
             //Act
             
@@ -44,6 +45,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplatesSite[0].WorkflowState);
             Assert.AreEqual(caseTemplateSite.CaseTemplateId, dbCaseTemplatesSite[0].CaseTemplateId);
             Assert.AreEqual(caseTemplateSite.SdkSiteId, dbCaseTemplatesSite[0].SdkSiteId);
+            Assert.AreEqual(caseTemplateSite.SdkCaseId, dbCaseTemplatesSite[0].SdkCaseId);
 
             //Versions
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSiteVersions[0].CaseTemplateSiteId);
@@ -55,6 +57,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplatesSiteVersions[0].WorkflowState);
             Assert.AreEqual(caseTemplateSite.CaseTemplateId, dbCaseTemplatesSiteVersions[0].CaseTemplateId);
             Assert.AreEqual(caseTemplateSite.SdkSiteId, dbCaseTemplatesSiteVersions[0].SdkSiteId);
+            Assert.AreEqual(caseTemplateSite.SdkCaseId, dbCaseTemplatesSiteVersions[0].SdkCaseId);
         }
 
         [Test]
@@ -66,6 +69,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             CaseTemplateSite caseTemplateSite = new CaseTemplateSite();
             caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
             caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
+            caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
             caseTemplateSite.Create(DbContext);
 
             
@@ -74,10 +78,12 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             DateTime? oldUpdatedAt = caseTemplateSite.UpdatedAt;
             int oldCaseTemplateId = caseTemplateSite.CaseTemplateId;
             int oldSdkSiteId = caseTemplateSite.SdkSiteId;
-
+            int oldSdkCaseId = caseTemplateSite.SdkCaseId;
+            
             caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
             caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
-            
+            caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
+
             caseTemplateSite.Update(DbContext);
 
             List<CaseTemplateSite> dbCaseTemplatesSite = DbContext.CaseTemplateSites.AsNoTracking().ToList();
@@ -99,6 +105,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplatesSite[0].WorkflowState);
             Assert.AreEqual(caseTemplateSite.CaseTemplateId, dbCaseTemplatesSite[0].CaseTemplateId);
             Assert.AreEqual(caseTemplateSite.SdkSiteId, dbCaseTemplatesSite[0].SdkSiteId);
+            Assert.AreEqual(caseTemplateSite.SdkCaseId, dbCaseTemplatesSite[0].SdkCaseId);
 
             //Old Version
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSiteVersions[0].CaseTemplateSiteId);
@@ -110,7 +117,8 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplatesSiteVersions[0].WorkflowState);
             Assert.AreEqual(oldCaseTemplateId, dbCaseTemplatesSiteVersions[0].CaseTemplateId);
             Assert.AreEqual(oldSdkSiteId, dbCaseTemplatesSiteVersions[0].SdkSiteId);
-            
+            Assert.AreEqual(oldSdkCaseId, dbCaseTemplatesSiteVersions[0].SdkCaseId);
+
             //New Version
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSiteVersions[1].CaseTemplateSiteId);
             Assert.AreEqual(2, dbCaseTemplatesSiteVersions[1].Version);
@@ -121,6 +129,9 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplatesSiteVersions[1].WorkflowState);
             Assert.AreEqual(caseTemplateSite.CaseTemplateId, dbCaseTemplatesSiteVersions[1].CaseTemplateId);
             Assert.AreEqual(caseTemplateSite.SdkSiteId, dbCaseTemplatesSiteVersions[1].SdkSiteId);
+            Assert.AreEqual(caseTemplateSite.SdkCaseId, dbCaseTemplatesSiteVersions[1].SdkCaseId);
+            
+
         }
 
         [Test]
@@ -132,6 +143,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             CaseTemplateSite caseTemplateSite = new CaseTemplateSite();
             caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
             caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
+            caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
             caseTemplateSite.Create(DbContext);
 
             
@@ -160,6 +172,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplatesSite[0].WorkflowState);
             Assert.AreEqual(caseTemplateSite.CaseTemplateId, dbCaseTemplatesSite[0].CaseTemplateId);
             Assert.AreEqual(caseTemplateSite.SdkSiteId, dbCaseTemplatesSite[0].SdkSiteId);
+            Assert.AreEqual(caseTemplateSite.SdkCaseId, dbCaseTemplatesSite[0].SdkCaseId);
 
             //Old Version
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSiteVersions[0].CaseTemplateSiteId);
@@ -171,7 +184,8 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplatesSiteVersions[0].WorkflowState);
             Assert.AreEqual(caseTemplateSite.CaseTemplateId, dbCaseTemplatesSiteVersions[0].CaseTemplateId);
             Assert.AreEqual(caseTemplateSite.SdkSiteId, dbCaseTemplatesSiteVersions[0].SdkSiteId);
-            
+            Assert.AreEqual(caseTemplateSite.SdkCaseId, dbCaseTemplatesSiteVersions[0].SdkCaseId);
+
             //New Version
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSiteVersions[1].CaseTemplateSiteId);
             Assert.AreEqual(2, dbCaseTemplatesSiteVersions[1].Version);
