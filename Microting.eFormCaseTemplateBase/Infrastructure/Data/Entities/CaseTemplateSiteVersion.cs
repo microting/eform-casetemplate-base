@@ -9,6 +9,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         
         public int SdkSiteId { get; set; }
         
+        public int SdkCaseId { get; set; }
+        
         [ForeignKey("CaseTemplateSites")]
         public int CaseTemplateSiteId { get; set; }
     }

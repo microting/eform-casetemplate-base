@@ -13,6 +13,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public int CaseTemplateId { get; set; }
         
         public int SdkSiteId { get; set; }
+        
+        public int SdkCaseId { get; set; }
 
 
         public void Create(CaseTemplatePnDbContext dbContext)
@@ -40,7 +42,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
             caseTemplateSite.CaseTemplateId = CaseTemplateId;
             caseTemplateSite.SdkSiteId = SdkSiteId;
-
+            caseTemplateSite.SdkCaseId = SdkCaseId;
             if (dbContext.ChangeTracker.HasChanges())
             {
                 caseTemplateSite.UpdatedAt = DateTime.Now;
@@ -79,6 +81,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
             caseTemplateSiteVersion.CaseTemplateId = caseTemplateSite.CaseTemplateId;
             caseTemplateSiteVersion.SdkSiteId = caseTemplateSite.SdkSiteId;
+            caseTemplateSiteVersion.SdkCaseId = caseTemplateSite.SdkCaseId;
             caseTemplateSiteVersion.Version = caseTemplateSite.Version;
             caseTemplateSiteVersion.CreatedAt = caseTemplateSite.CreatedAt;
             caseTemplateSiteVersion.UpdatedAt = caseTemplateSite.UpdatedAt;
