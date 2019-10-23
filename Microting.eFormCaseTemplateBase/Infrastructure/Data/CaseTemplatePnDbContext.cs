@@ -55,6 +55,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
         // plugin settings
         public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
         public DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }
+        public DbSet<PluginPermission> PluginPermissions { get; set; }
+        public DbSet<PluginGroupPermission> PluginGroupPermissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
