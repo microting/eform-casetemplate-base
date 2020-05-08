@@ -205,7 +205,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("CaseTemplateSites");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteGroup", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteTag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -217,7 +217,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.Property<int>("CreatedByUserId");
 
-                    b.Property<int>("SdkSiteGroupId");
+                    b.Property<int>("SdkSiteTagId");
 
                     b.Property<DateTime?>("UpdatedAt");
 
@@ -230,10 +230,10 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateSiteGroups");
+                    b.ToTable("CaseTemplateSiteTags");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteGroupVersion", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteTagVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -241,13 +241,13 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.Property<int>("CaseTemplateId");
 
-                    b.Property<int>("CaseTemplateSiteGroupId");
+                    b.Property<int>("CaseTemplateSiteTagId");
 
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<int>("CreatedByUserId");
 
-                    b.Property<int>("SdkSiteGroupId");
+                    b.Property<int>("SdkSiteTagId");
 
                     b.Property<DateTime?>("UpdatedAt");
 
@@ -260,7 +260,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateSiteGroupVersions");
+                    b.ToTable("CaseTemplateSiteTagVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteVersion", b =>

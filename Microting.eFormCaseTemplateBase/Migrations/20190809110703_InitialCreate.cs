@@ -48,7 +48,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CaseTemplateSiteGroups",
+                name: "CaseTemplateSiteTags",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -60,15 +60,15 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     UpdatedByUserId = table.Column<int>(nullable: false),
                     Version = table.Column<int>(nullable: false),
                     CaseTemplateId = table.Column<int>(nullable: false),
-                    SdkSiteGroupId = table.Column<int>(nullable: false)
+                    SdkSiteTagId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CaseTemplateSiteGroups", x => x.Id);
+                    table.PrimaryKey("PK_CaseTemplateSiteTags", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CaseTemplateSiteGroupVersions",
+                name: "CaseTemplateSiteTagVersions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -80,12 +80,12 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     UpdatedByUserId = table.Column<int>(nullable: false),
                     Version = table.Column<int>(nullable: false),
                     CaseTemplateId = table.Column<int>(nullable: false),
-                    SdkSiteGroupId = table.Column<int>(nullable: false),
-                    CaseTemplateSiteGroupId = table.Column<int>(nullable: false)
+                    SdkSiteTagId = table.Column<int>(nullable: false),
+                    CaseTemplateSiteTagId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CaseTemplateSiteGroupVersions", x => x.Id);
+                    table.PrimaryKey("PK_CaseTemplateSiteTagVersions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -487,10 +487,10 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 name: "Cases");
 
             migrationBuilder.DropTable(
-                name: "CaseTemplateSiteGroups");
+                name: "CaseTemplateSiteTags");
 
             migrationBuilder.DropTable(
-                name: "CaseTemplateSiteGroupVersions");
+                name: "CaseTemplateSiteTagVersions");
 
             migrationBuilder.DropTable(
                 name: "CaseTemplateSites");
