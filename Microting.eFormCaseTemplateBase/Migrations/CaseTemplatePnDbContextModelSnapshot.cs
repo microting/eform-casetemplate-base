@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 
@@ -14,39 +13,39 @@ namespace Microting.eFormCaseTemplateBase.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
-            object autoIDGenStrategyValue = SqlServerValueGenerationStrategy.IdentityColumn;
-            if (DbConfig.IsMySQL)
-            {
-                autoIDGenStrategy = "MySql:ValueGenerationStrategy";
-                autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
-            }
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginConfigurationValue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Value");
+                    b.Property<string>("Value")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -58,23 +57,31 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Value");
+                    b.Property<string>("Value")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -82,49 +89,186 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("PluginConfigurationValueVersions");
                 });
 
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermissionId");
+
+                    b.ToTable("PluginGroupPermissions");
+                });
+
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermissionVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PluginGroupPermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PluginGroupPermissionVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginPermission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClaimName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PermissionName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PluginPermissions");
+                });
+
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Case", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("DoneAt");
+                    b.Property<DateTime?>("DoneAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("FetchedByTablet");
+                    b.Property<bool>("FetchedByTablet")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("FetchedByTabletAt");
+                    b.Property<DateTime>("FetchedByTabletAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("ReceiptRetrievedFromUser");
+                    b.Property<bool>("ReceiptRetrievedFromUser")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("ReceiptRetrievedFromUserAt");
+                    b.Property<DateTime>("ReceiptRetrievedFromUserAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("SiteId");
+                    b.Property<int?>("SiteId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("Status");
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<int?>("UnitId");
+                    b.Property<int?>("UnitId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("WorkerId");
+                    b.Property<int?>("WorkerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<int?>("eFormId");
+                    b.Property<int?>("eFormId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -137,37 +281,52 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<bool>("AlwaysShow");
+                    b.Property<bool>("AlwaysShow")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<bool>("Approvable");
+                    b.Property<bool>("Approvable")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Body");
+                    b.Property<string>("Body")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("DescriptionFolderId");
+                    b.Property<int>("DescriptionFolderId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("EndAt");
+                    b.Property<DateTime>("EndAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("PdfTitle");
+                    b.Property<string>("PdfTitle")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool>("RetractIfApproved");
+                    b.Property<bool>("RetractIfApproved")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("StartAt");
+                    b.Property<DateTime>("StartAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -179,25 +338,34 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkCaseId");
+                    b.Property<int>("SdkCaseId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkSiteId");
+                    b.Property<int>("SdkSiteId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -209,23 +377,31 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkSiteTagId");
+                    b.Property<int>("SdkSiteTagId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -237,25 +413,34 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateSiteTagId");
+                    b.Property<int>("CaseTemplateSiteTagId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkSiteTagId");
+                    b.Property<int>("SdkSiteTagId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -267,27 +452,37 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateSiteId");
+                    b.Property<int>("CaseTemplateSiteId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkCaseId");
+                    b.Property<int>("SdkCaseId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkSiteId");
+                    b.Property<int>("SdkSiteId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -299,29 +494,40 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<bool>("Approvable");
+                    b.Property<bool>("Approvable")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("RetractIfApproved");
+                    b.Property<bool>("RetractIfApproved")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("UploadedDataId");
+                    b.Property<int>("UploadedDataId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -337,31 +543,43 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<bool>("Approvable");
+                    b.Property<bool>("Approvable")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateUploadedDataId");
+                    b.Property<int>("CaseTemplateUploadedDataId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<bool>("RetractIfApproved");
+                    b.Property<bool>("RetractIfApproved")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("UploadedDataId");
+                    b.Property<int>("UploadedDataId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -377,39 +595,55 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<bool>("AlwaysShow");
+                    b.Property<bool>("AlwaysShow")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<bool>("Approvable");
+                    b.Property<bool>("Approvable")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Body");
+                    b.Property<string>("Body")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("DescriptionFolderId");
+                    b.Property<int>("DescriptionFolderId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("EndAt");
+                    b.Property<DateTime>("EndAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("PdfTitle");
+                    b.Property<string>("PdfTitle")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool>("RetractIfApproved");
+                    b.Property<bool>("RetractIfApproved")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("StartAt");
+                    b.Property<DateTime>("StartAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -421,47 +655,66 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseId");
+                    b.Property<int>("CaseId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateId");
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("DoneAt");
+                    b.Property<DateTime?>("DoneAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("FetchedByTablet");
+                    b.Property<bool>("FetchedByTablet")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("FetchedByTabletAt");
+                    b.Property<DateTime>("FetchedByTabletAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("ReceiptRetrievedFromUser");
+                    b.Property<bool>("ReceiptRetrievedFromUser")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("ReceiptRetrievedFromUserAt");
+                    b.Property<DateTime>("ReceiptRetrievedFromUserAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("SiteId");
+                    b.Property<int?>("SiteId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("Status");
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<int?>("UnitId");
+                    b.Property<int?>("UnitId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("WorkerId");
+                    b.Property<int?>("WorkerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<int?>("eFormId");
+                    b.Property<int?>("eFormId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -474,25 +727,34 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("ParentId");
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkFolderId");
+                    b.Property<int>("SdkFolderId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -506,27 +768,37 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("DescriptionFolderId");
+                    b.Property<int>("DescriptionFolderId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("ParentId");
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SdkFolderId");
+                    b.Property<int>("SdkFolderId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -538,43 +810,58 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
                     b.Property<string>("Checksum")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CurrentFile")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("ExpirationDate");
+                    b.Property<DateTime?>("ExpirationDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Extension")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.Property<string>("FileLocation")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.Property<string>("FileName")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<short?>("Local");
+                    b.Property<short?>("Local")
+                        .HasColumnType("smallint");
 
-                    b.Property<string>("OriginalFileName");
+                    b.Property<string>("OriginalFileName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UploaderType")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -586,45 +873,61 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasColumnType("int");
 
                     b.Property<string>("Checksum")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("CreatedByUserId");
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CurrentFile")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<DateTime?>("ExpirationDate");
+                    b.Property<DateTime?>("ExpirationDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Extension")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.Property<string>("FileLocation")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.Property<string>("FileName")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<short?>("Local");
+                    b.Property<short?>("Local")
+                        .HasColumnType("smallint");
 
-                    b.Property<string>("OriginalFileName");
+                    b.Property<string>("OriginalFileName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("UpdatedByUserId");
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("UploadedDataId");
+                    b.Property<int>("UploadedDataId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UploaderType")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
-                    b.Property<int>("Version");
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
@@ -632,12 +935,22 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("UploadedDataVersions");
                 });
 
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermission", b =>
+                {
+                    b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginPermission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Case", b =>
                 {
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
                         .WithMany()
                         .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedData", b =>
@@ -645,12 +958,14 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
                         .WithMany("CaseTemplateUploadedDatas")
                         .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
                         .WithMany()
                         .HasForeignKey("UploadedDataId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersion", b =>
@@ -658,12 +973,14 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
                         .WithMany()
                         .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
                         .WithMany()
                         .HasForeignKey("UploadedDataId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersion", b =>
@@ -671,7 +988,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
                         .WithMany()
                         .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolder", b =>
