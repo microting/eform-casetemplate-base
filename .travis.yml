@@ -1,7 +1,6 @@
 dist: xenial
-branches:
-  only:
-    - master
+language: csharp
+solution: Microting.eFormCaseTemplateBase.sln
 mono: none
 dotnet: 3.1.101
 addons:
