@@ -11,8 +11,8 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
-      <PackageReference Include="Microting.eForm" Version="4.1.13" />
-      <PackageReference Include="Microting.eFormApi.BasePn" Version="2.0.64" />
+      <PackageReference Include="Microting.eForm" Version="4.1.14" />
+      <PackageReference Include="Microting.eFormApi.BasePn" Version="2.0.65" />
     </ItemGroup>
 
 </Project>
