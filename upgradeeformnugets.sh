@@ -3,12 +3,12 @@
 GIT_STATUS=`git status | grep "nothing to commit, working tree clean" | wc -l`
 if (( "$GIT_STATUS" > 0 )); then
 	git pull
-	cd Microting.ItemsPlanningBase
+	cd Microting.eFormCaseTemplateBase
   CURRENT_NUMBER_OF_COMMITS=`git log --oneline | wc -l`
 
 	PACKAGES=('Microting.eForm' 'Microting.eFormApi.BasePn')
-	PROJECT_NAME='Microting.ItemsPlanningBase.csproj'
-	REPOSITORY='eform-items-planning-base'
+	PROJECT_NAME='Microting.eFormCaseTemplateBase.csproj'
+	REPOSITORY='eform-case-template-base'
 
 	for PACKAGE_NAME in ${PACKAGES[@]}; do
 
