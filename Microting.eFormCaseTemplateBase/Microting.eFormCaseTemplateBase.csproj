@@ -12,7 +12,7 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
       <PackageReference Include="Microting.eForm" Version="5.1.4" />
-      <PackageReference Include="Microting.eFormApi.BasePn" Version="3.0.7" />
+      <PackageReference Include="Microting.eFormApi.BasePn" Version="3.0.8" />
     </ItemGroup>
 
 </Project>
