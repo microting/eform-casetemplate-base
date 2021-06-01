@@ -1,5 +1,14 @@
 # Changelog
 
+## [v3.0.15](https://github.com/microting/eform-casetemplate-base/tree/v3.0.15) (2021-06-01)
+
+[Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.14...v3.0.15)
+
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 3.0.14 to 3.0.16 [\#114](https://github.com/microting/eform-casetemplate-base/issues/114)
+- Bump Microting.eForm from 5.2.5 to 5.2.7 [\#113](https://github.com/microting/eform-casetemplate-base/issues/113)
+
 ## [v3.0.14](https://github.com/microting/eform-casetemplate-base/tree/v3.0.14) (2021-05-31)
 
 [Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.13...v3.0.14)
