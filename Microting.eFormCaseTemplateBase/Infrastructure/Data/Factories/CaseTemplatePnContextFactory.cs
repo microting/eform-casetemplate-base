@@ -37,7 +37,6 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Factories
             {
                 builder.EnableRetryOnFailure();
             });
-            optionsBuilder.UseLazyLoadingProxies(true);
 
             return new CaseTemplatePnDbContext(optionsBuilder.Options);
             // dotnet ef migrations add AddingSdkCaseId --project Microting.eFormCaseTemplateBase --startup-project DBMigrator
