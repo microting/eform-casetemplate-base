@@ -1,5 +1,21 @@
 # Changelog
 
+## [v3.0.20](https://github.com/microting/eform-casetemplate-base/tree/v3.0.20) (2021-07-05)
+
+[Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.19...v3.0.20)
+
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 3.0.20 to 3.0.27 [\#136](https://github.com/microting/eform-casetemplate-base/issues/136)
+- Bump Microting.eForm from 5.2.9 to 5.2.14 [\#135](https://github.com/microting/eform-casetemplate-base/issues/135)
+
+**Merged pull requests:**
+
+- Bump NUnit3TestAdapter from 3.17.0 to 4.0.0 [\#122](https://github.com/microting/eform-casetemplate-base/pull/122) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.5 to 5.0.7 [\#120](https://github.com/microting/eform-casetemplate-base/pull/120) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump Microsoft.NET.Test.Sdk from 16.7.1 to 16.10.0 [\#106](https://github.com/microting/eform-casetemplate-base/pull/106) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump NUnit from 3.12.0 to 3.13.2 [\#72](https://github.com/microting/eform-casetemplate-base/pull/72) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v3.0.19](https://github.com/microting/eform-casetemplate-base/tree/v3.0.19) (2021-06-09)
 
 [Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.18...v3.0.19)
