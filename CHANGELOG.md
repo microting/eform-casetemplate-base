@@ -1,5 +1,18 @@
 # Changelog
 
+## [v3.0.21](https://github.com/microting/eform-casetemplate-base/tree/v3.0.21) (2021-07-08)
+
+[Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.20...v3.0.21)
+
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 3.0.27 to 3.0.28 [\#138](https://github.com/microting/eform-casetemplate-base/issues/138)
+- Bump Microting.eForm from 5.2.14 to 5.2.15 [\#137](https://github.com/microting/eform-casetemplate-base/issues/137)
+
+**Merged pull requests:**
+
+- Upgrade to GitHub-native Dependabot [\#73](https://github.com/microting/eform-casetemplate-base/pull/73) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v3.0.20](https://github.com/microting/eform-casetemplate-base/tree/v3.0.20) (2021-07-05)
 
 [Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.19...v3.0.20)
