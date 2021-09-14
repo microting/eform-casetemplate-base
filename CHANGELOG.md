@@ -1,5 +1,14 @@
 # Changelog
 
+## [v3.0.36](https://github.com/microting/eform-casetemplate-base/tree/v3.0.36) (2021-09-14)
+
+[Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.35...v3.0.36)
+
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 3.0.45 to 3.0.46 [\#173](https://github.com/microting/eform-casetemplate-base/issues/173)
+- Bump Microting.eForm from 5.2.35 to 5.2.36 [\#172](https://github.com/microting/eform-casetemplate-base/issues/172)
+
 ## [v3.0.35](https://github.com/microting/eform-casetemplate-base/tree/v3.0.35) (2021-09-06)
 
 [Full Changelog](https://github.com/microting/eform-casetemplate-base/compare/v3.0.34...v3.0.35)
@@ -100,7 +109,6 @@
 **Implemented enhancements:**
 
 - Bump Microting.eFormApi.BasePn from 3.0.31 to 3.0.33 [\#148](https://github.com/microting/eform-casetemplate-base/issues/148)
-- Bump Microting.eForm from 5.2.18 to 5.2.21 [\#147](https://github.com/microting/eform-casetemplate-base/issues/147)
 
 ## [v3.0.24](https://github.com/microting/eform-casetemplate-base/tree/v3.0.24) (2021-07-22)
 
@@ -127,6 +135,7 @@
 
 - Bump Microting.eFormApi.BasePn from 3.0.28 to 3.0.30 [\#141](https://github.com/microting/eform-casetemplate-base/issues/141)
 - Bump Microting.eForm from 5.2.15 to 5.2.17 [\#140](https://github.com/microting/eform-casetemplate-base/issues/140)
+- Bump Microting.eFormApi.BasePn from 3.0.27 to 3.0.28 [\#138](https://github.com/microting/eform-casetemplate-base/issues/138)
 
 ## [v3.0.21](https://github.com/microting/eform-casetemplate-base/tree/v3.0.21) (2021-07-08)
 
@@ -134,7 +143,7 @@
 
 **Implemented enhancements:**
 
-- Bump Microting.eFormApi.BasePn from 3.0.27 to 3.0.28 [\#138](https://github.com/microting/eform-casetemplate-base/issues/138)
+- Bump Microting.eForm from 5.2.18 to 5.2.21 [\#147](https://github.com/microting/eform-casetemplate-base/issues/147)
 - Bump Microting.eForm from 5.2.14 to 5.2.15 [\#137](https://github.com/microting/eform-casetemplate-base/issues/137)
 
 **Merged pull requests:**
