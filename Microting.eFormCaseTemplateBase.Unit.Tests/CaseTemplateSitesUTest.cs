@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
@@ -12,30 +13,32 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
     public class CaseTemplateSitesUTest : DbTestFixture
     {
         [Test]
-        public void CaseTemplatesSites_Create_DoesCreate()
+        public async Task CaseTemplatesSites_Create_DoesCreate()
         {
             //Arrange
-            
+
             Random rnd = new Random();
-            CaseTemplateSite caseTemplateSite = new CaseTemplateSite();
-            caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
-            caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
-            caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
-            
+            CaseTemplateSite caseTemplateSite = new CaseTemplateSite
+            {
+                CaseTemplateId = rnd.Next(1, 255),
+                SdkSiteId = rnd.Next(1, 255),
+                SdkCaseId = rnd.Next(1, 255)
+            };
+
             //Act
-            
-            caseTemplateSite.Create(DbContext);
-            
+
+            await caseTemplateSite.Create(DbContext);
+
             List<CaseTemplateSite> dbCaseTemplatesSite = DbContext.CaseTemplateSites.AsNoTracking().ToList();
             List<CaseTemplateSiteVersion> dbCaseTemplatesSiteVersions= DbContext.CaseTemplateSiteVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbCaseTemplatesSite);
             Assert.NotNull(dbCaseTemplatesSiteVersions);
-            
+
             Assert.AreEqual(1, dbCaseTemplatesSite.Count);
             Assert.AreEqual(1, dbCaseTemplatesSiteVersions.Count);
-            
+
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSite[0].Id);
             Assert.AreEqual(caseTemplateSite.Version, dbCaseTemplatesSite[0].Version);
             Assert.AreEqual(caseTemplateSite.CreatedAt.ToString(), dbCaseTemplatesSite[0].CreatedAt.ToString());
@@ -61,41 +64,43 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void CaseTemplateSitesUTest_Update_DoesUpdate()
+        public async Task CaseTemplateSitesUTest_Update_DoesUpdate()
         {
              //Arrange
-            
-            Random rnd = new Random();
-            CaseTemplateSite caseTemplateSite = new CaseTemplateSite();
-            caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
-            caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
-            caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
-            caseTemplateSite.Create(DbContext);
 
-            
+            Random rnd = new Random();
+            CaseTemplateSite caseTemplateSite = new CaseTemplateSite
+            {
+                CaseTemplateId = rnd.Next(1, 255),
+                SdkSiteId = rnd.Next(1, 255),
+                SdkCaseId = rnd.Next(1, 255)
+            };
+            await caseTemplateSite.Create(DbContext);
+
+
             //Act
 
             DateTime? oldUpdatedAt = caseTemplateSite.UpdatedAt;
             int oldCaseTemplateId = caseTemplateSite.CaseTemplateId;
             int oldSdkSiteId = caseTemplateSite.SdkSiteId;
             int oldSdkCaseId = caseTemplateSite.SdkCaseId;
-            
+
             caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
             caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
             caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
 
-            caseTemplateSite.Update(DbContext);
+            await caseTemplateSite.Update(DbContext);
 
             List<CaseTemplateSite> dbCaseTemplatesSite = DbContext.CaseTemplateSites.AsNoTracking().ToList();
             List<CaseTemplateSiteVersion> dbCaseTemplatesSiteVersions= DbContext.CaseTemplateSiteVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbCaseTemplatesSite);
             Assert.NotNull(dbCaseTemplatesSiteVersions);
-            
+
             Assert.AreEqual(1, dbCaseTemplatesSite.Count);
             Assert.AreEqual(2, dbCaseTemplatesSiteVersions.Count);
-            
+
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSite[0].Id);
             Assert.AreEqual(caseTemplateSite.Version, dbCaseTemplatesSite[0].Version);
             Assert.AreEqual(caseTemplateSite.CreatedAt.ToString(), dbCaseTemplatesSite[0].CreatedAt.ToString());
@@ -130,39 +135,41 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(caseTemplateSite.CaseTemplateId, dbCaseTemplatesSiteVersions[1].CaseTemplateId);
             Assert.AreEqual(caseTemplateSite.SdkSiteId, dbCaseTemplatesSiteVersions[1].SdkSiteId);
             Assert.AreEqual(caseTemplateSite.SdkCaseId, dbCaseTemplatesSiteVersions[1].SdkCaseId);
-            
+
 
         }
 
         [Test]
-        public void CaseTemplateSites_Delete_DoesSetWorkflowStateToRemoved()
+        public async Task CaseTemplateSites_Delete_DoesSetWorkflowStateToRemoved()
         {
             //Arrange
-            
-            Random rnd = new Random();
-            CaseTemplateSite caseTemplateSite = new CaseTemplateSite();
-            caseTemplateSite.CaseTemplateId = rnd.Next(1, 255);
-            caseTemplateSite.SdkSiteId = rnd.Next(1, 255);
-            caseTemplateSite.SdkCaseId = rnd.Next(1, 255);
-            caseTemplateSite.Create(DbContext);
 
-            
+            Random rnd = new Random();
+            CaseTemplateSite caseTemplateSite = new CaseTemplateSite
+            {
+                CaseTemplateId = rnd.Next(1, 255),
+                SdkSiteId = rnd.Next(1, 255),
+                SdkCaseId = rnd.Next(1, 255)
+            };
+            await caseTemplateSite.Create(DbContext);
+
+
             //Act
 
             DateTime? oldUpdatedAt = caseTemplateSite.UpdatedAt;
 
-            caseTemplateSite.Delete(DbContext);
+            await caseTemplateSite.Delete(DbContext);
 
             List<CaseTemplateSite> dbCaseTemplatesSite = DbContext.CaseTemplateSites.AsNoTracking().ToList();
             List<CaseTemplateSiteVersion> dbCaseTemplatesSiteVersions= DbContext.CaseTemplateSiteVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbCaseTemplatesSite);
             Assert.NotNull(dbCaseTemplatesSiteVersions);
-            
+
             Assert.AreEqual(1, dbCaseTemplatesSite.Count);
             Assert.AreEqual(2, dbCaseTemplatesSiteVersions.Count);
-            
+
             Assert.AreEqual(caseTemplateSite.Id, dbCaseTemplatesSite[0].Id);
             Assert.AreEqual(caseTemplateSite.Version, dbCaseTemplatesSite[0].Version);
             Assert.AreEqual(caseTemplateSite.CreatedAt.ToString(), dbCaseTemplatesSite[0].CreatedAt.ToString());

@@ -6,12 +6,12 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class UploadedDataVersion : BaseEntity
+    public sealed class UploadedDataVersion : BaseEntity
     {
-        
+
         [StringLength(255)]
         public string Checksum { get; set; }
-        
+
         [StringLength(255)]
         public string Extension { get; set; }
 
@@ -30,9 +30,9 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public DateTime? ExpirationDate { get; set; }
 
         public short? Local { get; set; }
-        
+
         public string OriginalFileName { get; set; }
-        
+
         [ForeignKey("UploadedDatas")]
         public int UploadedDataId { get; set; }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
@@ -13,56 +14,60 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
     public class CasesUTest : DbTestFixture
     {
         [Test]
-        public void Cases_Create_DoesCreate()
+        public async Task Cases_Create_DoesCreate()
         {
             #region Arrange
             Random rnd = new Random();
-            
-            bool randomBool = rnd.Next(0, 2) > 0;
-            
-            CaseTemplate caseTemplate = new CaseTemplate();
-            caseTemplate.Approvable = randomBool;
-            caseTemplate.Body = Guid.NewGuid().ToString();
-            caseTemplate.Title = Guid.NewGuid().ToString();
-            caseTemplate.AlwaysShow = randomBool;
-            caseTemplate.EndAt = DateTime.Now;
-            caseTemplate.PdfTitle = Guid.NewGuid().ToString();
-            caseTemplate.StartAt = DateTime.Now;
-            caseTemplate.DescriptionFolderId = rnd.Next(0, 255);
-            caseTemplate.RetractIfApproved = randomBool;
 
-            caseTemplate.Create(DbContext);
-            
-            Case @case = new Case();
-            @case.Status = rnd.Next(0, 255);
-            @case.Type = Guid.NewGuid().ToString();
-            @case.DoneAt = DateTime.Now;
-            @case.eFormId = rnd.Next(0, 255);
-            @case.SiteId = rnd.Next(0, 255);
-            @case.UnitId = rnd.Next(0, 255);
-            @case.WorkerId = rnd.Next(0, 255);
-            @case.CaseTemplateId = caseTemplate.Id;
-            @case.FetchedByTablet = randomBool;
-            @case.FetchedByTabletAt = DateTime.Now;
-            @case.ReceiptRetrievedFromUser = randomBool;
-            @case.ReceiptRetrievedFromUserAt = DateTime.Now;
+            bool randomBool = rnd.Next(0, 2) > 0;
+
+            CaseTemplate caseTemplate = new CaseTemplate
+            {
+                Approvable = randomBool,
+                // caseTemplate.Title = Guid.NewGuid().ToString();
+                // caseTemplate.Body = Guid.NewGuid().ToString();
+                AlwaysShow = randomBool,
+                EndAt = DateTime.Now,
+                // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
+                StartAt = DateTime.Now,
+                DescriptionFolderId = rnd.Next(0, 255),
+                RetractIfApproved = randomBool
+            };
+
+            await caseTemplate.Create(DbContext);
+
+            Case @case = new Case
+            {
+                Status = rnd.Next(0, 255),
+                Type = Guid.NewGuid().ToString(),
+                DoneAt = DateTime.Now,
+                eFormId = rnd.Next(0, 255),
+                SiteId = rnd.Next(0, 255),
+                UnitId = rnd.Next(0, 255),
+                WorkerId = rnd.Next(0, 255),
+                CaseTemplateId = caseTemplate.Id,
+                FetchedByTablet = randomBool,
+                FetchedByTabletAt = DateTime.Now,
+                ReceiptRetrievedFromUser = randomBool,
+                ReceiptRetrievedFromUserAt = DateTime.Now
+            };
 
             #endregion
-           
-            
+
+
             //Act
-            @case.Create(DbContext);
+            await @case.Create(DbContext);
 
             List<Case> dbCases = DbContext.Cases.AsNoTracking().ToList();
             List<CaseVersion> dbCaseVersions = DbContext.CaseVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbCases);
             Assert.NotNull(dbCaseVersions);
-            
+
             Assert.AreEqual(1, dbCases.Count);
             Assert.AreEqual(1, dbCaseVersions.Count);
-            
+
             Assert.AreEqual(@case.Status, dbCases[0].Status);
             Assert.AreEqual(@case.Type, dbCases[0].Type);
             Assert.AreEqual(@case.DoneAt.ToString(), dbCases[0].DoneAt.ToString());
@@ -78,42 +83,46 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void Cases_Update_DoesUpdate()
+        public async Task Cases_Update_DoesUpdate()
         {
             #region Arrange
             Random rnd = new Random();
-            
-            bool randomBool = rnd.Next(0, 2) > 0;
-            
-            CaseTemplate caseTemplate = new CaseTemplate();
-            caseTemplate.Approvable = randomBool;
-            caseTemplate.Body = Guid.NewGuid().ToString();
-            caseTemplate.Title = Guid.NewGuid().ToString();
-            caseTemplate.AlwaysShow = randomBool;
-            caseTemplate.EndAt = DateTime.Now;
-            caseTemplate.PdfTitle = Guid.NewGuid().ToString();
-            caseTemplate.StartAt = DateTime.Now;
-            caseTemplate.DescriptionFolderId = rnd.Next(0, 255);
-            caseTemplate.RetractIfApproved = randomBool;
 
-            caseTemplate.Create(DbContext);
-            
-            Case @case = new Case();
-            @case.Status = rnd.Next(0, 255);
-            @case.Type = Guid.NewGuid().ToString();
-            @case.DoneAt = DateTime.Now;
-            @case.eFormId = rnd.Next(0, 255);
-            @case.SiteId = rnd.Next(0, 255);
-            @case.UnitId = rnd.Next(0, 255);
-            @case.WorkerId = rnd.Next(0, 255);
-            @case.CaseTemplateId = caseTemplate.Id;
-            @case.FetchedByTablet = randomBool;
-            @case.FetchedByTabletAt = DateTime.Now;
-            @case.ReceiptRetrievedFromUser = randomBool;
-            @case.ReceiptRetrievedFromUserAt = DateTime.Now;
-            @case.Create(DbContext);
+            bool randomBool = rnd.Next(0, 2) > 0;
+
+            CaseTemplate caseTemplate = new CaseTemplate
+            {
+                Approvable = randomBool,
+                // caseTemplate.Title = Guid.NewGuid().ToString();
+                // caseTemplate.Body = Guid.NewGuid().ToString();
+                AlwaysShow = randomBool,
+                EndAt = DateTime.Now,
+                // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
+                StartAt = DateTime.Now,
+                DescriptionFolderId = rnd.Next(0, 255),
+                RetractIfApproved = randomBool
+            };
+
+            await caseTemplate.Create(DbContext);
+
+            Case @case = new Case
+            {
+                Status = rnd.Next(0, 255),
+                Type = Guid.NewGuid().ToString(),
+                DoneAt = DateTime.Now,
+                eFormId = rnd.Next(0, 255),
+                SiteId = rnd.Next(0, 255),
+                UnitId = rnd.Next(0, 255),
+                WorkerId = rnd.Next(0, 255),
+                CaseTemplateId = caseTemplate.Id,
+                FetchedByTablet = randomBool,
+                FetchedByTabletAt = DateTime.Now,
+                ReceiptRetrievedFromUser = randomBool,
+                ReceiptRetrievedFromUserAt = DateTime.Now
+            };
+            await @case.Create(DbContext);
             #endregion
-            
+
             //Act
 
             DateTime? oldUpdatedAt = @case.UpdatedAt;
@@ -128,8 +137,8 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             bool oldReceiptRetrievedFromUser = @case.ReceiptRetrievedFromUser;
             DateTime? oldFetchedByTabletAt = @case.FetchedByTabletAt;
             DateTime? oldReceiptRetrievedFromUserAt = @case.ReceiptRetrievedFromUserAt;
-            
-            
+
+
             @case.Status = rnd.Next(0, 255);
             @case.Type = Guid.NewGuid().ToString();
             @case.DoneAt = DateTime.Now;
@@ -141,17 +150,17 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             @case.FetchedByTabletAt = DateTime.Now.AddDays(1);
             @case.ReceiptRetrievedFromUser = randomBool;
             @case.ReceiptRetrievedFromUserAt = DateTime.Now.AddDays(1);
-            
-            @case.Update(DbContext);
-            
+
+            await @case.Update(DbContext);
+
             List<Case> dbCases = DbContext.Cases.AsNoTracking().ToList();
             List<CaseVersion> dbCaseVersions = DbContext.CaseVersions.AsNoTracking().ToList();
-            
+
             //Assert
-            
+
             Assert.NotNull(dbCases);
             Assert.NotNull(dbCaseVersions);
-            
+
             Assert.AreEqual(1, dbCases.Count);
             Assert.AreEqual(2, dbCaseVersions.Count);
 
@@ -169,7 +178,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCases[0].ReceiptRetrievedFromUserAt.ToString());
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCases[0].WorkflowState);
 
-            
+
             //Old version
             Assert.AreEqual(oldStatus, dbCaseVersions[0].Status);
             Assert.AreEqual(oldType, dbCaseVersions[0].Type);
@@ -186,7 +195,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(oldReceiptRetrievedFromUserAt.ToString(), dbCaseVersions[0].ReceiptRetrievedFromUserAt.ToString());
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseVersions[0].WorkflowState);
 
-            
+
             //New Version
             Assert.AreEqual(@case.Status, dbCaseVersions[1].Status);
             Assert.AreEqual(@case.Type, dbCaseVersions[1].Type);
@@ -205,56 +214,60 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void Cases_Delete_DoesSetWorkflowStateToRemoved()
+        public async Task Cases_Delete_DoesSetWorkflowStateToRemoved()
         {
              #region Arrange
             Random rnd = new Random();
-            
-            bool randomBool = rnd.Next(0, 2) > 0;
-            
-            CaseTemplate caseTemplate = new CaseTemplate();
-            caseTemplate.Approvable = randomBool;
-            caseTemplate.Body = Guid.NewGuid().ToString();
-            caseTemplate.Title = Guid.NewGuid().ToString();
-            caseTemplate.AlwaysShow = randomBool;
-            caseTemplate.EndAt = DateTime.Now;
-            caseTemplate.PdfTitle = Guid.NewGuid().ToString();
-            caseTemplate.StartAt = DateTime.Now;
-            caseTemplate.DescriptionFolderId = rnd.Next(0, 255);
-            caseTemplate.RetractIfApproved = randomBool;
 
-            caseTemplate.Create(DbContext);
-            
-            Case @case = new Case();
-            @case.Status = rnd.Next(0, 255);
-            @case.Type = Guid.NewGuid().ToString();
-            @case.DoneAt = DateTime.Now;
-            @case.eFormId = rnd.Next(0, 255);
-            @case.SiteId = rnd.Next(0, 255);
-            @case.UnitId = rnd.Next(0, 255);
-            @case.WorkerId = rnd.Next(0, 255);
-            @case.CaseTemplateId = caseTemplate.Id;
-            @case.FetchedByTablet = randomBool;
-            @case.FetchedByTabletAt = DateTime.Now;
-            @case.ReceiptRetrievedFromUser = randomBool;
-            @case.ReceiptRetrievedFromUserAt = DateTime.Now;
-            @case.Create(DbContext);
+            bool randomBool = rnd.Next(0, 2) > 0;
+
+            CaseTemplate caseTemplate = new CaseTemplate
+            {
+                Approvable = randomBool,
+                // caseTemplate.Title = Guid.NewGuid().ToString();
+                // caseTemplate.Body = Guid.NewGuid().ToString();
+                AlwaysShow = randomBool,
+                EndAt = DateTime.Now,
+                // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
+                StartAt = DateTime.Now,
+                DescriptionFolderId = rnd.Next(0, 255),
+                RetractIfApproved = randomBool
+            };
+
+            await caseTemplate.Create(DbContext);
+
+            Case @case = new Case
+            {
+                Status = rnd.Next(0, 255),
+                Type = Guid.NewGuid().ToString(),
+                DoneAt = DateTime.Now,
+                eFormId = rnd.Next(0, 255),
+                SiteId = rnd.Next(0, 255),
+                UnitId = rnd.Next(0, 255),
+                WorkerId = rnd.Next(0, 255),
+                CaseTemplateId = caseTemplate.Id,
+                FetchedByTablet = randomBool,
+                FetchedByTabletAt = DateTime.Now,
+                ReceiptRetrievedFromUser = randomBool,
+                ReceiptRetrievedFromUserAt = DateTime.Now
+            };
+            await @case.Create(DbContext);
             #endregion
-            
+
             //Act
 
             DateTime? oldUpdatedAt = @case.UpdatedAt;
 
-            @case.Delete(DbContext);
-            
+            await @case.Delete(DbContext);
+
             List<Case> dbCases = DbContext.Cases.AsNoTracking().ToList();
             List<CaseVersion> dbCaseVersions = DbContext.CaseVersions.AsNoTracking().ToList();
-            
+
             //Assert
-            
+
             Assert.NotNull(dbCases);
             Assert.NotNull(dbCaseVersions);
-            
+
             Assert.AreEqual(1, dbCases.Count);
             Assert.AreEqual(2, dbCaseVersions.Count);
 
@@ -272,8 +285,8 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCases[0].ReceiptRetrievedFromUser);
             Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCases[0].ReceiptRetrievedFromUserAt.ToString());
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCases[0].WorkflowState);
-            
-            
+
+
             //Old Version
             Assert.AreEqual(@case.Status, dbCaseVersions[0].Status);
             Assert.AreEqual(@case.Type, dbCaseVersions[0].Type);
@@ -289,7 +302,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCaseVersions[0].ReceiptRetrievedFromUser);
             Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCaseVersions[0].ReceiptRetrievedFromUserAt.ToString());
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseVersions[0].WorkflowState);
-            
+
             //New Version
             Assert.AreEqual(@case.Status, dbCaseVersions[1].Status);
             Assert.AreEqual(@case.Type, dbCaseVersions[1].Type);
@@ -306,6 +319,6 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCaseVersions[1].ReceiptRetrievedFromUserAt.ToString());
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseVersions[1].WorkflowState);
         }
-        
+
     }
 }

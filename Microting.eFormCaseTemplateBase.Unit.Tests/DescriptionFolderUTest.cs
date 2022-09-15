@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
@@ -12,37 +13,41 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
     public class DescriptionFolderUTest : DbTestFixture
     {
         [Test]
-        public void DescriptionFolder_Create_DoesCreate()
+        public async Task DescriptionFolder_Create_DoesCreate()
         {
             //Arrange
-            
+
             Random rnd = new Random();
-            
-            DescriptionFolder parentDescriptionFolder = new DescriptionFolder();
-            parentDescriptionFolder.Name = Guid.NewGuid().ToString();
-            parentDescriptionFolder.SdkFolderId = rnd.Next(1, 255);
-            parentDescriptionFolder.Create(DbContext);
-            
-            DescriptionFolder descriptionFolder = new DescriptionFolder();
-            descriptionFolder.Name = Guid.NewGuid().ToString();
-            descriptionFolder.SdkFolderId = rnd.Next(1, 255);
-            descriptionFolder.ParentId = parentDescriptionFolder.Id;
-            
+
+            DescriptionFolder parentDescriptionFolder = new DescriptionFolder
+            {
+                Name = Guid.NewGuid().ToString(),
+                SdkFolderId = rnd.Next(1, 255)
+            };
+            await parentDescriptionFolder.Create(DbContext);
+
+            DescriptionFolder descriptionFolder = new DescriptionFolder
+            {
+                Name = Guid.NewGuid().ToString(),
+                SdkFolderId = rnd.Next(1, 255),
+                ParentId = parentDescriptionFolder.Id
+            };
+
             //Act
-            
-            descriptionFolder.Create(DbContext);
-            
+
+            await descriptionFolder.Create(DbContext);
+
             List<DescriptionFolder> dbDescriptionFolders = DbContext.DescriptionFolders.AsNoTracking().ToList();
             List<DescriptionFolderVersion> dbDescriptionFolderVersions = DbContext.DescriptionFolderVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbDescriptionFolders);
             Assert.NotNull(dbDescriptionFolderVersions);
-            
+
             Assert.AreEqual(2, dbDescriptionFolders.Count);
             Assert.AreEqual(2, dbDescriptionFolderVersions.Count);
-            
-            
+
+
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[1].Id);
             Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[1].Version);
             Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
@@ -68,46 +73,48 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void DescriptionFolder_Update_DoesUpdate()
+        public async Task DescriptionFolder_Update_DoesUpdate()
         {
              //Arrange
-            
+
             Random rnd = new Random();
-            
-            DescriptionFolder parentDescriptionFolder = new DescriptionFolder();
-            parentDescriptionFolder.Name = Guid.NewGuid().ToString();
-            parentDescriptionFolder.SdkFolderId = rnd.Next(1, 255);
-            parentDescriptionFolder.Create(DbContext);
-            
+
+            DescriptionFolder parentDescriptionFolder = new DescriptionFolder
+            {
+                Name = Guid.NewGuid().ToString(),
+                SdkFolderId = rnd.Next(1, 255)
+            };
+            await parentDescriptionFolder.Create(DbContext);
+
             DescriptionFolder descriptionFolder = new DescriptionFolder();
             descriptionFolder.Name = Guid.NewGuid().ToString();
             descriptionFolder.SdkFolderId = rnd.Next(1, 255);
             descriptionFolder.ParentId = parentDescriptionFolder.Id;
-            descriptionFolder.Create(DbContext);
+            await descriptionFolder.Create(DbContext);
 
-            
+
             //Act
 
             DateTime? oldUpdatedAt = descriptionFolder.UpdatedAt;
             string oldName = descriptionFolder.Name;
             int oldSdkFolderId = descriptionFolder.SdkFolderId;
-            
+
             descriptionFolder.Name = Guid.NewGuid().ToString();
             descriptionFolder.SdkFolderId = rnd.Next(1, 255);
 
-            descriptionFolder.Update(DbContext);
-            
+            await descriptionFolder.Update(DbContext);
+
             List<DescriptionFolder> dbDescriptionFolders = DbContext.DescriptionFolders.AsNoTracking().ToList();
             List<DescriptionFolderVersion> dbDescriptionFolderVersions = DbContext.DescriptionFolderVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbDescriptionFolders);
             Assert.NotNull(dbDescriptionFolderVersions);
-            
+
             Assert.AreEqual(2, dbDescriptionFolders.Count);
             Assert.AreEqual(3, dbDescriptionFolderVersions.Count);
-            
-            
+
+
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[1].Id);
             Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[1].Version);
             Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
@@ -130,7 +137,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(oldName, dbDescriptionFolderVersions[1].Name);
             Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolderVersions[1].ParentId);
             Assert.AreEqual(oldSdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
-            
+
             //New Version
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[2].DescriptionFolderId);
             Assert.AreEqual(2, dbDescriptionFolderVersions[2].Version);
@@ -145,41 +152,45 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void DescriptionFolder_Delete_DoesSetWorkflowStateToRemoved()
+        public async Task DescriptionFolder_Delete_DoesSetWorkflowStateToRemoved()
         {
             //Arrange
-            
-            Random rnd = new Random();
-            
-            DescriptionFolder parentDescriptionFolder = new DescriptionFolder();
-            parentDescriptionFolder.Name = Guid.NewGuid().ToString();
-            parentDescriptionFolder.SdkFolderId = rnd.Next(1, 255);
-            parentDescriptionFolder.Create(DbContext);
-            
-            DescriptionFolder descriptionFolder = new DescriptionFolder();
-            descriptionFolder.Name = Guid.NewGuid().ToString();
-            descriptionFolder.SdkFolderId = rnd.Next(1, 255);
-            descriptionFolder.ParentId = parentDescriptionFolder.Id;
-            descriptionFolder.Create(DbContext);
 
-            
+            Random rnd = new Random();
+
+            DescriptionFolder parentDescriptionFolder = new DescriptionFolder
+            {
+                Name = Guid.NewGuid().ToString(),
+                SdkFolderId = rnd.Next(1, 255)
+            };
+            await parentDescriptionFolder.Create(DbContext);
+
+            DescriptionFolder descriptionFolder = new DescriptionFolder
+            {
+                Name = Guid.NewGuid().ToString(),
+                SdkFolderId = rnd.Next(1, 255),
+                ParentId = parentDescriptionFolder.Id
+            };
+            await descriptionFolder.Create(DbContext);
+
+
             //Act
 
             DateTime? oldUpdatedAt = descriptionFolder.UpdatedAt;
-            
-            descriptionFolder.Delete(DbContext);
-            
+
+            await descriptionFolder.Delete(DbContext);
+
             List<DescriptionFolder> dbDescriptionFolders = DbContext.DescriptionFolders.AsNoTracking().ToList();
             List<DescriptionFolderVersion> dbDescriptionFolderVersions = DbContext.DescriptionFolderVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbDescriptionFolders);
             Assert.NotNull(dbDescriptionFolderVersions);
-            
+
             Assert.AreEqual(2, dbDescriptionFolders.Count);
             Assert.AreEqual(3, dbDescriptionFolderVersions.Count);
-            
-            
+
+
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolders[1].Id);
             Assert.AreEqual(descriptionFolder.Version, dbDescriptionFolders[1].Version);
             Assert.AreEqual(descriptionFolder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
@@ -202,7 +213,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(descriptionFolder.Name, dbDescriptionFolderVersions[1].Name);
             Assert.AreEqual(parentDescriptionFolder.Id, dbDescriptionFolderVersions[1].ParentId);
             Assert.AreEqual(descriptionFolder.SdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
-            
+
             //New Version
             Assert.AreEqual(descriptionFolder.Id, dbDescriptionFolderVersions[2].DescriptionFolderId);
             Assert.AreEqual(2, dbDescriptionFolderVersions[2].Version);

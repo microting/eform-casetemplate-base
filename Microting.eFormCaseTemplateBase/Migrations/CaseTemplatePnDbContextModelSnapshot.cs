@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 
+#nullable disable
+
 namespace Microting.eFormCaseTemplateBase.Migrations
 {
     [DbContext(typeof(CaseTemplatePnDbContext))]
@@ -14,7 +16,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginConfigurationValue", b =>
@@ -30,7 +32,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -39,14 +41,14 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Version")
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -66,7 +68,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -75,14 +77,14 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Version")
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -120,8 +122,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -164,8 +166,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -179,7 +181,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -188,7 +190,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PermissionName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -200,8 +202,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -245,8 +247,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("UnitId")
                         .HasColumnType("int");
@@ -264,8 +266,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("eFormId")
                         .HasColumnType("int");
@@ -289,9 +291,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<bool>("Approvable")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Body")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -304,17 +303,11 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("PdfTitle")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<bool>("RetractIfApproved")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("StartAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -326,8 +319,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -365,8 +358,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -401,8 +394,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -440,8 +433,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -482,12 +475,84 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
                     b.ToTable("CaseTemplateSiteVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateTranslation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PdfTitle")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplateTranslations");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateTranslationVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CaseTemplateTranslationId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CaseTemplateTranslationVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedData", b =>
@@ -512,7 +577,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -527,8 +592,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -564,7 +629,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -579,8 +644,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -604,7 +669,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Body")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("CaseTemplateId")
                         .HasColumnType("int");
@@ -622,7 +687,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("PdfTitle")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("RetractIfApproved")
                         .HasColumnType("tinyint(1)");
@@ -631,7 +696,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -643,8 +708,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -691,8 +756,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("UnitId")
                         .HasColumnType("int");
@@ -710,8 +775,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("eFormId")
                         .HasColumnType("int");
@@ -736,7 +801,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
@@ -754,8 +819,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -780,7 +845,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
@@ -798,8 +863,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -813,8 +878,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Checksum")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -823,29 +888,29 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CurrentFile")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Extension")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("FileLocation")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("FileName")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<short?>("Local")
                         .HasColumnType("smallint");
 
                     b.Property<string>("OriginalFileName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -854,15 +919,15 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UploaderType")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("Version")
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -876,8 +941,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Checksum")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -886,29 +951,29 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CurrentFile")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Extension")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("FileLocation")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("FileName")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<short?>("Local")
                         .HasColumnType("smallint");
 
                     b.Property<string>("OriginalFileName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -920,15 +985,15 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UploaderType")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("Version")
                         .HasColumnType("int");
 
                     b.Property<string>("WorkflowState")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -942,6 +1007,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Permission");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Case", b =>
@@ -951,6 +1018,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasForeignKey("CaseTemplateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CaseTemplate");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedData", b =>
@@ -966,6 +1035,10 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasForeignKey("UploadedDataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CaseTemplate");
+
+                    b.Navigation("UploadedData");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersion", b =>
@@ -981,6 +1054,10 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasForeignKey("UploadedDataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CaseTemplate");
+
+                    b.Navigation("UploadedData");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersion", b =>
@@ -990,6 +1067,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasForeignKey("CaseTemplateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CaseTemplate");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolder", b =>
@@ -997,6 +1076,18 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolder", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId");
+
+                    b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", b =>
+                {
+                    b.Navigation("CaseTemplateUploadedDatas");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DescriptionFolder", b =>
+                {
+                    b.Navigation("Children");
                 });
 #pragma warning restore 612, 618
         }

@@ -32,11 +32,11 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
 
         public CaseTemplatePnDbContext() { }
 
-        public CaseTemplatePnDbContext(DbContextOptions<CaseTemplatePnDbContext> options) 
+        public CaseTemplatePnDbContext(DbContextOptions<CaseTemplatePnDbContext> options)
             : base(options)
         {
         }
-        
+
         public DbSet<Case> Cases { get; set; }
         public DbSet<CaseVersion> CaseVersions { get; set; }
         public DbSet<CaseTemplate> CaseTemplates { get; set; }
@@ -51,7 +51,9 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
         public DbSet<UploadedDataVersion> UploadedDataVersions { get; set; }
         public DbSet<CaseTemplateUploadedData> CaseTemplateUploadedDatas { get; set; }
         public DbSet<CaseTemplateUploadedDataVersion> CaseTemplateUploadedDataVersions { get; set; }
-        
+        public DbSet<CaseTemplateTranslation> CaseTemplateTranslations { get; set; }
+        public DbSet<CaseTemplateTranslationVersion> CaseTemplateTranslationVersions { get; set; }
+
         // plugin settings
         public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
         public DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }

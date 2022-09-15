@@ -34,6 +34,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
     {
         protected CaseTemplatePnDbContext DbContext;
         private string _connectionString;
+        private const string DatabaseName = "eform-case-template-base-tests";
 
         private void GetContext(string connectionStr)
         {
@@ -47,14 +48,9 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         [SetUp]
         public void Setup()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                _connectionString = @"data source=(LocalDb)\SharedInstance;Initial catalog=eform-case-template-base-tests;Integrated Security=true";
-            }
-            else
-            {
-                _connectionString = @"Server = localhost; port = 3306; Database = eform-case-template-base-tests; user = root; Convert Zero Datetime = true;";
-            }
+
+            _connectionString =
+                @$"Server = localhost; port = 3306; Database = {DatabaseName}; user = root; password = secretpassword; Convert Zero Datetime = true;";
 
             GetContext(_connectionString);
 
@@ -68,6 +64,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             {
                 DbContext.Database.Migrate();
             }
+
             DoSetup();
         }
 
@@ -75,8 +72,6 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         public void TearDown()
         {
             ClearDb();
-
-            ClearFile();
 
             DbContext.Dispose();
         }
@@ -101,46 +96,29 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             modelNames.Add("UploadedDataVersions");
             modelNames.Add("UploadedDatas");
 
+            var firstRunNotDone = true;
             foreach (var modelName in modelNames)
             {
                 try
                 {
-                    string sqlCmd;
-                    if (DbContext.Database.IsMySql())
+                    if (firstRunNotDone)
                     {
-                        sqlCmd = $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `eform-case-template-base-tests`.`{modelName}`";
+                        DbContext.Database.ExecuteSqlRaw(
+                            $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `{DatabaseName}`.`{modelName}`");
                     }
-                    else
-                    {
-                        sqlCmd = $"DELETE FROM [{modelName}]";
-                    }
-                    DbContext.Database.ExecuteSqlCommand(sqlCmd);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    if (ex.Message == $"Unknown database '{DatabaseName}'")
+                    {
+                        firstRunNotDone = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
             }
-        }
-        private string path;
-
-        private void ClearFile()
-        {
-            path = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
-            path = System.IO.Path.GetDirectoryName(path).Replace(@"file:\", "");
-
-            string picturePath = path + @"\output\dataFolder\picture\Deleted";
-
-            DirectoryInfo diPic = new DirectoryInfo(picturePath);
-
-            try
-            {
-                foreach (FileInfo file in diPic.GetFiles())
-                {
-                    file.Delete();
-                }
-            }
-            catch { }
         }
 
         protected virtual void DoSetup() { }

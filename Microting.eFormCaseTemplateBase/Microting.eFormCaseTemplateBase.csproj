@@ -2,10 +2,17 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
       <Folder Include="Migrations" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="images\icon.png">
+            <Pack>true</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
     </ItemGroup>
 
     <ItemGroup>

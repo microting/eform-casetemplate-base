@@ -1,0 +1,38 @@
+name: .NET Master
+
+on:
+  push:
+    branches: [ master, stable ]
+    paths-ignore:
+    - '**.md'
+    - '.github/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: getong/mariadb-action@v1.1
+      with:
+        host port: 3306 # Optional, default value is 3306. The port of host
+        container port: 3306 # Optional, default value is 3306. The port of container
+        character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
+        collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
+        mariadb version: 'latest' # Optional, default value is "latest". The version of the MariaDB
+        mysql database: 'some_test' # Optional, default value is "test". The specified database which will be create
+        mysql root password: 'secretpassword' # Required if "mysql user" is empty, default is empty. The root superuser password
+        mysql user: 'developer' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+        mysql password: 'passwordtoo' # Required if "mysql user" exists. The password for the "mysql user"
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3 | cut -d "v" -f 2)
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Unit Tests
+      run: dotnet test --no-restore -c Release -v n Microting.eFormCaseTemplateBase.Unit.Tests/Microting.eFormCaseTemplateBase.Unit.Tests.csproj

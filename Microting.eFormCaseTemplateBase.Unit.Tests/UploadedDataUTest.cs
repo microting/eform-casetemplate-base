@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
@@ -12,41 +13,43 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
     public class UploadedDataUTest : DbTestFixture
     {
         [Test]
-        public void UploadedData_Create_DoesCreate()
+        public async Task UploadedData_Create_DoesCreate()
         {
             //Arrange
-            
+
             Random rnd = new Random();
-            
+
             short minValue = Int16.MinValue;
             short maxValue = Int16.MaxValue;
-            
-            UploadedData uploadedData = new UploadedData();
-            uploadedData.Checksum = Guid.NewGuid().ToString();
-            uploadedData.Extension = Guid.NewGuid().ToString();
-            uploadedData.CurrentFile = Guid.NewGuid().ToString();
-            uploadedData.FileLocation = Guid.NewGuid().ToString();
-            uploadedData.FileName = Guid.NewGuid().ToString();
-            uploadedData.UploaderType = Guid.NewGuid().ToString();
-            uploadedData.Local = (short) rnd.Next(minValue, maxValue);
-            uploadedData.ExpirationDate = DateTime.Now;
-            uploadedData.OriginalFileName = Guid.NewGuid().ToString();
+
+            UploadedData uploadedData = new UploadedData
+            {
+                Checksum = Guid.NewGuid().ToString(),
+                Extension = Guid.NewGuid().ToString(),
+                CurrentFile = Guid.NewGuid().ToString(),
+                FileLocation = Guid.NewGuid().ToString(),
+                FileName = Guid.NewGuid().ToString(),
+                UploaderType = Guid.NewGuid().ToString(),
+                Local = (short) rnd.Next(minValue, maxValue),
+                ExpirationDate = DateTime.Now,
+                OriginalFileName = Guid.NewGuid().ToString()
+            };
 
             //Act
-            
-            uploadedData.Create(DbContext);
-            
+
+            await uploadedData.Create(DbContext);
+
             List<UploadedData> dbUploadedDatas = DbContext.UploadedDatas.AsNoTracking().ToList();
             List<UploadedDataVersion> dbUploadedDataVersions = DbContext.UploadedDataVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbUploadedDatas);
             Assert.NotNull(dbUploadedDataVersions);
-            
+
             Assert.AreEqual(1, dbUploadedDatas.Count);
             Assert.AreEqual(1, dbUploadedDataVersions.Count);
-            
-            
+
+
             Assert.AreEqual(uploadedData.Id, dbUploadedDatas[0].Id);
             Assert.AreEqual(uploadedData.Version, dbUploadedDatas[0].Version);
             Assert.AreEqual(uploadedData.CreatedAt.ToString(), dbUploadedDatas[0].CreatedAt.ToString());
@@ -84,26 +87,28 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void UploadedData_Update_DoesUpdate()
+        public async Task UploadedData_Update_DoesUpdate()
         {
             //Arrange
-            
+
             Random rnd = new Random();
-            
+
             short minValue = Int16.MinValue;
             short maxValue = Int16.MaxValue;
-            
-            UploadedData uploadedData = new UploadedData();
-            uploadedData.Checksum = Guid.NewGuid().ToString();
-            uploadedData.Extension = Guid.NewGuid().ToString();
-            uploadedData.CurrentFile = Guid.NewGuid().ToString();
-            uploadedData.FileLocation = Guid.NewGuid().ToString();
-            uploadedData.FileName = Guid.NewGuid().ToString();
-            uploadedData.UploaderType = Guid.NewGuid().ToString();
-            uploadedData.Local = (short) rnd.Next(minValue, maxValue);
-            uploadedData.ExpirationDate = DateTime.Now;
-            uploadedData.OriginalFileName = Guid.NewGuid().ToString();
-            uploadedData.Create(DbContext);
+
+            UploadedData uploadedData = new UploadedData
+            {
+                Checksum = Guid.NewGuid().ToString(),
+                Extension = Guid.NewGuid().ToString(),
+                CurrentFile = Guid.NewGuid().ToString(),
+                FileLocation = Guid.NewGuid().ToString(),
+                FileName = Guid.NewGuid().ToString(),
+                UploaderType = Guid.NewGuid().ToString(),
+                Local = (short) rnd.Next(minValue, maxValue),
+                ExpirationDate = DateTime.Now,
+                OriginalFileName = Guid.NewGuid().ToString()
+            };
+            await uploadedData.Create(DbContext);
 
 
             //Act
@@ -118,7 +123,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             int? oldLocal = uploadedData.Local;
             DateTime? oldExpirationDate = uploadedData.ExpirationDate;
             string oldOriginalFileName = uploadedData.OriginalFileName;
-            
+
             uploadedData.Checksum = Guid.NewGuid().ToString();
             uploadedData.Extension = Guid.NewGuid().ToString();
             uploadedData.CurrentFile = Guid.NewGuid().ToString();
@@ -129,19 +134,19 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             uploadedData.ExpirationDate = DateTime.Now;
             uploadedData.OriginalFileName = Guid.NewGuid().ToString();
 
-            uploadedData.Update(DbContext);
-            
+            await uploadedData.Update(DbContext);
+
             List<UploadedData> dbUploadedDatas = DbContext.UploadedDatas.AsNoTracking().ToList();
             List<UploadedDataVersion> dbUploadedDataVersions = DbContext.UploadedDataVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbUploadedDatas);
             Assert.NotNull(dbUploadedDataVersions);
-            
+
             Assert.AreEqual(1, dbUploadedDatas.Count);
             Assert.AreEqual(2, dbUploadedDataVersions.Count);
-            
-            
+
+
             Assert.AreEqual(uploadedData.Id, dbUploadedDatas[0].Id);
             Assert.AreEqual(uploadedData.Version, dbUploadedDatas[0].Version);
             Assert.AreEqual(uploadedData.CreatedAt.ToString(), dbUploadedDatas[0].CreatedAt.ToString());
@@ -176,7 +181,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(oldFileName, dbUploadedDataVersions[0].FileName);
             Assert.AreEqual(oldUploaderType, dbUploadedDataVersions[0].UploaderType);
             Assert.AreEqual(oldOriginalFileName, dbUploadedDataVersions[0].OriginalFileName);
-            
+
             //New Version
             Assert.AreEqual(uploadedData.Id, dbUploadedDataVersions[1].UploadedDataId);
             Assert.AreEqual(2, dbUploadedDataVersions[1].Version);
@@ -197,45 +202,47 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void UploadedData_Delete_DoesSetWorkflowStateToRemoved()
+        public async Task UploadedData_Delete_DoesSetWorkflowStateToRemoved()
         {
              //Arrange
-            
+
             Random rnd = new Random();
-            
+
             short minValue = Int16.MinValue;
             short maxValue = Int16.MaxValue;
-            
-            UploadedData uploadedData = new UploadedData();
-            uploadedData.Checksum = Guid.NewGuid().ToString();
-            uploadedData.Extension = Guid.NewGuid().ToString();
-            uploadedData.CurrentFile = Guid.NewGuid().ToString();
-            uploadedData.FileLocation = Guid.NewGuid().ToString();
-            uploadedData.FileName = Guid.NewGuid().ToString();
-            uploadedData.UploaderType = Guid.NewGuid().ToString();
-            uploadedData.Local = (short) rnd.Next(minValue, maxValue);
-            uploadedData.ExpirationDate = DateTime.Now;
-            uploadedData.OriginalFileName = Guid.NewGuid().ToString();
-            uploadedData.Create(DbContext);
+
+            UploadedData uploadedData = new UploadedData
+            {
+                Checksum = Guid.NewGuid().ToString(),
+                Extension = Guid.NewGuid().ToString(),
+                CurrentFile = Guid.NewGuid().ToString(),
+                FileLocation = Guid.NewGuid().ToString(),
+                FileName = Guid.NewGuid().ToString(),
+                UploaderType = Guid.NewGuid().ToString(),
+                Local = (short) rnd.Next(minValue, maxValue),
+                ExpirationDate = DateTime.Now,
+                OriginalFileName = Guid.NewGuid().ToString()
+            };
+            await uploadedData.Create(DbContext);
 
 
             //Act
 
             DateTime? oldUpdatedAt = uploadedData.UpdatedAt;
 
-            uploadedData.Delete(DbContext);
-            
+            await uploadedData.Delete(DbContext);
+
             List<UploadedData> dbUploadedDatas = DbContext.UploadedDatas.AsNoTracking().ToList();
             List<UploadedDataVersion> dbUploadedDataVersions = DbContext.UploadedDataVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbUploadedDatas);
             Assert.NotNull(dbUploadedDataVersions);
-            
+
             Assert.AreEqual(1, dbUploadedDatas.Count);
             Assert.AreEqual(2, dbUploadedDataVersions.Count);
-            
-            
+
+
             Assert.AreEqual(uploadedData.Id, dbUploadedDatas[0].Id);
             Assert.AreEqual(uploadedData.Version, dbUploadedDatas[0].Version);
             Assert.AreEqual(uploadedData.CreatedAt.ToString(), dbUploadedDatas[0].CreatedAt.ToString());
@@ -270,7 +277,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(uploadedData.FileName, dbUploadedDataVersions[0].FileName);
             Assert.AreEqual(uploadedData.UploaderType, dbUploadedDataVersions[0].UploaderType);
             Assert.AreEqual(uploadedData.OriginalFileName, dbUploadedDatas[0].OriginalFileName);
-            
+
             //New Version
             Assert.AreEqual(uploadedData.Id, dbUploadedDataVersions[1].UploadedDataId);
             Assert.AreEqual(2, dbUploadedDataVersions[1].Version);

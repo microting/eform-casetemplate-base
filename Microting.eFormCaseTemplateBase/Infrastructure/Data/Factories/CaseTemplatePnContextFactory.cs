@@ -39,7 +39,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Factories
             });
 
             return new CaseTemplatePnDbContext(optionsBuilder.Options);
-            // dotnet ef migrations add AddingSdkCaseId --project Microting.eFormCaseTemplateBase --startup-project DBMigrator
+            // dotnet ef migrations add InitialMigration --project Microting.eFormCaseTemplateBase --startup-project DBMigrator
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
@@ -12,28 +13,30 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
     public class CaseTemplateUploadedDataUTest : DbTestFixture
     {
         [Test]
-        public void CaseTemplateUploadedData_Create_DoesCreate()
+        public async Task CaseTemplateUploadedData_Create_DoesCreate()
         {
             //Arrange
 
             short shortMin = Int16.MinValue;
             short shortMax = Int16.MaxValue;
-            
+
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate();
-            caseTemplate.Approvable = randomBool;
-            caseTemplate.Body = Guid.NewGuid().ToString();
-            caseTemplate.Title = Guid.NewGuid().ToString();
-            caseTemplate.AlwaysShow = randomBool;
-            caseTemplate.EndAt = DateTime.Now;
-            caseTemplate.PdfTitle = Guid.NewGuid().ToString();
-            caseTemplate.StartAt = DateTime.Now;
-            caseTemplate.DescriptionFolderId = rnd.Next(1, 200);
-            caseTemplate.RetractIfApproved = randomBool;
-            caseTemplate.Create(DbContext);
-            
+            CaseTemplate caseTemplate = new CaseTemplate
+            {
+                Approvable = randomBool,
+                // caseTemplate.Title = Guid.NewGuid().ToString();
+                // caseTemplate.Body = Guid.NewGuid().ToString();
+                AlwaysShow = randomBool,
+                EndAt = DateTime.Now,
+                // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
+                StartAt = DateTime.Now,
+                DescriptionFolderId = rnd.Next(1, 200),
+                RetractIfApproved = randomBool
+            };
+            await caseTemplate.Create(DbContext);
+
             UploadedData uploadedData = new UploadedData();
             uploadedData.Checksum = Guid.NewGuid().ToString();
             uploadedData.Extension = Guid.NewGuid().ToString();
@@ -44,7 +47,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             uploadedData.FileName = Guid.NewGuid().ToString();
             uploadedData.UploaderType = Guid.NewGuid().ToString();
             uploadedData.OriginalFileName = Guid.NewGuid().ToString();
-            uploadedData.Create(DbContext);
+            await uploadedData.Create(DbContext);
 
             CaseTemplateUploadedData caseTemplateUploadedData = new CaseTemplateUploadedData();
             caseTemplateUploadedData.Approvable = randomBool;
@@ -52,22 +55,22 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             caseTemplateUploadedData.CaseTemplateId = caseTemplate.Id;
             caseTemplateUploadedData.RetractIfApproved = randomBool;
             caseTemplateUploadedData.UploadedDataId = uploadedData.Id;
-            
+
             //Act
-            
-            caseTemplateUploadedData.Create(DbContext);
-            
+
+            await caseTemplateUploadedData.Create(DbContext);
+
             List<CaseTemplateUploadedData> dbCaseTemplateUploadedDatas = DbContext.CaseTemplateUploadedDatas.AsNoTracking().ToList();
             List<CaseTemplateUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.CaseTemplateUploadedDataVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbCaseTemplateUploadedDatas);
             Assert.NotNull(dbCaseTemplateUploadedDataVersions);
-            
+
             Assert.AreEqual(1, dbCaseTemplateUploadedDatas.Count);
             Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions.Count);
-            
-            
+
+
             Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
             Assert.AreEqual(caseTemplateUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
             Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
@@ -97,28 +100,28 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void CaseTemplateUploadedData_Update_DoesUpdate()
+        public async Task CaseTemplateUploadedData_Update_DoesUpdate()
         {
             //Arrange
 
             short shortMin = Int16.MinValue;
             short shortMax = Int16.MaxValue;
-            
+
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
             CaseTemplate caseTemplate = new CaseTemplate();
             caseTemplate.Approvable = randomBool;
-            caseTemplate.Body = Guid.NewGuid().ToString();
-            caseTemplate.Title = Guid.NewGuid().ToString();
+            // caseTemplate.Body = Guid.NewGuid().ToString();
+            // caseTemplate.Title = Guid.NewGuid().ToString();
             caseTemplate.AlwaysShow = randomBool;
             caseTemplate.EndAt = DateTime.Now;
-            caseTemplate.PdfTitle = Guid.NewGuid().ToString();
+            // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
             caseTemplate.StartAt = DateTime.Now;
             caseTemplate.DescriptionFolderId = rnd.Next(1, 200);
             caseTemplate.RetractIfApproved = randomBool;
-            caseTemplate.Create(DbContext);
-            
+            await caseTemplate.Create(DbContext);
+
             UploadedData uploadedData = new UploadedData();
             uploadedData.Checksum = Guid.NewGuid().ToString();
             uploadedData.Extension = Guid.NewGuid().ToString();
@@ -129,7 +132,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             uploadedData.FileName = Guid.NewGuid().ToString();
             uploadedData.UploaderType = Guid.NewGuid().ToString();
             uploadedData.OriginalFileName = Guid.NewGuid().ToString();
-            uploadedData.Create(DbContext);
+            await uploadedData.Create(DbContext);
 
             CaseTemplateUploadedData caseTemplateUploadedData = new CaseTemplateUploadedData();
             caseTemplateUploadedData.Approvable = randomBool;
@@ -137,7 +140,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             caseTemplateUploadedData.CaseTemplateId = caseTemplate.Id;
             caseTemplateUploadedData.RetractIfApproved = randomBool;
             caseTemplateUploadedData.UploadedDataId = uploadedData.Id;
-            caseTemplateUploadedData.Create(DbContext);
+            await caseTemplateUploadedData.Create(DbContext);
 
             //Act
 
@@ -145,24 +148,24 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             bool oldApprovable = caseTemplateUploadedData.Approvable;
             string oldTitle = caseTemplateUploadedData.Title;
             bool oldRetractIfApproved = caseTemplateUploadedData.RetractIfApproved;
-            
+
             caseTemplateUploadedData.Approvable = randomBool;
             caseTemplateUploadedData.Title = Guid.NewGuid().ToString();
             caseTemplateUploadedData.RetractIfApproved = randomBool;
 
-            caseTemplateUploadedData.Update(DbContext);
-            
+            await caseTemplateUploadedData.Update(DbContext);
+
             List<CaseTemplateUploadedData> dbCaseTemplateUploadedDatas = DbContext.CaseTemplateUploadedDatas.AsNoTracking().ToList();
             List<CaseTemplateUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.CaseTemplateUploadedDataVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbCaseTemplateUploadedDatas);
             Assert.NotNull(dbCaseTemplateUploadedDataVersions);
-            
+
             Assert.AreEqual(1, dbCaseTemplateUploadedDatas.Count);
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions.Count);
-            
-            
+
+
             Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
             Assert.AreEqual(caseTemplateUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
             Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
@@ -189,7 +192,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
             Assert.AreEqual(oldRetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
-            
+
             //New Version
             Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateUploadedDataId);
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions[1].Version);
@@ -206,28 +209,28 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         }
 
         [Test]
-        public void CaseTemplateUploadedData_Delete_DoesSetWorkflowStateToRemoved()
+        public async Task CaseTemplateUploadedData_Delete_DoesSetWorkflowStateToRemoved()
         {
             //Arrange
 
             short shortMin = Int16.MinValue;
             short shortMax = Int16.MaxValue;
-            
+
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
             CaseTemplate caseTemplate = new CaseTemplate();
             caseTemplate.Approvable = randomBool;
-            caseTemplate.Body = Guid.NewGuid().ToString();
-            caseTemplate.Title = Guid.NewGuid().ToString();
+            // caseTemplate.Body = Guid.NewGuid().ToString();
+            // caseTemplate.Title = Guid.NewGuid().ToString();
             caseTemplate.AlwaysShow = randomBool;
             caseTemplate.EndAt = DateTime.Now;
-            caseTemplate.PdfTitle = Guid.NewGuid().ToString();
+            // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
             caseTemplate.StartAt = DateTime.Now;
             caseTemplate.DescriptionFolderId = rnd.Next(1, 200);
             caseTemplate.RetractIfApproved = randomBool;
-            caseTemplate.Create(DbContext);
-            
+            await caseTemplate.Create(DbContext);
+
             UploadedData uploadedData = new UploadedData();
             uploadedData.Checksum = Guid.NewGuid().ToString();
             uploadedData.Extension = Guid.NewGuid().ToString();
@@ -238,7 +241,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             uploadedData.FileName = Guid.NewGuid().ToString();
             uploadedData.UploaderType = Guid.NewGuid().ToString();
             uploadedData.OriginalFileName = Guid.NewGuid().ToString();
-            uploadedData.Create(DbContext);
+            await uploadedData.Create(DbContext);
 
             CaseTemplateUploadedData caseTemplateUploadedData = new CaseTemplateUploadedData();
             caseTemplateUploadedData.Approvable = randomBool;
@@ -246,25 +249,25 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             caseTemplateUploadedData.CaseTemplateId = caseTemplate.Id;
             caseTemplateUploadedData.RetractIfApproved = randomBool;
             caseTemplateUploadedData.UploadedDataId = uploadedData.Id;
-            caseTemplateUploadedData.Create(DbContext);
+            await caseTemplateUploadedData.Create(DbContext);
 
             //Act
 
             DateTime? oldUpdatedAt = caseTemplateUploadedData.UpdatedAt;
 
-            caseTemplateUploadedData.Delete(DbContext);
-            
+            await caseTemplateUploadedData.Delete(DbContext);
+
             List<CaseTemplateUploadedData> dbCaseTemplateUploadedDatas = DbContext.CaseTemplateUploadedDatas.AsNoTracking().ToList();
             List<CaseTemplateUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.CaseTemplateUploadedDataVersions.AsNoTracking().ToList();
-            
+
             //Assert
             Assert.NotNull(dbCaseTemplateUploadedDatas);
             Assert.NotNull(dbCaseTemplateUploadedDataVersions);
-            
+
             Assert.AreEqual(1, dbCaseTemplateUploadedDatas.Count);
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions.Count);
-            
-            
+
+
             Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
             Assert.AreEqual(caseTemplateUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
             Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
@@ -291,7 +294,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
             Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
-            
+
             //New Version
             Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateUploadedDataId);
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions[1].Version);
