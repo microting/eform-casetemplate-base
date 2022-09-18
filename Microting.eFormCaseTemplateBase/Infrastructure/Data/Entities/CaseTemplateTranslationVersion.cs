@@ -8,4 +8,12 @@ public class CaseTemplateTranslationVersion: BaseEntity
     [ForeignKey("CaseTemplateTranslation")]
     public int CaseTemplateTranslationId { get; set; }
 
+    public int CaseTemplateId { get; set; }
+
+    public string Title { get; set; }
+
+    public string Body { get; set; }
+
+    public string PdfTitle { get; set; }
+
 }

@@ -24,5 +24,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public int DescriptionFolderId { get; set; }
 
         public virtual ICollection<CaseTemplateUploadedData> CaseTemplateUploadedDatas { get; set; }
+
+        public virtual ICollection<CaseTemplateTranslation> CaseTemplateTranslations { get; set; }
     }
 }

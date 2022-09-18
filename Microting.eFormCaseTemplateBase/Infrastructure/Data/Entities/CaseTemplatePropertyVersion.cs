@@ -3,11 +3,12 @@ using Microting.eForm.Infrastructure.Data.Entities;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
 
-public class CaseTemplateProperty : PnBase
+public class CaseTemplatePropertyVersion : BaseEntity
 {
-    [ForeignKey("CaseTemplates")]
     public int CaseTemplateId { get; set; }
 
     public int PropertyId { get; set; }
+
+    public int CaseTemplatePropertyId { get; set; }
 
 }
