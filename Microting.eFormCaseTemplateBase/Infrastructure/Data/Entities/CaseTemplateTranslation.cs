@@ -8,10 +8,12 @@ public class CaseTemplateTranslation : PnBase
     [ForeignKey("CaseTemplate")]
     public int CaseTemplateId { get; set; }
 
-    public string Title { get; set; }
+    public string Name { get; set; }
 
-    public string Body { get; set; }
+    public string Description { get; set; }
 
     public string PdfTitle { get; set; }
+
+    public int LanguageId { get; set; }
 
 }
