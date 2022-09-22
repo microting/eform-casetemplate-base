@@ -4,15 +4,11 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public sealed class DescriptionFolderVersion : BaseEntity
+    public sealed class FolderVersion : BaseEntity
     {
-        public string Name { get; set; }
-
         public int? ParentId { get; set; }
 
-        public int SdkFolderId { get; set; }
-
-        [ForeignKey("DescriptionFolders")]
-        public int DescriptionFolderId { get; set; }
+        [ForeignKey("Folders")]
+        public int FolderId { get; set; }
     }
 }

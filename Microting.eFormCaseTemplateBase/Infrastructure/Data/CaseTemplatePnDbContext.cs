@@ -45,8 +45,12 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
         public DbSet<CaseTemplateSiteVersion> CaseTemplateSiteVersions { get; set; }
         public DbSet<CaseTemplateSiteTag> CaseTemplateSiteTags { get; set; }
         public DbSet<CaseTemplateSiteTagVersion> CaseTemplateSiteTagVersions { get; set; }
-        public DbSet<DescriptionFolder> DescriptionFolders { get; set; }
-        public DbSet<DescriptionFolderVersion> DescriptionFolderVersions { get; set; }
+        public DbSet<Folder> DescriptionFolders { get; set; }
+        public DbSet<FolderVersion> DescriptionFolderVersions { get; set; }
+        public DbSet<FolderTranslation> FolderTranslations { get; set; }
+        public DbSet<FolderTranslationVersion> FolderTranslationVersions { get; set; }
+        public DbSet<FolderProperty> FolderProperties { get; set; }
+        public DbSet<FolderPropertyVersion> FolderPropertyVersions { get; set; }
         public DbSet<UploadedData> UploadedDatas { get; set; }
         public DbSet<UploadedDataVersion> UploadedDataVersions { get; set; }
         public DbSet<CaseTemplateUploadedData> CaseTemplateUploadedDatas { get; set; }
