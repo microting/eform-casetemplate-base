@@ -3,7 +3,7 @@ using Microting.eForm.Infrastructure.Data.Entities;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
 
-public class CaseTemplatePropertyVersion : BaseEntity
+public class DocumentPropertyVersion : BaseEntity
 {
     public int CaseTemplateId { get; set; }
 

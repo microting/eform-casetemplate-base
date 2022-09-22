@@ -8,7 +8,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
     {
         public int? ParentId { get; set; }
 
-        [ForeignKey("Folders")]
+        [ForeignKey("Folder")]
         public int FolderId { get; set; }
     }
 }

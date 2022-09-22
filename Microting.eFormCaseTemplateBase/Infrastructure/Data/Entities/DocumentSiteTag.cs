@@ -7,10 +7,10 @@ using Microting.eForm.Infrastructure.Constants;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseTemplateSiteTag : PnBase
+    public class DocumentSiteTag : PnBase
     {
-        [ForeignKey("CaseTemplates")]
-        public int CaseTemplateId { get; set; }
+        [ForeignKey("Document")]
+        public int DocumentId { get; set; }
 
         public int SdkSiteTagId { get; set; }
     }

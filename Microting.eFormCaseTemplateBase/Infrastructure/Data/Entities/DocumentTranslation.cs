@@ -3,7 +3,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
 
-public class CaseTemplateTranslation : PnBase
+public class DocumentTranslation : PnBase
 {
     [ForeignKey("CaseTemplate")]
     public int CaseTemplateId { get; set; }

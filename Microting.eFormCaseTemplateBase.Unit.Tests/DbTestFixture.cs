@@ -81,18 +81,18 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<string> modelNames = new List<string>();
             modelNames.Add("PluginConfigurationValueVersions");
             modelNames.Add("PluginConfigurationValues");
-            modelNames.Add("CaseTemplateSiteVersions");
-            modelNames.Add("CaseTemplateSites");
-            modelNames.Add("CaseTemplateSiteTagVersions");
-            modelNames.Add("CaseTemplateSiteTags");
+            modelNames.Add("DocumentSiteVersions");
+            modelNames.Add("DocumentSites");
+            modelNames.Add("DocumentSiteTagVersions");
+            modelNames.Add("DocumentSiteTags");
             modelNames.Add("CaseVersions");
             modelNames.Add("Cases");
-            modelNames.Add("CaseTemplateUploadedDatas");
-            modelNames.Add("CaseTemplateUploadedDataVersions");
-            modelNames.Add("CaseTemplateVersions");
-            modelNames.Add("CaseTemplates");
-            modelNames.Add("DescriptionFolderVersions");
-            modelNames.Add("DescriptionFolders");
+            modelNames.Add("DocumentUploadedDatas");
+            modelNames.Add("DocumentUploadedDataVersions");
+            modelNames.Add("DocumentVersions");
+            modelNames.Add("Documents");
+            modelNames.Add("FolderVersions");
+            modelNames.Add("Folders");
             modelNames.Add("UploadedDataVersions");
             modelNames.Add("UploadedDatas");
 

@@ -7,7 +7,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseTemplate : PnBase
+    public class Document : PnBase
     {
 
         public DateTime StartAt { get; set; }
@@ -23,8 +23,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         [ForeignKey("DescriptionFolders")]
         public int DescriptionFolderId { get; set; }
 
-        public virtual ICollection<CaseTemplateUploadedData> CaseTemplateUploadedDatas { get; set; }
+        public virtual ICollection<DocumentUploadedData> CaseTemplateUploadedDatas { get; set; }
 
-        public virtual ICollection<CaseTemplateTranslation> CaseTemplateTranslations { get; set; }
+        public virtual ICollection<DocumentTranslation> CaseTemplateTranslations { get; set; }
     }
 }

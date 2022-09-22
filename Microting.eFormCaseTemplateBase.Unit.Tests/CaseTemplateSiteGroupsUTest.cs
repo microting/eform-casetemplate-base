@@ -18,21 +18,21 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             //Arrange
 
             Random rnd = new Random();
-            CaseTemplateSiteTag caseTemplateSiteTag = new CaseTemplateSiteTag
+            DocumentSiteTag documentSiteTag = new DocumentSiteTag
             {
-                CaseTemplateId = rnd.Next(1, 255),
+                DocumentId = rnd.Next(1, 255),
                 SdkSiteTagId = rnd.Next(1, 255)
             };
 
             //Act
 
-            await caseTemplateSiteTag.Create(DbContext);
+            await documentSiteTag.Create(DbContext);
 
-            List<CaseTemplateSiteTag> dbCaseTemplateSiteTags =
-                DbContext.CaseTemplateSiteTags.AsNoTracking().ToList();
+            List<DocumentSiteTag> dbCaseTemplateSiteTags =
+                DbContext.DocumentSiteTags.AsNoTracking().ToList();
 
-            List<CaseTemplateSiteTagVersion> dbCaseTemplateSiteTagVersions =
-                DbContext.CaseTemplateSiteTagVersions.AsNoTracking().ToList();
+            List<DocumentSiteTagVersion> dbCaseTemplateSiteTagVersions =
+                DbContext.DocumentSiteTagVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplateSiteTags);
@@ -41,26 +41,26 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(1, dbCaseTemplateSiteTags.Count);
             Assert.AreEqual(1, dbCaseTemplateSiteTagVersions.Count);
 
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTags[0].Id);
-            Assert.AreEqual(caseTemplateSiteTag.Version, dbCaseTemplateSiteTags[0].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTags[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTags[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTags[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTags[0].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTags[0].Id);
+            Assert.AreEqual(documentSiteTag.Version, dbCaseTemplateSiteTags[0].Version);
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTags[0].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTags[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTags[0].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTags[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateSiteTags[0].WorkflowState);
-            Assert.AreEqual(caseTemplateSiteTag.CaseTemplateId, dbCaseTemplateSiteTags[0].CaseTemplateId);
-            Assert.AreEqual(caseTemplateSiteTag.SdkSiteTagId, dbCaseTemplateSiteTags[0].SdkSiteTagId);
+            Assert.AreEqual(documentSiteTag.DocumentId, dbCaseTemplateSiteTags[0].DocumentId);
+            Assert.AreEqual(documentSiteTag.SdkSiteTagId, dbCaseTemplateSiteTags[0].SdkSiteTagId);
 
             //Versions
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTagVersions[0].CaseTemplateSiteTagId);
-            Assert.AreEqual(caseTemplateSiteTag.Version, dbCaseTemplateSiteTagVersions[0].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[0].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTagVersions[0].DocumentSiteTagId);
+            Assert.AreEqual(documentSiteTag.Version, dbCaseTemplateSiteTagVersions[0].Version);
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[0].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateSiteTagVersions[0].WorkflowState);
-            Assert.AreEqual(caseTemplateSiteTag.CaseTemplateId, dbCaseTemplateSiteTagVersions[0].CaseTemplateId);
-            Assert.AreEqual(caseTemplateSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[0].SdkSiteTagId);
+            Assert.AreEqual(documentSiteTag.DocumentId, dbCaseTemplateSiteTagVersions[0].DocumentId);
+            Assert.AreEqual(documentSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[0].SdkSiteTagId);
         }
 
         [Test]
@@ -69,30 +69,30 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
              //Arrange
 
             Random rnd = new Random();
-            CaseTemplateSiteTag caseTemplateSiteTag = new CaseTemplateSiteTag
+            DocumentSiteTag documentSiteTag = new DocumentSiteTag
             {
-                CaseTemplateId = rnd.Next(1, 255),
+                DocumentId = rnd.Next(1, 255),
                 SdkSiteTagId = rnd.Next(1, 255)
             };
-            await caseTemplateSiteTag.Create(DbContext);
+            await documentSiteTag.Create(DbContext);
 
 
             //Act
 
-            DateTime? oldUpdatedAt = caseTemplateSiteTag.UpdatedAt;
-            int oldCaseTemplateId = caseTemplateSiteTag.CaseTemplateId;
-            int oldSdkSiteTagId = caseTemplateSiteTag.SdkSiteTagId;
+            DateTime? oldUpdatedAt = documentSiteTag.UpdatedAt;
+            int oldCaseTemplateId = documentSiteTag.DocumentId;
+            int oldSdkSiteTagId = documentSiteTag.SdkSiteTagId;
 
-            caseTemplateSiteTag.CaseTemplateId = rnd.Next(1, 255);
-            caseTemplateSiteTag.SdkSiteTagId = rnd.Next(1, 255);
+            documentSiteTag.DocumentId = rnd.Next(1, 255);
+            documentSiteTag.SdkSiteTagId = rnd.Next(1, 255);
 
-            await caseTemplateSiteTag.Update(DbContext);
+            await documentSiteTag.Update(DbContext);
 
-            List<CaseTemplateSiteTag> dbCaseTemplateSiteTags =
-                DbContext.CaseTemplateSiteTags.AsNoTracking().ToList();
+            List<DocumentSiteTag> dbCaseTemplateSiteTags =
+                DbContext.DocumentSiteTags.AsNoTracking().ToList();
 
-            List<CaseTemplateSiteTagVersion> dbCaseTemplateSiteTagVersions =
-                DbContext.CaseTemplateSiteTagVersions.AsNoTracking().ToList();
+            List<DocumentSiteTagVersion> dbCaseTemplateSiteTagVersions =
+                DbContext.DocumentSiteTagVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplateSiteTags);
@@ -101,37 +101,37 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(1, dbCaseTemplateSiteTags.Count);
             Assert.AreEqual(2, dbCaseTemplateSiteTagVersions.Count);
 
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTags[0].Id);
-            Assert.AreEqual(caseTemplateSiteTag.Version, dbCaseTemplateSiteTags[0].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTags[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTags[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTags[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTags[0].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTags[0].Id);
+            Assert.AreEqual(documentSiteTag.Version, dbCaseTemplateSiteTags[0].Version);
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTags[0].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTags[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTags[0].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTags[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateSiteTags[0].WorkflowState);
-            Assert.AreEqual(caseTemplateSiteTag.CaseTemplateId, dbCaseTemplateSiteTags[0].CaseTemplateId);
-            Assert.AreEqual(caseTemplateSiteTag.SdkSiteTagId, dbCaseTemplateSiteTags[0].SdkSiteTagId);
+            Assert.AreEqual(documentSiteTag.DocumentId, dbCaseTemplateSiteTags[0].DocumentId);
+            Assert.AreEqual(documentSiteTag.SdkSiteTagId, dbCaseTemplateSiteTags[0].SdkSiteTagId);
 
             //Old Version
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTagVersions[0].CaseTemplateSiteTagId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTagVersions[0].DocumentSiteTagId);
             Assert.AreEqual(1, dbCaseTemplateSiteTagVersions[0].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].CreatedAt.ToString());
             Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[0].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[0].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateSiteTagVersions[0].WorkflowState);
-            Assert.AreEqual(oldCaseTemplateId, dbCaseTemplateSiteTagVersions[0].CaseTemplateId);
+            Assert.AreEqual(oldCaseTemplateId, dbCaseTemplateSiteTagVersions[0].DocumentId);
             Assert.AreEqual(oldSdkSiteTagId, dbCaseTemplateSiteTagVersions[0].SdkSiteTagId);
 
             //New Version
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTagVersions[1].CaseTemplateSiteTagId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTagVersions[1].DocumentSiteTagId);
             Assert.AreEqual(2, dbCaseTemplateSiteTagVersions[1].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[1].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[1].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].UpdatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[1].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[1].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateSiteTagVersions[1].WorkflowState);
-            Assert.AreEqual(caseTemplateSiteTag.CaseTemplateId, dbCaseTemplateSiteTagVersions[1].CaseTemplateId);
-            Assert.AreEqual(caseTemplateSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[1].SdkSiteTagId);
+            Assert.AreEqual(documentSiteTag.DocumentId, dbCaseTemplateSiteTagVersions[1].DocumentId);
+            Assert.AreEqual(documentSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[1].SdkSiteTagId);
         }
 
         [Test]
@@ -142,25 +142,25 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
              //Arrange
 
             Random rnd = new Random();
-            CaseTemplateSiteTag caseTemplateSiteTag = new CaseTemplateSiteTag
+            DocumentSiteTag documentSiteTag = new DocumentSiteTag
             {
-                CaseTemplateId = rnd.Next(1, 255),
+                // DocumentId = rnd.Next(1, 255),
                 SdkSiteTagId = rnd.Next(1, 255)
             };
-            await caseTemplateSiteTag.Create(DbContext);
+            await documentSiteTag.Create(DbContext);
 
 
             //Act
 
-            DateTime? oldUpdatedAt = caseTemplateSiteTag.UpdatedAt;
+            DateTime? oldUpdatedAt = documentSiteTag.UpdatedAt;
 
-            await caseTemplateSiteTag.Delete(DbContext);
+            await documentSiteTag.Delete(DbContext);
 
-            List<CaseTemplateSiteTag> dbCaseTemplateSiteTags =
-                DbContext.CaseTemplateSiteTags.AsNoTracking().ToList();
+            List<DocumentSiteTag> dbCaseTemplateSiteTags =
+                DbContext.DocumentSiteTags.AsNoTracking().ToList();
 
-            List<CaseTemplateSiteTagVersion> dbCaseTemplateSiteTagVersions =
-                DbContext.CaseTemplateSiteTagVersions.AsNoTracking().ToList();
+            List<DocumentSiteTagVersion> dbCaseTemplateSiteTagVersions =
+                DbContext.DocumentSiteTagVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplateSiteTags);
@@ -169,37 +169,37 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(1, dbCaseTemplateSiteTags.Count);
             Assert.AreEqual(2, dbCaseTemplateSiteTagVersions.Count);
 
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTags[0].Id);
-            Assert.AreEqual(caseTemplateSiteTag.Version, dbCaseTemplateSiteTags[0].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTags[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTags[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTags[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTags[0].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTags[0].Id);
+            Assert.AreEqual(documentSiteTag.Version, dbCaseTemplateSiteTags[0].Version);
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTags[0].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTags[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTags[0].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTags[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateSiteTags[0].WorkflowState);
-            Assert.AreEqual(caseTemplateSiteTag.CaseTemplateId, dbCaseTemplateSiteTags[0].CaseTemplateId);
-            Assert.AreEqual(caseTemplateSiteTag.SdkSiteTagId, dbCaseTemplateSiteTags[0].SdkSiteTagId);
+            Assert.AreEqual(documentSiteTag.DocumentId, dbCaseTemplateSiteTags[0].DocumentId);
+            Assert.AreEqual(documentSiteTag.SdkSiteTagId, dbCaseTemplateSiteTags[0].SdkSiteTagId);
 
             //Old Version
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTagVersions[0].CaseTemplateSiteTagId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTagVersions[0].DocumentSiteTagId);
             Assert.AreEqual(1, dbCaseTemplateSiteTagVersions[0].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].CreatedAt.ToString());
             Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[0].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[0].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateSiteTagVersions[0].WorkflowState);
-            Assert.AreEqual(caseTemplateSiteTag.CaseTemplateId, dbCaseTemplateSiteTagVersions[0].CaseTemplateId);
-            Assert.AreEqual(caseTemplateSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[0].SdkSiteTagId);
+            Assert.AreEqual(documentSiteTag.DocumentId, dbCaseTemplateSiteTagVersions[0].DocumentId);
+            Assert.AreEqual(documentSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[0].SdkSiteTagId);
 
             //New Version
-            Assert.AreEqual(caseTemplateSiteTag.Id, dbCaseTemplateSiteTagVersions[1].CaseTemplateSiteTagId);
+            Assert.AreEqual(documentSiteTag.Id, dbCaseTemplateSiteTagVersions[1].DocumentSiteTagId);
             Assert.AreEqual(2, dbCaseTemplateSiteTagVersions[1].Version);
-            Assert.AreEqual(caseTemplateSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[1].CreatedByUserId);
-            Assert.AreEqual(caseTemplateSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[1].UpdatedByUserId);
+            Assert.AreEqual(documentSiteTag.CreatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].CreatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.UpdatedAt.ToString(), dbCaseTemplateSiteTagVersions[1].UpdatedAt.ToString());
+            Assert.AreEqual(documentSiteTag.CreatedByUserId, dbCaseTemplateSiteTagVersions[1].CreatedByUserId);
+            Assert.AreEqual(documentSiteTag.UpdatedByUserId, dbCaseTemplateSiteTagVersions[1].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateSiteTagVersions[1].WorkflowState);
-            Assert.AreEqual(caseTemplateSiteTag.CaseTemplateId, dbCaseTemplateSiteTagVersions[1].CaseTemplateId);
-            Assert.AreEqual(caseTemplateSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[1].SdkSiteTagId);
+            Assert.AreEqual(documentSiteTag.DocumentId, dbCaseTemplateSiteTagVersions[1].DocumentId);
+            Assert.AreEqual(documentSiteTag.SdkSiteTagId, dbCaseTemplateSiteTagVersions[1].SdkSiteTagId);
         }
     }
 }

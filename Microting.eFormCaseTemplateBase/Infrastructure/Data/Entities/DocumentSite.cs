@@ -1,17 +1,19 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
-    public class CaseTemplateSiteVersion : BaseEntity
+    public class DocumentSite : PnBase
     {
-        public int CaseTemplateId { get; set; }
-        
+        [ForeignKey("Document")]
+        public int DocumentId { get; set; }
+
         public int SdkSiteId { get; set; }
-        
+
         public int SdkCaseId { get; set; }
-        
-        [ForeignKey("CaseTemplateSites")]
-        public int CaseTemplateSiteId { get; set; }
     }
 }

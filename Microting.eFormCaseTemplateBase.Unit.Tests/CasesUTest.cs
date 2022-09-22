@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
 using NUnit.Framework;
+using Document = Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document;
 
 namespace Microting.eFormCaseTemplateCase.Unit.Tests
 {
@@ -21,7 +22,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
 
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate
+            Document document = new Document
             {
                 Approvable = randomBool,
                 // caseTemplate.Title = Guid.NewGuid().ToString();
@@ -34,7 +35,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 RetractIfApproved = randomBool
             };
 
-            await caseTemplate.Create(DbContext);
+            await document.Create(DbContext);
 
             Case @case = new Case
             {
@@ -45,7 +46,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 SiteId = rnd.Next(0, 255),
                 UnitId = rnd.Next(0, 255),
                 WorkerId = rnd.Next(0, 255),
-                CaseTemplateId = caseTemplate.Id,
+                CaseTemplateId = document.Id,
                 FetchedByTablet = randomBool,
                 FetchedByTabletAt = DateTime.Now,
                 ReceiptRetrievedFromUser = randomBool,
@@ -90,7 +91,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
 
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate
+            Document document = new Document
             {
                 Approvable = randomBool,
                 // caseTemplate.Title = Guid.NewGuid().ToString();
@@ -103,7 +104,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 RetractIfApproved = randomBool
             };
 
-            await caseTemplate.Create(DbContext);
+            await document.Create(DbContext);
 
             Case @case = new Case
             {
@@ -114,7 +115,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 SiteId = rnd.Next(0, 255),
                 UnitId = rnd.Next(0, 255),
                 WorkerId = rnd.Next(0, 255),
-                CaseTemplateId = caseTemplate.Id,
+                CaseTemplateId = document.Id,
                 FetchedByTablet = randomBool,
                 FetchedByTabletAt = DateTime.Now,
                 ReceiptRetrievedFromUser = randomBool,
@@ -171,7 +172,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.SiteId, dbCases[0].SiteId);
             Assert.AreEqual(@case.UnitId, dbCases[0].UnitId);
             Assert.AreEqual(@case.WorkerId, dbCases[0].WorkerId);
-            Assert.AreEqual(caseTemplate.Id, dbCases[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCases[0].CaseTemplateId);
             Assert.AreEqual(@case.FetchedByTablet, dbCases[0].FetchedByTablet);
             Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCases[0].FetchedByTabletAt.ToString());
             Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCases[0].ReceiptRetrievedFromUser);
@@ -188,7 +189,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(oldSiteId, dbCaseVersions[0].SiteId);
             Assert.AreEqual(oldUnitId, dbCaseVersions[0].UnitId);
             Assert.AreEqual(oldWorkerId, dbCaseVersions[0].WorkerId);
-            Assert.AreEqual(caseTemplate.Id, dbCaseVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseVersions[0].CaseTemplateId);
             Assert.AreEqual(oldFetchedByTablet, dbCaseVersions[0].FetchedByTablet);
             Assert.AreEqual(oldFetchedByTabletAt.ToString(), dbCaseVersions[0].FetchedByTabletAt.ToString());
             Assert.AreEqual(oldReceiptRetrievedFromUser, dbCaseVersions[0].ReceiptRetrievedFromUser);
@@ -205,7 +206,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.SiteId, dbCaseVersions[1].SiteId);
             Assert.AreEqual(@case.UnitId, dbCaseVersions[1].UnitId);
             Assert.AreEqual(@case.WorkerId, dbCaseVersions[1].WorkerId);
-            Assert.AreEqual(caseTemplate.Id, dbCaseVersions[1].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseVersions[1].CaseTemplateId);
             Assert.AreEqual(@case.FetchedByTablet, dbCaseVersions[1].FetchedByTablet);
             Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCaseVersions[1].FetchedByTabletAt.ToString());
             Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCaseVersions[1].ReceiptRetrievedFromUser);
@@ -221,7 +222,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
 
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate
+            Document document = new Document
             {
                 Approvable = randomBool,
                 // caseTemplate.Title = Guid.NewGuid().ToString();
@@ -234,7 +235,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 RetractIfApproved = randomBool
             };
 
-            await caseTemplate.Create(DbContext);
+            await document.Create(DbContext);
 
             Case @case = new Case
             {
@@ -245,7 +246,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 SiteId = rnd.Next(0, 255),
                 UnitId = rnd.Next(0, 255),
                 WorkerId = rnd.Next(0, 255),
-                CaseTemplateId = caseTemplate.Id,
+                CaseTemplateId = document.Id,
                 FetchedByTablet = randomBool,
                 FetchedByTabletAt = DateTime.Now,
                 ReceiptRetrievedFromUser = randomBool,
@@ -279,7 +280,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.SiteId, dbCases[0].SiteId);
             Assert.AreEqual(@case.UnitId, dbCases[0].UnitId);
             Assert.AreEqual(@case.WorkerId, dbCases[0].WorkerId);
-            Assert.AreEqual(caseTemplate.Id, dbCases[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCases[0].CaseTemplateId);
             Assert.AreEqual(@case.FetchedByTablet, dbCases[0].FetchedByTablet);
             Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCases[0].FetchedByTabletAt.ToString());
             Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCases[0].ReceiptRetrievedFromUser);
@@ -296,7 +297,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.SiteId, dbCaseVersions[0].SiteId);
             Assert.AreEqual(@case.UnitId, dbCaseVersions[0].UnitId);
             Assert.AreEqual(@case.WorkerId, dbCaseVersions[0].WorkerId);
-            Assert.AreEqual(caseTemplate.Id, dbCaseVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseVersions[0].CaseTemplateId);
             Assert.AreEqual(@case.FetchedByTablet, dbCaseVersions[0].FetchedByTablet);
             Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCaseVersions[0].FetchedByTabletAt.ToString());
             Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCaseVersions[0].ReceiptRetrievedFromUser);
@@ -312,7 +313,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(@case.SiteId, dbCaseVersions[1].SiteId);
             Assert.AreEqual(@case.UnitId, dbCaseVersions[1].UnitId);
             Assert.AreEqual(@case.WorkerId, dbCaseVersions[1].WorkerId);
-            Assert.AreEqual(caseTemplate.Id, dbCaseVersions[1].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseVersions[1].CaseTemplateId);
             Assert.AreEqual(@case.FetchedByTablet, dbCaseVersions[1].FetchedByTablet);
             Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCaseVersions[1].FetchedByTabletAt.ToString());
             Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCaseVersions[1].ReceiptRetrievedFromUser);

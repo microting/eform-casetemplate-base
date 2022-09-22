@@ -21,7 +21,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate
+            Document document = new Document
             {
                 Approvable = randomBool,
                 // caseTemplate.Title = Guid.NewGuid().ToString();
@@ -36,11 +36,11 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
 
             //Act
 
-            await caseTemplate.Create(DbContext);
+            await document.Create(DbContext);
 
 
-            List<CaseTemplate> dbCaseTemplates = DbContext.CaseTemplates.AsNoTracking().ToList();
-            List<CaseTemplateVersion> dbCaseTemplateVersions = DbContext.CaseTemplateVersions.AsNoTracking().ToList();
+            List<Document> dbCaseTemplates = DbContext.Documents.AsNoTracking().ToList();
+            List<DocumentVersion> dbCaseTemplateVersions = DbContext.DocumentVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplates);
@@ -50,40 +50,40 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(1, dbCaseTemplateVersions.Count);
 
 
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplates[0].Id);
-            Assert.AreEqual(caseTemplate.Version, dbCaseTemplates[0].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplates[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplate.UpdatedAt.ToString(), dbCaseTemplates[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplates[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplates[0].UpdatedByUserId);
+            Assert.AreEqual(document.Id, dbCaseTemplates[0].Id);
+            Assert.AreEqual(document.Version, dbCaseTemplates[0].Version);
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplates[0].CreatedAt.ToString());
+            Assert.AreEqual(document.UpdatedAt.ToString(), dbCaseTemplates[0].UpdatedAt.ToString());
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplates[0].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplates[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplates[0].WorkflowState);
-            Assert.AreEqual(caseTemplate.Approvable, dbCaseTemplates[0].Approvable);
+            Assert.AreEqual(document.Approvable, dbCaseTemplates[0].Approvable);
             // Assert.AreEqual(caseTemplate.Body, dbCaseTemplates[0].Body);
             // Assert.AreEqual(caseTemplate.Title, dbCaseTemplates[0].Title);
-            Assert.AreEqual(caseTemplate.AlwaysShow, dbCaseTemplates[0].AlwaysShow);
-            Assert.AreEqual(caseTemplate.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
+            Assert.AreEqual(document.AlwaysShow, dbCaseTemplates[0].AlwaysShow);
+            Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplates[0].PdfTitle);
-            Assert.AreEqual(caseTemplate.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
-            Assert.AreEqual(caseTemplate.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
-            Assert.AreEqual(caseTemplate.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
+            Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
+            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
+            Assert.AreEqual(document.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
 
             //Versions
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateVersions[0].Id);
-            Assert.AreEqual(caseTemplate.Version, dbCaseTemplateVersions[0].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplateVersions[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplate.UpdatedAt.ToString(), dbCaseTemplateVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplateVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplateVersions[0].UpdatedByUserId);
+            Assert.AreEqual(document.Id, dbCaseTemplateVersions[0].Id);
+            Assert.AreEqual(document.Version, dbCaseTemplateVersions[0].Version);
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplateVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(document.UpdatedAt.ToString(), dbCaseTemplateVersions[0].UpdatedAt.ToString());
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplateVersions[0].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplateVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateVersions[0].WorkflowState);
-            Assert.AreEqual(caseTemplate.Approvable, dbCaseTemplateVersions[0].Approvable);
+            Assert.AreEqual(document.Approvable, dbCaseTemplateVersions[0].Approvable);
             // Assert.AreEqual(caseTemplate.Body, dbCaseTemplateVersions[0].Body);
             // Assert.AreEqual(caseTemplate.Title, dbCaseTemplateVersions[0].Title);
-            Assert.AreEqual(caseTemplate.AlwaysShow, dbCaseTemplateVersions[0].AlwaysShow);
-            Assert.AreEqual(caseTemplate.EndAt.ToString(), dbCaseTemplateVersions[0].EndAt.ToString());
+            Assert.AreEqual(document.AlwaysShow, dbCaseTemplateVersions[0].AlwaysShow);
+            Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[0].PdfTitle);
-            Assert.AreEqual(caseTemplate.StartAt.ToString(), dbCaseTemplateVersions[0].StartAt.ToString());
-            Assert.AreEqual(caseTemplate.DescriptionFolderId, dbCaseTemplateVersions[0].DescriptionFolderId);
-            Assert.AreEqual(caseTemplate.RetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
+            Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[0].StartAt.ToString());
+            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[0].DescriptionFolderId);
+            Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
         }
 
         [Test]
@@ -94,7 +94,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate
+            Document document = new Document
             {
                 Approvable = randomBool,
                 // caseTemplate.Title = Guid.NewGuid().ToString();
@@ -106,36 +106,36 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 DescriptionFolderId = rnd.Next(1, 200),
                 RetractIfApproved = randomBool
             };
-            await caseTemplate.Create(DbContext);
+            await document.Create(DbContext);
 
 
             //Act
 
-            DateTime? oldUpdatedAt = caseTemplate.UpdatedAt;
-            bool oldApprovable = caseTemplate.Approvable;
+            DateTime? oldUpdatedAt = document.UpdatedAt;
+            bool oldApprovable = document.Approvable;
             // string oldBody = caseTemplate.Body;
             // string oldTitle = caseTemplate.Title;
-            bool oldAlwaysShow = caseTemplate.AlwaysShow;
-            DateTime oldEndAt = caseTemplate.EndAt;
+            bool oldAlwaysShow = document.AlwaysShow;
+            DateTime oldEndAt = document.EndAt;
             // string oldPdfTitle = caseTemplate.PdfTitle;
-            DateTime oldStartAt = caseTemplate.StartAt;
-            int oldDescriptionFolderId = caseTemplate.DescriptionFolderId;
-            bool oldRetractIfApproved = caseTemplate.RetractIfApproved;
+            DateTime oldStartAt = document.StartAt;
+            int oldDescriptionFolderId = document.DescriptionFolderId;
+            bool oldRetractIfApproved = document.RetractIfApproved;
 
-            caseTemplate.Approvable = randomBool;
+            document.Approvable = randomBool;
             // caseTemplate.Body = Guid.NewGuid().ToString();
             // caseTemplate.Title = Guid.NewGuid().ToString();
-            caseTemplate.AlwaysShow = randomBool;
-            caseTemplate.EndAt = DateTime.Now;
+            document.AlwaysShow = randomBool;
+            document.EndAt = DateTime.Now;
             // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
-            caseTemplate.StartAt = DateTime.Now;
-            caseTemplate.DescriptionFolderId = rnd.Next(1, 200);
-            caseTemplate.RetractIfApproved = randomBool;
+            document.StartAt = DateTime.Now;
+            document.DescriptionFolderId = rnd.Next(1, 200);
+            document.RetractIfApproved = randomBool;
 
-            await caseTemplate.Update(DbContext);
+            await document.Update(DbContext);
 
-            List<CaseTemplate> dbCaseTemplates = DbContext.CaseTemplates.AsNoTracking().ToList();
-            List<CaseTemplateVersion> dbCaseTemplateVersions = DbContext.CaseTemplateVersions.AsNoTracking().ToList();
+            List<Document> dbCaseTemplates = DbContext.Documents.AsNoTracking().ToList();
+            List<DocumentVersion> dbCaseTemplateVersions = DbContext.DocumentVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplates);
@@ -145,30 +145,30 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(2, dbCaseTemplateVersions.Count);
 
 
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplates[0].Id);
-            Assert.AreEqual(caseTemplate.Version, dbCaseTemplates[0].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplates[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplate.UpdatedAt.ToString(), dbCaseTemplates[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplates[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplates[0].UpdatedByUserId);
+            Assert.AreEqual(document.Id, dbCaseTemplates[0].Id);
+            Assert.AreEqual(document.Version, dbCaseTemplates[0].Version);
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplates[0].CreatedAt.ToString());
+            Assert.AreEqual(document.UpdatedAt.ToString(), dbCaseTemplates[0].UpdatedAt.ToString());
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplates[0].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplates[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplates[0].WorkflowState);
-            Assert.AreEqual(caseTemplate.Approvable, dbCaseTemplates[0].Approvable);
+            Assert.AreEqual(document.Approvable, dbCaseTemplates[0].Approvable);
             // Assert.AreEqual(caseTemplate.Body, dbCaseTemplates[0].Body);
             // Assert.AreEqual(caseTemplate.Title, dbCaseTemplates[0].Title);
-            Assert.AreEqual(caseTemplate.AlwaysShow, dbCaseTemplates[0].AlwaysShow);
-            Assert.AreEqual(caseTemplate.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
+            Assert.AreEqual(document.AlwaysShow, dbCaseTemplates[0].AlwaysShow);
+            Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplates[0].PdfTitle);
-            Assert.AreEqual(caseTemplate.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
-            Assert.AreEqual(caseTemplate.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
-            Assert.AreEqual(caseTemplate.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
+            Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
+            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
+            Assert.AreEqual(document.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
 
             //Old Version
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateVersions[0].DocumentId);
             Assert.AreEqual(1, dbCaseTemplateVersions[0].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplateVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplateVersions[0].CreatedAt.ToString());
             Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplateVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplateVersions[0].UpdatedByUserId);
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplateVersions[0].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplateVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateVersions[0].WorkflowState);
             Assert.AreEqual(oldApprovable, dbCaseTemplateVersions[0].Approvable);
             // Assert.AreEqual(oldBody, dbCaseTemplateVersions[0].Body);
@@ -181,22 +181,22 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(oldRetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
 
             //New Version
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateVersions[1].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateVersions[1].DocumentId);
             Assert.AreEqual(2, dbCaseTemplateVersions[1].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplateVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplate.UpdatedAt.ToString(), dbCaseTemplateVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplateVersions[1].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplateVersions[1].UpdatedByUserId);
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplateVersions[1].CreatedAt.ToString());
+            Assert.AreEqual(document.UpdatedAt.ToString(), dbCaseTemplateVersions[1].UpdatedAt.ToString());
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplateVersions[1].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplateVersions[1].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateVersions[1].WorkflowState);
-            Assert.AreEqual(caseTemplate.Approvable, dbCaseTemplateVersions[1].Approvable);
+            Assert.AreEqual(document.Approvable, dbCaseTemplateVersions[1].Approvable);
             // Assert.AreEqual(caseTemplate.Body, dbCaseTemplateVersions[1].Body);
             // Assert.AreEqual(caseTemplate.Title, dbCaseTemplateVersions[1].Title);
-            Assert.AreEqual(caseTemplate.AlwaysShow, dbCaseTemplateVersions[1].AlwaysShow);
-            Assert.AreEqual(caseTemplate.EndAt.ToString(), dbCaseTemplateVersions[1].EndAt.ToString());
+            Assert.AreEqual(document.AlwaysShow, dbCaseTemplateVersions[1].AlwaysShow);
+            Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[1].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[1].PdfTitle);
-            Assert.AreEqual(caseTemplate.StartAt.ToString(), dbCaseTemplateVersions[1].StartAt.ToString());
-            Assert.AreEqual(caseTemplate.DescriptionFolderId, dbCaseTemplateVersions[1].DescriptionFolderId);
-            Assert.AreEqual(caseTemplate.RetractIfApproved, dbCaseTemplateVersions[1].RetractIfApproved);
+            Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[1].StartAt.ToString());
+            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[1].DescriptionFolderId);
+            Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[1].RetractIfApproved);
         }
 
         [Test]
@@ -207,7 +207,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate
+            Document document = new Document
             {
                 Approvable = randomBool,
                 // caseTemplate.Title = Guid.NewGuid().ToString();
@@ -219,17 +219,17 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 DescriptionFolderId = rnd.Next(1, 200),
                 RetractIfApproved = randomBool
             };
-            await caseTemplate.Create(DbContext);
+            await document.Create(DbContext);
 
 
             //Act
 
-            DateTime? oldUpdatedAt = caseTemplate.UpdatedAt;
+            DateTime? oldUpdatedAt = document.UpdatedAt;
 
-            await caseTemplate.Delete(DbContext);
+            await document.Delete(DbContext);
 
-            List<CaseTemplate> dbCaseTemplates = DbContext.CaseTemplates.AsNoTracking().ToList();
-            List<CaseTemplateVersion> dbCaseTemplateVersions = DbContext.CaseTemplateVersions.AsNoTracking().ToList();
+            List<Document> dbCaseTemplates = DbContext.Documents.AsNoTracking().ToList();
+            List<DocumentVersion> dbCaseTemplateVersions = DbContext.DocumentVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplates);
@@ -239,58 +239,58 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(2, dbCaseTemplateVersions.Count);
 
 
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplates[0].Id);
-            Assert.AreEqual(caseTemplate.Version, dbCaseTemplates[0].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplates[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplate.UpdatedAt.ToString(), dbCaseTemplates[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplates[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplates[0].UpdatedByUserId);
+            Assert.AreEqual(document.Id, dbCaseTemplates[0].Id);
+            Assert.AreEqual(document.Version, dbCaseTemplates[0].Version);
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplates[0].CreatedAt.ToString());
+            Assert.AreEqual(document.UpdatedAt.ToString(), dbCaseTemplates[0].UpdatedAt.ToString());
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplates[0].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplates[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplates[0].WorkflowState);
-            Assert.AreEqual(caseTemplate.Approvable, dbCaseTemplates[0].Approvable);
+            Assert.AreEqual(document.Approvable, dbCaseTemplates[0].Approvable);
             // Assert.AreEqual(caseTemplate.Body, dbCaseTemplates[0].Body);
             // Assert.AreEqual(caseTemplate.Title, dbCaseTemplates[0].Title);
-            Assert.AreEqual(caseTemplate.AlwaysShow, dbCaseTemplates[0].AlwaysShow);
-            Assert.AreEqual(caseTemplate.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
+            Assert.AreEqual(document.AlwaysShow, dbCaseTemplates[0].AlwaysShow);
+            Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplates[0].PdfTitle);
-            Assert.AreEqual(caseTemplate.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
-            Assert.AreEqual(caseTemplate.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
-            Assert.AreEqual(caseTemplate.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
+            Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
+            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
+            Assert.AreEqual(document.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
 
             //Old Version
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateVersions[0].DocumentId);
             Assert.AreEqual(1, dbCaseTemplateVersions[0].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplateVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplateVersions[0].CreatedAt.ToString());
             Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplateVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplateVersions[0].UpdatedByUserId);
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplateVersions[0].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplateVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateVersions[0].WorkflowState);
-            Assert.AreEqual(caseTemplate.Approvable, dbCaseTemplateVersions[0].Approvable);
+            Assert.AreEqual(document.Approvable, dbCaseTemplateVersions[0].Approvable);
             // Assert.AreEqual(caseTemplate.Body, dbCaseTemplateVersions[0].Body);
             // Assert.AreEqual(caseTemplate.Title, dbCaseTemplateVersions[0].Title);
-            Assert.AreEqual(caseTemplate.AlwaysShow, dbCaseTemplateVersions[0].AlwaysShow);
-            Assert.AreEqual(caseTemplate.EndAt.ToString(), dbCaseTemplateVersions[0].EndAt.ToString());
+            Assert.AreEqual(document.AlwaysShow, dbCaseTemplateVersions[0].AlwaysShow);
+            Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[0].PdfTitle);
-            Assert.AreEqual(caseTemplate.StartAt.ToString(), dbCaseTemplateVersions[0].StartAt.ToString());
-            Assert.AreEqual(caseTemplate.DescriptionFolderId, dbCaseTemplateVersions[0].DescriptionFolderId);
-            Assert.AreEqual(caseTemplate.RetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
+            Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[0].StartAt.ToString());
+            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[0].DescriptionFolderId);
+            Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
 
             //New Version
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateVersions[1].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateVersions[1].DocumentId);
             Assert.AreEqual(2, dbCaseTemplateVersions[1].Version);
-            Assert.AreEqual(caseTemplate.CreatedAt.ToString(), dbCaseTemplateVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplate.UpdatedAt.ToString(), dbCaseTemplateVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplate.CreatedByUserId, dbCaseTemplateVersions[1].CreatedByUserId);
-            Assert.AreEqual(caseTemplate.UpdatedByUserId, dbCaseTemplateVersions[1].UpdatedByUserId);
+            Assert.AreEqual(document.CreatedAt.ToString(), dbCaseTemplateVersions[1].CreatedAt.ToString());
+            Assert.AreEqual(document.UpdatedAt.ToString(), dbCaseTemplateVersions[1].UpdatedAt.ToString());
+            Assert.AreEqual(document.CreatedByUserId, dbCaseTemplateVersions[1].CreatedByUserId);
+            Assert.AreEqual(document.UpdatedByUserId, dbCaseTemplateVersions[1].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateVersions[1].WorkflowState);
-            Assert.AreEqual(caseTemplate.Approvable, dbCaseTemplateVersions[1].Approvable);
+            Assert.AreEqual(document.Approvable, dbCaseTemplateVersions[1].Approvable);
             // Assert.AreEqual(caseTemplate.Body, dbCaseTemplateVersions[1].Body);
             // Assert.AreEqual(caseTemplate.Title, dbCaseTemplateVersions[1].Title);
-            Assert.AreEqual(caseTemplate.AlwaysShow, dbCaseTemplateVersions[1].AlwaysShow);
-            Assert.AreEqual(caseTemplate.EndAt.ToString(), dbCaseTemplateVersions[1].EndAt.ToString());
+            Assert.AreEqual(document.AlwaysShow, dbCaseTemplateVersions[1].AlwaysShow);
+            Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[1].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[1].PdfTitle);
-            Assert.AreEqual(caseTemplate.StartAt.ToString(), dbCaseTemplateVersions[1].StartAt.ToString());
-            Assert.AreEqual(caseTemplate.DescriptionFolderId, dbCaseTemplateVersions[1].DescriptionFolderId);
-            Assert.AreEqual(caseTemplate.RetractIfApproved, dbCaseTemplateVersions[1].RetractIfApproved);
+            Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[1].StartAt.ToString());
+            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[1].DescriptionFolderId);
+            Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[1].RetractIfApproved);
         }
     }
 }

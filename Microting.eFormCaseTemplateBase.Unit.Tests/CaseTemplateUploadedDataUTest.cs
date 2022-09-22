@@ -23,7 +23,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate
+            Document document = new Document
             {
                 Approvable = randomBool,
                 // caseTemplate.Title = Guid.NewGuid().ToString();
@@ -35,7 +35,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 DescriptionFolderId = rnd.Next(1, 200),
                 RetractIfApproved = randomBool
             };
-            await caseTemplate.Create(DbContext);
+            await document.Create(DbContext);
 
             UploadedData uploadedData = new UploadedData();
             uploadedData.Checksum = Guid.NewGuid().ToString();
@@ -49,19 +49,19 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             uploadedData.OriginalFileName = Guid.NewGuid().ToString();
             await uploadedData.Create(DbContext);
 
-            CaseTemplateUploadedData caseTemplateUploadedData = new CaseTemplateUploadedData();
-            caseTemplateUploadedData.Approvable = randomBool;
-            caseTemplateUploadedData.Title = Guid.NewGuid().ToString();
-            caseTemplateUploadedData.CaseTemplateId = caseTemplate.Id;
-            caseTemplateUploadedData.RetractIfApproved = randomBool;
-            caseTemplateUploadedData.UploadedDataId = uploadedData.Id;
+            DocumentUploadedData documentUploadedData = new DocumentUploadedData();
+            documentUploadedData.Approvable = randomBool;
+            documentUploadedData.Title = Guid.NewGuid().ToString();
+            documentUploadedData.CaseTemplateId = document.Id;
+            documentUploadedData.RetractIfApproved = randomBool;
+            documentUploadedData.UploadedDataId = uploadedData.Id;
 
             //Act
 
-            await caseTemplateUploadedData.Create(DbContext);
+            await documentUploadedData.Create(DbContext);
 
-            List<CaseTemplateUploadedData> dbCaseTemplateUploadedDatas = DbContext.CaseTemplateUploadedDatas.AsNoTracking().ToList();
-            List<CaseTemplateUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.CaseTemplateUploadedDataVersions.AsNoTracking().ToList();
+            List<DocumentUploadedData> dbCaseTemplateUploadedDatas = DbContext.DocumentUploadedDatas.AsNoTracking().ToList();
+            List<DocumentUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.DocumentUploadedDataVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplateUploadedDatas);
@@ -71,32 +71,32 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions.Count);
 
 
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
-            Assert.AreEqual(caseTemplateUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
+            Assert.AreEqual(documentUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDatas[0].WorkflowState);
-            Assert.AreEqual(caseTemplateUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
-            Assert.AreEqual(caseTemplateUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
+            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
+            Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDatas[0].UploadedDataId);
-            Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
+            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
 
             //Versions
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
             Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions[0].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
-            Assert.AreEqual(caseTemplateUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
-            Assert.AreEqual(caseTemplateUploadedData.Title, dbCaseTemplateUploadedDataVersions[0].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
+            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
+            Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[0].Title);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
-            Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
+            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
         }
 
         [Test]
@@ -110,17 +110,17 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate();
-            caseTemplate.Approvable = randomBool;
+            Document document = new Document();
+            document.Approvable = randomBool;
             // caseTemplate.Body = Guid.NewGuid().ToString();
             // caseTemplate.Title = Guid.NewGuid().ToString();
-            caseTemplate.AlwaysShow = randomBool;
-            caseTemplate.EndAt = DateTime.Now;
+            document.AlwaysShow = randomBool;
+            document.EndAt = DateTime.Now;
             // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
-            caseTemplate.StartAt = DateTime.Now;
-            caseTemplate.DescriptionFolderId = rnd.Next(1, 200);
-            caseTemplate.RetractIfApproved = randomBool;
-            await caseTemplate.Create(DbContext);
+            document.StartAt = DateTime.Now;
+            document.DescriptionFolderId = rnd.Next(1, 200);
+            document.RetractIfApproved = randomBool;
+            await document.Create(DbContext);
 
             UploadedData uploadedData = new UploadedData();
             uploadedData.Checksum = Guid.NewGuid().ToString();
@@ -134,29 +134,29 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             uploadedData.OriginalFileName = Guid.NewGuid().ToString();
             await uploadedData.Create(DbContext);
 
-            CaseTemplateUploadedData caseTemplateUploadedData = new CaseTemplateUploadedData();
-            caseTemplateUploadedData.Approvable = randomBool;
-            caseTemplateUploadedData.Title = Guid.NewGuid().ToString();
-            caseTemplateUploadedData.CaseTemplateId = caseTemplate.Id;
-            caseTemplateUploadedData.RetractIfApproved = randomBool;
-            caseTemplateUploadedData.UploadedDataId = uploadedData.Id;
-            await caseTemplateUploadedData.Create(DbContext);
+            DocumentUploadedData documentUploadedData = new DocumentUploadedData();
+            documentUploadedData.Approvable = randomBool;
+            documentUploadedData.Title = Guid.NewGuid().ToString();
+            documentUploadedData.CaseTemplateId = document.Id;
+            documentUploadedData.RetractIfApproved = randomBool;
+            documentUploadedData.UploadedDataId = uploadedData.Id;
+            await documentUploadedData.Create(DbContext);
 
             //Act
 
-            DateTime? oldUpdatedAt = caseTemplateUploadedData.UpdatedAt;
-            bool oldApprovable = caseTemplateUploadedData.Approvable;
-            string oldTitle = caseTemplateUploadedData.Title;
-            bool oldRetractIfApproved = caseTemplateUploadedData.RetractIfApproved;
+            DateTime? oldUpdatedAt = documentUploadedData.UpdatedAt;
+            bool oldApprovable = documentUploadedData.Approvable;
+            string oldTitle = documentUploadedData.Title;
+            bool oldRetractIfApproved = documentUploadedData.RetractIfApproved;
 
-            caseTemplateUploadedData.Approvable = randomBool;
-            caseTemplateUploadedData.Title = Guid.NewGuid().ToString();
-            caseTemplateUploadedData.RetractIfApproved = randomBool;
+            documentUploadedData.Approvable = randomBool;
+            documentUploadedData.Title = Guid.NewGuid().ToString();
+            documentUploadedData.RetractIfApproved = randomBool;
 
-            await caseTemplateUploadedData.Update(DbContext);
+            await documentUploadedData.Update(DbContext);
 
-            List<CaseTemplateUploadedData> dbCaseTemplateUploadedDatas = DbContext.CaseTemplateUploadedDatas.AsNoTracking().ToList();
-            List<CaseTemplateUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.CaseTemplateUploadedDataVersions.AsNoTracking().ToList();
+            List<DocumentUploadedData> dbCaseTemplateUploadedDatas = DbContext.DocumentUploadedDatas.AsNoTracking().ToList();
+            List<DocumentUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.DocumentUploadedDataVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplateUploadedDatas);
@@ -166,46 +166,46 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions.Count);
 
 
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
-            Assert.AreEqual(caseTemplateUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
+            Assert.AreEqual(documentUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDatas[0].WorkflowState);
-            Assert.AreEqual(caseTemplateUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
-            Assert.AreEqual(caseTemplateUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
+            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
+            Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDatas[0].UploadedDataId);
-            Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
+            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
 
             //Old Version
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
             Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions[0].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
             Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
             Assert.AreEqual(oldApprovable, dbCaseTemplateUploadedDataVersions[0].Approvable);
             Assert.AreEqual(oldTitle, dbCaseTemplateUploadedDataVersions[0].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
             Assert.AreEqual(oldRetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
 
             //New Version
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateUploadedDataId);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].DocumentUploadedDataId);
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions[1].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[1].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[1].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[1].WorkflowState);
-            Assert.AreEqual(caseTemplateUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
-            Assert.AreEqual(caseTemplateUploadedData.Title, dbCaseTemplateUploadedDataVersions[1].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateId);
+            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
+            Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[1].Title);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[1].UploadedDataId);
-            Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
+            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
         }
 
         [Test]
@@ -219,17 +219,17 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Random rnd = new Random();
             bool randomBool = rnd.Next(0, 2) > 0;
 
-            CaseTemplate caseTemplate = new CaseTemplate();
-            caseTemplate.Approvable = randomBool;
+            Document document = new Document();
+            document.Approvable = randomBool;
             // caseTemplate.Body = Guid.NewGuid().ToString();
             // caseTemplate.Title = Guid.NewGuid().ToString();
-            caseTemplate.AlwaysShow = randomBool;
-            caseTemplate.EndAt = DateTime.Now;
+            document.AlwaysShow = randomBool;
+            document.EndAt = DateTime.Now;
             // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
-            caseTemplate.StartAt = DateTime.Now;
-            caseTemplate.DescriptionFolderId = rnd.Next(1, 200);
-            caseTemplate.RetractIfApproved = randomBool;
-            await caseTemplate.Create(DbContext);
+            document.StartAt = DateTime.Now;
+            document.DescriptionFolderId = rnd.Next(1, 200);
+            document.RetractIfApproved = randomBool;
+            await document.Create(DbContext);
 
             UploadedData uploadedData = new UploadedData();
             uploadedData.Checksum = Guid.NewGuid().ToString();
@@ -243,22 +243,22 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             uploadedData.OriginalFileName = Guid.NewGuid().ToString();
             await uploadedData.Create(DbContext);
 
-            CaseTemplateUploadedData caseTemplateUploadedData = new CaseTemplateUploadedData();
-            caseTemplateUploadedData.Approvable = randomBool;
-            caseTemplateUploadedData.Title = Guid.NewGuid().ToString();
-            caseTemplateUploadedData.CaseTemplateId = caseTemplate.Id;
-            caseTemplateUploadedData.RetractIfApproved = randomBool;
-            caseTemplateUploadedData.UploadedDataId = uploadedData.Id;
-            await caseTemplateUploadedData.Create(DbContext);
+            DocumentUploadedData documentUploadedData = new DocumentUploadedData();
+            documentUploadedData.Approvable = randomBool;
+            documentUploadedData.Title = Guid.NewGuid().ToString();
+            documentUploadedData.CaseTemplateId = document.Id;
+            documentUploadedData.RetractIfApproved = randomBool;
+            documentUploadedData.UploadedDataId = uploadedData.Id;
+            await documentUploadedData.Create(DbContext);
 
             //Act
 
-            DateTime? oldUpdatedAt = caseTemplateUploadedData.UpdatedAt;
+            DateTime? oldUpdatedAt = documentUploadedData.UpdatedAt;
 
-            await caseTemplateUploadedData.Delete(DbContext);
+            await documentUploadedData.Delete(DbContext);
 
-            List<CaseTemplateUploadedData> dbCaseTemplateUploadedDatas = DbContext.CaseTemplateUploadedDatas.AsNoTracking().ToList();
-            List<CaseTemplateUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.CaseTemplateUploadedDataVersions.AsNoTracking().ToList();
+            List<DocumentUploadedData> dbCaseTemplateUploadedDatas = DbContext.DocumentUploadedDatas.AsNoTracking().ToList();
+            List<DocumentUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.DocumentUploadedDataVersions.AsNoTracking().ToList();
 
             //Assert
             Assert.NotNull(dbCaseTemplateUploadedDatas);
@@ -268,46 +268,46 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions.Count);
 
 
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
-            Assert.AreEqual(caseTemplateUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
+            Assert.AreEqual(documentUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateUploadedDatas[0].WorkflowState);
-            Assert.AreEqual(caseTemplateUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
-            Assert.AreEqual(caseTemplateUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
+            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
+            Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDatas[0].UploadedDataId);
-            Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
+            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
 
             //Old Version
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
             Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions[0].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
             Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
-            Assert.AreEqual(caseTemplateUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
-            Assert.AreEqual(caseTemplateUploadedData.Title, dbCaseTemplateUploadedDataVersions[0].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
+            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
+            Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[0].Title);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
-            Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
+            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
 
             //New Version
-            Assert.AreEqual(caseTemplateUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateUploadedDataId);
+            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].DocumentUploadedDataId);
             Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions[1].Version);
-            Assert.AreEqual(caseTemplateUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(caseTemplateUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[1].CreatedByUserId);
-            Assert.AreEqual(caseTemplateUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId);
+            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString());
+            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[1].CreatedByUserId);
+            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId);
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateUploadedDataVersions[1].WorkflowState);
-            Assert.AreEqual(caseTemplateUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
-            Assert.AreEqual(caseTemplateUploadedData.Title, dbCaseTemplateUploadedDataVersions[1].Title);
-            Assert.AreEqual(caseTemplate.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateId);
+            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
+            Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[1].Title);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[1].UploadedDataId);
-            Assert.AreEqual(caseTemplateUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
+            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
         }
     }
 }

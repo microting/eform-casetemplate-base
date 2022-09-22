@@ -225,6 +225,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<int>("CreatedByUserId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DocumentId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("DoneAt")
                         .HasColumnType("datetime(6)");
 
@@ -274,12 +277,87 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CaseTemplateId");
+                    b.HasIndex("DocumentId");
 
                     b.ToTable("Cases");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CaseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CaseTemplateId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DoneAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("FetchedByTablet")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("FetchedByTabletAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("ReceiptRetrievedFromUser")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("ReceiptRetrievedFromUserAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("SiteId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int?>("UnitId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WorkerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int?>("eFormId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentId");
+
+                    b.ToTable("CaseVersions");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -324,22 +402,22 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplates");
+                    b.ToTable("Documents");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSite", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentSite", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseTemplateId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
                     b.Property<int>("SdkCaseId")
@@ -363,22 +441,22 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateSites");
+                    b.ToTable("DocumentSites");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteTag", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentSiteTag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseTemplateId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
                     b.Property<int>("SdkSiteTagId")
@@ -399,25 +477,25 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateSiteTags");
+                    b.ToTable("DocumentSiteTags");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteTagVersion", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentSiteTagVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseTemplateId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseTemplateSiteTagId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentSiteTagId")
                         .HasColumnType("int");
 
                     b.Property<int>("SdkSiteTagId")
@@ -438,25 +516,25 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateSiteTagVersions");
+                    b.ToTable("DocumentSiteTagVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateSiteVersion", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentSiteVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseTemplateId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseTemplateSiteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentSiteId")
                         .HasColumnType("int");
 
                     b.Property<int>("SdkCaseId")
@@ -480,10 +558,10 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateSiteVersions");
+                    b.ToTable("DocumentSiteVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateTranslation", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentTranslation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -500,6 +578,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("DocumentId")
+                        .HasColumnType("int");
 
                     b.Property<int>("LanguageId")
                         .HasColumnType("int");
@@ -525,12 +606,12 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CaseTemplateId");
+                    b.HasIndex("DocumentId");
 
-                    b.ToTable("CaseTemplateTranslations");
+                    b.ToTable("DocumentTranslations");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateTranslationVersion", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentTranslationVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -575,10 +656,10 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateTranslationVersions");
+                    b.ToTable("DocumentTranslationVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedData", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentUploadedData", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -594,6 +675,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocumentId")
                         .HasColumnType("int");
 
                     b.Property<bool>("RetractIfApproved")
@@ -620,14 +704,14 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CaseTemplateId");
+                    b.HasIndex("DocumentId");
 
                     b.HasIndex("UploadedDataId");
 
-                    b.ToTable("CaseTemplateUploadedDatas");
+                    b.ToTable("DocumentUploadedDatas");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersion", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentUploadedDataVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -639,13 +723,16 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<int>("CaseTemplateId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CaseTemplateUploadedDataId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentUploadedDataId")
                         .HasColumnType("int");
 
                     b.Property<bool>("RetractIfApproved")
@@ -672,14 +759,14 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CaseTemplateId");
+                    b.HasIndex("DocumentId");
 
                     b.HasIndex("UploadedDataId");
 
-                    b.ToTable("CaseTemplateUploadedDataVersions");
+                    b.ToTable("DocumentUploadedDataVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateVersion", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentVersion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -694,9 +781,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("CaseTemplateId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -704,6 +788,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("DescriptionFolderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndAt")
@@ -736,79 +823,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CaseTemplateVersions");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CaseTemplateId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("CreatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DoneAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("FetchedByTablet")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime>("FetchedByTabletAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("ReceiptRetrievedFromUser")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime>("ReceiptRetrievedFromUserAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("SiteId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Type")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int?>("UnitId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("UpdatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WorkerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int?>("eFormId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CaseTemplateId");
-
-                    b.ToTable("CaseVersions");
+                    b.ToTable("DocumentVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Folder", b =>
@@ -843,7 +858,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("DescriptionFolders");
+                    b.ToTable("Folders");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.FolderProperty", b =>
@@ -1046,7 +1061,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DescriptionFolderVersions");
+                    b.ToTable("FolderVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", b =>
@@ -1191,71 +1206,61 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Case", b =>
                 {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", "Document")
                         .WithMany()
-                        .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DocumentId");
 
-                    b.Navigation("CaseTemplate");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateTranslation", b =>
-                {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", null)
-                        .WithMany("CaseTemplateTranslations")
-                        .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedData", b =>
-                {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
-                        .WithMany("CaseTemplateUploadedDatas")
-                        .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
-                        .WithMany()
-                        .HasForeignKey("UploadedDataId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CaseTemplate");
-
-                    b.Navigation("UploadedData");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplateUploadedDataVersion", b =>
-                {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
-                        .WithMany()
-                        .HasForeignKey("CaseTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
-                        .WithMany()
-                        .HasForeignKey("UploadedDataId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CaseTemplate");
-
-                    b.Navigation("UploadedData");
+                    b.Navigation("Document");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseVersion", b =>
                 {
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", "CaseTemplate")
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", "Document")
                         .WithMany()
-                        .HasForeignKey("CaseTemplateId")
+                        .HasForeignKey("DocumentId");
+
+                    b.Navigation("Document");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentTranslation", b =>
+                {
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", null)
+                        .WithMany("CaseTemplateTranslations")
+                        .HasForeignKey("DocumentId");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentUploadedData", b =>
+                {
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", "Document")
+                        .WithMany("CaseTemplateUploadedDatas")
+                        .HasForeignKey("DocumentId");
+
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
+                        .WithMany()
+                        .HasForeignKey("UploadedDataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CaseTemplate");
+                    b.Navigation("Document");
+
+                    b.Navigation("UploadedData");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentUploadedDataVersion", b =>
+                {
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", "Document")
+                        .WithMany()
+                        .HasForeignKey("DocumentId");
+
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
+                        .WithMany()
+                        .HasForeignKey("UploadedDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Document");
+
+                    b.Navigation("UploadedData");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Folder", b =>
@@ -1276,7 +1281,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.CaseTemplate", b =>
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", b =>
                 {
                     b.Navigation("CaseTemplateTranslations");
 

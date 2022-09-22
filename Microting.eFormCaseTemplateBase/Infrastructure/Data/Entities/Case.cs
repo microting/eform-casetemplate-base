@@ -28,7 +28,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         [ForeignKey("CaseTemplates")]
         public int CaseTemplateId { get; set; }
 
-        public virtual CaseTemplate CaseTemplate { get; set; }
+        public virtual Document Document { get; set; }
 
         public bool FetchedByTablet { get; set; }
 

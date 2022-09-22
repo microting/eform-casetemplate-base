@@ -39,24 +39,24 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
 
         public DbSet<Case> Cases { get; set; }
         public DbSet<CaseVersion> CaseVersions { get; set; }
-        public DbSet<CaseTemplate> CaseTemplates { get; set; }
-        public DbSet<CaseTemplateVersion> CaseTemplateVersions { get; set; }
-        public DbSet<CaseTemplateSite> CaseTemplateSites { get; set; }
-        public DbSet<CaseTemplateSiteVersion> CaseTemplateSiteVersions { get; set; }
-        public DbSet<CaseTemplateSiteTag> CaseTemplateSiteTags { get; set; }
-        public DbSet<CaseTemplateSiteTagVersion> CaseTemplateSiteTagVersions { get; set; }
-        public DbSet<Folder> DescriptionFolders { get; set; }
-        public DbSet<FolderVersion> DescriptionFolderVersions { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<DocumentVersion> DocumentVersions { get; set; }
+        public DbSet<DocumentSite> DocumentSites { get; set; }
+        public DbSet<DocumentSiteVersion> DocumentSiteVersions { get; set; }
+        public DbSet<DocumentSiteTag> DocumentSiteTags { get; set; }
+        public DbSet<DocumentSiteTagVersion> DocumentSiteTagVersions { get; set; }
+        public DbSet<Folder> Folders { get; set; }
+        public DbSet<FolderVersion> FolderVersions { get; set; }
         public DbSet<FolderTranslation> FolderTranslations { get; set; }
         public DbSet<FolderTranslationVersion> FolderTranslationVersions { get; set; }
         public DbSet<FolderProperty> FolderProperties { get; set; }
         public DbSet<FolderPropertyVersion> FolderPropertyVersions { get; set; }
         public DbSet<UploadedData> UploadedDatas { get; set; }
         public DbSet<UploadedDataVersion> UploadedDataVersions { get; set; }
-        public DbSet<CaseTemplateUploadedData> CaseTemplateUploadedDatas { get; set; }
-        public DbSet<CaseTemplateUploadedDataVersion> CaseTemplateUploadedDataVersions { get; set; }
-        public DbSet<CaseTemplateTranslation> CaseTemplateTranslations { get; set; }
-        public DbSet<CaseTemplateTranslationVersion> CaseTemplateTranslationVersions { get; set; }
+        public DbSet<DocumentUploadedData> DocumentUploadedDatas { get; set; }
+        public DbSet<DocumentUploadedDataVersion> DocumentUploadedDataVersions { get; set; }
+        public DbSet<DocumentTranslation> DocumentTranslations { get; set; }
+        public DbSet<DocumentTranslationVersion> DocumentTranslationVersions { get; set; }
 
         // plugin settings
         public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
