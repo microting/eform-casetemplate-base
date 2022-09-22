@@ -17,5 +17,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public virtual ICollection<Folder> Children { get; set; }
 
         public virtual ICollection<FolderTranslation> FolderTranslations { get; set; }
+
+        public virtual FolderProperty FolderProperty { get; set; }
     }
 }
