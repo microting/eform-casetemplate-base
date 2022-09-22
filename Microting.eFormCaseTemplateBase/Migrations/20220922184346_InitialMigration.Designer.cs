@@ -11,7 +11,7 @@ using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 namespace Microting.eFormCaseTemplateBase.Migrations
 {
     [DbContext(typeof(CaseTemplatePnDbContext))]
-    [Migration("20220922180850_InitialMigration")]
+    [Migration("20220922184346_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -899,6 +899,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FolderId");
+
                     b.ToTable("FolderProperties");
                 });
 
@@ -1274,6 +1276,15 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.FolderProperty", b =>
+                {
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Folder", null)
+                        .WithMany("FolderProperties")
+                        .HasForeignKey("FolderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.FolderTranslation", b =>
                 {
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Folder", null)
@@ -1293,6 +1304,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Folder", b =>
                 {
                     b.Navigation("Children");
+
+                    b.Navigation("FolderProperties");
 
                     b.Navigation("FolderTranslations");
                 });

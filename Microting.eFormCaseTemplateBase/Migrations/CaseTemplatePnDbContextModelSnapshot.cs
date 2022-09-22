@@ -897,8 +897,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FolderId")
-                        .IsUnique();
+                    b.HasIndex("FolderId");
 
                     b.ToTable("FolderProperties");
                 });
@@ -1278,8 +1277,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.FolderProperty", b =>
                 {
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Folder", null)
-                        .WithOne("FolderProperty")
-                        .HasForeignKey("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.FolderProperty", "FolderId")
+                        .WithMany("FolderProperties")
+                        .HasForeignKey("FolderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1304,7 +1303,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     b.Navigation("Children");
 
-                    b.Navigation("FolderProperty");
+                    b.Navigation("FolderProperties");
 
                     b.Navigation("FolderTranslations");
                 });
