@@ -23,11 +23,9 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
         public bool AlwaysShow { get; set; }
 
-        public int DescriptionFolderId { get; set; }
+        public int FolderId { get; set; }
 
         [ForeignKey("Document")]
         public int DocumentId { get; set; }
-
-        public int FolderId { get; set; }
     }
 }

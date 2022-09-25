@@ -32,7 +32,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 EndAt = DateTime.Now,
                 // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
                 StartAt = DateTime.Now,
-                DescriptionFolderId = rnd.Next(1, 200),
+                FolderId = rnd.Next(1, 200),
                 RetractIfApproved = randomBool
             };
             await document.Create(DbContext);
@@ -118,7 +118,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             document.EndAt = DateTime.Now;
             // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
             document.StartAt = DateTime.Now;
-            document.DescriptionFolderId = rnd.Next(1, 200);
+            document.FolderId = rnd.Next(1, 200);
             document.RetractIfApproved = randomBool;
             await document.Create(DbContext);
 
@@ -227,7 +227,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             document.EndAt = DateTime.Now;
             // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
             document.StartAt = DateTime.Now;
-            document.DescriptionFolderId = rnd.Next(1, 200);
+            document.FolderId = rnd.Next(1, 200);
             document.RetractIfApproved = randomBool;
             await document.Create(DbContext);
 

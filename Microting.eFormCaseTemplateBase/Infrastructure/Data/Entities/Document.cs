@@ -20,13 +20,11 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
         public bool AlwaysShow { get; set; }
 
-        [ForeignKey("DescriptionFolders")]
-        public int DescriptionFolderId { get; set; }
+        [ForeignKey("Folder")]
+        public int FolderId { get; set; }
 
         public virtual ICollection<DocumentUploadedData> DocumentUploadedDatas { get; set; }
 
         public virtual ICollection<DocumentTranslation> DocumentTranslations { get; set; }
-
-        public int FolderId { get; set; }
     }
 }

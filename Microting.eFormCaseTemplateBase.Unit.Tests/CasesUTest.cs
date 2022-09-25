@@ -31,7 +31,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 EndAt = DateTime.Now,
                 // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
                 StartAt = DateTime.Now,
-                DescriptionFolderId = rnd.Next(0, 255),
+                FolderId = rnd.Next(0, 255),
                 RetractIfApproved = randomBool
             };
 
@@ -100,7 +100,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 EndAt = DateTime.Now,
                 // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
                 StartAt = DateTime.Now,
-                DescriptionFolderId = rnd.Next(0, 255),
+                FolderId = rnd.Next(0, 255),
                 RetractIfApproved = randomBool
             };
 
@@ -231,7 +231,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 EndAt = DateTime.Now,
                 // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
                 StartAt = DateTime.Now,
-                DescriptionFolderId = rnd.Next(0, 255),
+                FolderId = rnd.Next(0, 255),
                 RetractIfApproved = randomBool
             };
 

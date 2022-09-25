@@ -30,7 +30,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 EndAt = DateTime.Now,
                 // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
                 StartAt = DateTime.Now,
-                DescriptionFolderId = rnd.Next(1, 200),
+                FolderId = rnd.Next(1, 200),
                 RetractIfApproved = randomBool
             };
 
@@ -64,7 +64,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplates[0].PdfTitle);
             Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
-            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
+            Assert.AreEqual(document.FolderId, dbCaseTemplates[0].FolderId);
             Assert.AreEqual(document.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
 
             //Versions
@@ -82,7 +82,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[0].PdfTitle);
             Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[0].StartAt.ToString());
-            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[0].DescriptionFolderId);
+            Assert.AreEqual(document.FolderId, dbCaseTemplateVersions[0].FolderId);
             Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
         }
 
@@ -103,7 +103,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 EndAt = DateTime.Now,
                 // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
                 StartAt = DateTime.Now,
-                DescriptionFolderId = rnd.Next(1, 200),
+                FolderId = rnd.Next(1, 200),
                 RetractIfApproved = randomBool
             };
             await document.Create(DbContext);
@@ -119,7 +119,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             DateTime oldEndAt = document.EndAt;
             // string oldPdfTitle = caseTemplate.PdfTitle;
             DateTime oldStartAt = document.StartAt;
-            int oldDescriptionFolderId = document.DescriptionFolderId;
+            int oldFolderId = document.FolderId;
             bool oldRetractIfApproved = document.RetractIfApproved;
 
             document.Approvable = randomBool;
@@ -129,7 +129,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             document.EndAt = DateTime.Now;
             // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
             document.StartAt = DateTime.Now;
-            document.DescriptionFolderId = rnd.Next(1, 200);
+            document.FolderId = rnd.Next(1, 200);
             document.RetractIfApproved = randomBool;
 
             await document.Update(DbContext);
@@ -159,7 +159,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplates[0].PdfTitle);
             Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
-            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
+            Assert.AreEqual(document.FolderId, dbCaseTemplates[0].FolderId);
             Assert.AreEqual(document.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
 
             //Old Version
@@ -177,7 +177,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(oldEndAt.ToString(), dbCaseTemplateVersions[0].EndAt.ToString());
             // Assert.AreEqual(oldPdfTitle, dbCaseTemplateVersions[0].PdfTitle);
             Assert.AreEqual(oldStartAt.ToString(), dbCaseTemplateVersions[0].StartAt.ToString());
-            Assert.AreEqual(oldDescriptionFolderId, dbCaseTemplateVersions[0].DescriptionFolderId);
+            Assert.AreEqual(oldFolderId, dbCaseTemplateVersions[0].FolderId);
             Assert.AreEqual(oldRetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
 
             //New Version
@@ -195,7 +195,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[1].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[1].PdfTitle);
             Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[1].StartAt.ToString());
-            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[1].DescriptionFolderId);
+            Assert.AreEqual(document.FolderId, dbCaseTemplateVersions[1].FolderId);
             Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[1].RetractIfApproved);
         }
 
@@ -216,7 +216,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
                 EndAt = DateTime.Now,
                 // caseTemplate.PdfTitle = Guid.NewGuid().ToString();
                 StartAt = DateTime.Now,
-                DescriptionFolderId = rnd.Next(1, 200),
+                FolderId = rnd.Next(1, 200),
                 RetractIfApproved = randomBool
             };
             await document.Create(DbContext);
@@ -253,7 +253,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplates[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplates[0].PdfTitle);
             Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplates[0].StartAt.ToString());
-            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplates[0].DescriptionFolderId);
+            Assert.AreEqual(document.FolderId, dbCaseTemplates[0].FolderId);
             Assert.AreEqual(document.RetractIfApproved, dbCaseTemplates[0].RetractIfApproved);
 
             //Old Version
@@ -271,7 +271,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[0].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[0].PdfTitle);
             Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[0].StartAt.ToString());
-            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[0].DescriptionFolderId);
+            Assert.AreEqual(document.FolderId, dbCaseTemplateVersions[0].FolderId);
             Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[0].RetractIfApproved);
 
             //New Version
@@ -289,7 +289,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(document.EndAt.ToString(), dbCaseTemplateVersions[1].EndAt.ToString());
             // Assert.AreEqual(caseTemplate.PdfTitle, dbCaseTemplateVersions[1].PdfTitle);
             Assert.AreEqual(document.StartAt.ToString(), dbCaseTemplateVersions[1].StartAt.ToString());
-            Assert.AreEqual(document.DescriptionFolderId, dbCaseTemplateVersions[1].DescriptionFolderId);
+            Assert.AreEqual(document.FolderId, dbCaseTemplateVersions[1].FolderId);
             Assert.AreEqual(document.RetractIfApproved, dbCaseTemplateVersions[1].RetractIfApproved);
         }
     }

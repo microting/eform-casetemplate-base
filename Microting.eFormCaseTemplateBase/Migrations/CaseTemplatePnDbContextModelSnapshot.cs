@@ -375,9 +375,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<int>("CreatedByUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DescriptionFolderId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("datetime(6)");
 
@@ -779,9 +776,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("CreatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DescriptionFolderId")
                         .HasColumnType("int");
 
                     b.Property<int>("DocumentId")
