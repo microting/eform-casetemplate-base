@@ -25,6 +25,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     RetractIfApproved = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     AlwaysShow = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     DescriptionFolderId = table.Column<int>(type: "int", nullable: false),
+                    FolderId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkflowState = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
@@ -179,6 +180,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     AlwaysShow = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     DescriptionFolderId = table.Column<int>(type: "int", nullable: false),
                     DocumentId = table.Column<int>(type: "int", nullable: false),
+                    FolderId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkflowState = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)

@@ -11,7 +11,7 @@ using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 namespace Microting.eFormCaseTemplateBase.Migrations
 {
     [DbContext(typeof(CaseTemplatePnDbContext))]
-    [Migration("20220925155743_InitialMigration")]
+    [Migration("20220925173602_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -382,6 +382,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("FolderId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("RetractIfApproved")
                         .HasColumnType("tinyint(1)");
@@ -788,6 +791,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("FolderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PdfTitle")
                         .HasColumnType("longtext");

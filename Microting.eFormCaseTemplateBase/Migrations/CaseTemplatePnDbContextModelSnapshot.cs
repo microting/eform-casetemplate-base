@@ -381,6 +381,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("FolderId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("RetractIfApproved")
                         .HasColumnType("tinyint(1)");
 
@@ -786,6 +789,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("FolderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PdfTitle")
                         .HasColumnType("longtext");

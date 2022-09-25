@@ -27,5 +27,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
         [ForeignKey("Document")]
         public int DocumentId { get; set; }
+
+        public int FolderId { get; set; }
     }
 }
