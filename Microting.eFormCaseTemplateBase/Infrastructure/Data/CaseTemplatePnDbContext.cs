@@ -57,6 +57,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
         public DbSet<DocumentUploadedDataVersion> DocumentUploadedDataVersions { get; set; }
         public DbSet<DocumentTranslation> DocumentTranslations { get; set; }
         public DbSet<DocumentTranslationVersion> DocumentTranslationVersions { get; set; }
+        public DbSet<DocumentProperty> DocumentProperties { get; set; }
+        public DbSet<DocumentPropertyVersion> DocumentPropertyVersions { get; set; }
 
         // plugin settings
         public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
