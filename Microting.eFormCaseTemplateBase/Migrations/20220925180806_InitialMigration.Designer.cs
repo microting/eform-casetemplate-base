@@ -11,7 +11,7 @@ using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 namespace Microting.eFormCaseTemplateBase.Migrations
 {
     [DbContext(typeof(CaseTemplatePnDbContext))]
-    [Migration("20220925174335_InitialMigration")]
+    [Migration("20220925180806_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -405,6 +405,44 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Documents");
+                });
+
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentProperty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PropertyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentId");
+
+                    b.ToTable("DocumentProperty");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentSite", b =>
@@ -1217,6 +1255,15 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Navigation("Document");
                 });
 
+            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentProperty", b =>
+                {
+                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", null)
+                        .WithMany("DocumentProperties")
+                        .HasForeignKey("DocumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentTranslation", b =>
                 {
                     b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", null)
@@ -1293,6 +1340,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Document", b =>
                 {
+                    b.Navigation("DocumentProperties");
+
                     b.Navigation("DocumentTranslations");
 
                     b.Navigation("DocumentUploadedDatas");

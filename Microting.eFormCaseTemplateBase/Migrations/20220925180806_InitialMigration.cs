@@ -540,6 +540,34 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "DocumentProperty",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DocumentId = table.Column<int>(type: "int", nullable: false),
+                    PropertyId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    WorkflowState = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
+                    UpdatedByUserId = table.Column<int>(type: "int", nullable: false),
+                    Version = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DocumentProperty", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DocumentProperty_Documents_DocumentId",
+                        column: x => x.DocumentId,
+                        principalTable: "Documents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "DocumentTranslations",
                 columns: table => new
                 {
@@ -751,6 +779,11 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 column: "DocumentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DocumentProperty_DocumentId",
+                table: "DocumentProperty",
+                column: "DocumentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DocumentTranslations_DocumentId",
                 table: "DocumentTranslations",
                 column: "DocumentId");
@@ -803,6 +836,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
             migrationBuilder.DropTable(
                 name: "CaseVersions");
+
+            migrationBuilder.DropTable(
+                name: "DocumentProperty");
 
             migrationBuilder.DropTable(
                 name: "DocumentSites");
