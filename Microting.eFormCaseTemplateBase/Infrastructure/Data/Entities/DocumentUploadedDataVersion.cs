@@ -5,7 +5,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
     public class DocumentUploadedDataVersion : BaseEntity
     {
-        public int CaseTemplateId { get; set; }
+        public int DocumentId { get; set; }
 
         public int UploadedDataId { get; set; }
 

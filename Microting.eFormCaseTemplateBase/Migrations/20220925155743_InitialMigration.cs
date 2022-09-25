@@ -137,8 +137,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CaseTemplateTranslationId = table.Column<int>(type: "int", nullable: false),
-                    CaseTemplateId = table.Column<int>(type: "int", nullable: false),
+                    DocumentTranslation = table.Column<int>(type: "int", nullable: false),
+                    DocumentId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "longtext", nullable: true)
@@ -545,7 +545,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CaseTemplateId = table.Column<int>(type: "int", nullable: false),
+                    DocumentId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "longtext", nullable: true)
@@ -553,7 +553,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     PdfTitle = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
-                    DocumentId = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkflowState = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
@@ -569,7 +568,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         name: "FK_DocumentTranslations_Documents_DocumentId",
                         column: x => x.DocumentId,
                         principalTable: "Documents",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -669,13 +669,12 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CaseTemplateId = table.Column<int>(type: "int", nullable: false),
+                    DocumentId = table.Column<int>(type: "int", nullable: false),
                     UploadedDataId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Approvable = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RetractIfApproved = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    DocumentId = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkflowState = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
@@ -691,7 +690,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         name: "FK_DocumentUploadedDatas_Documents_DocumentId",
                         column: x => x.DocumentId,
                         principalTable: "Documents",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DocumentUploadedDatas_UploadedDatas_UploadedDataId",
                         column: x => x.UploadedDataId,
@@ -707,13 +707,12 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CaseTemplateId = table.Column<int>(type: "int", nullable: false),
+                    DocumentId = table.Column<int>(type: "int", nullable: false),
                     UploadedDataId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Approvable = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RetractIfApproved = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    DocumentId = table.Column<int>(type: "int", nullable: true),
                     DocumentUploadedDataId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -730,7 +729,8 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         name: "FK_DocumentUploadedDataVersions_Documents_DocumentId",
                         column: x => x.DocumentId,
                         principalTable: "Documents",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DocumentUploadedDataVersions_UploadedDatas_UploadedDataId",
                         column: x => x.UploadedDataId,

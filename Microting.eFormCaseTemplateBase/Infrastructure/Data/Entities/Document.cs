@@ -23,8 +23,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         [ForeignKey("DescriptionFolders")]
         public int DescriptionFolderId { get; set; }
 
-        public virtual ICollection<DocumentUploadedData> CaseTemplateUploadedDatas { get; set; }
+        public virtual ICollection<DocumentUploadedData> DocumentUploadedDatas { get; set; }
 
-        public virtual ICollection<DocumentTranslation> CaseTemplateTranslations { get; set; }
+        public virtual ICollection<DocumentTranslation> DocumentTranslations { get; set; }
     }
 }

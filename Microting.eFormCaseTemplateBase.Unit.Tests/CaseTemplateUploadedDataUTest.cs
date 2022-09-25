@@ -52,7 +52,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             DocumentUploadedData documentUploadedData = new DocumentUploadedData();
             documentUploadedData.Approvable = randomBool;
             documentUploadedData.Title = Guid.NewGuid().ToString();
-            documentUploadedData.CaseTemplateId = document.Id;
+            documentUploadedData.DocumentId = document.Id;
             documentUploadedData.RetractIfApproved = randomBool;
             documentUploadedData.UploadedDataId = uploadedData.Id;
 
@@ -80,7 +80,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDatas[0].WorkflowState);
             Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
             Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDatas[0].UploadedDataId);
             Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
 
@@ -94,7 +94,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
             Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
             Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[0].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
             Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
         }
@@ -137,7 +137,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             DocumentUploadedData documentUploadedData = new DocumentUploadedData();
             documentUploadedData.Approvable = randomBool;
             documentUploadedData.Title = Guid.NewGuid().ToString();
-            documentUploadedData.CaseTemplateId = document.Id;
+            documentUploadedData.DocumentId = document.Id;
             documentUploadedData.RetractIfApproved = randomBool;
             documentUploadedData.UploadedDataId = uploadedData.Id;
             await documentUploadedData.Create(DbContext);
@@ -175,7 +175,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDatas[0].WorkflowState);
             Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
             Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDatas[0].UploadedDataId);
             Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
 
@@ -189,7 +189,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
             Assert.AreEqual(oldApprovable, dbCaseTemplateUploadedDataVersions[0].Approvable);
             Assert.AreEqual(oldTitle, dbCaseTemplateUploadedDataVersions[0].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
             Assert.AreEqual(oldRetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
 
@@ -203,7 +203,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[1].WorkflowState);
             Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
             Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[1].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[1].UploadedDataId);
             Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
         }
@@ -246,7 +246,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             DocumentUploadedData documentUploadedData = new DocumentUploadedData();
             documentUploadedData.Approvable = randomBool;
             documentUploadedData.Title = Guid.NewGuid().ToString();
-            documentUploadedData.CaseTemplateId = document.Id;
+            documentUploadedData.DocumentId = document.Id;
             documentUploadedData.RetractIfApproved = randomBool;
             documentUploadedData.UploadedDataId = uploadedData.Id;
             await documentUploadedData.Create(DbContext);
@@ -277,7 +277,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateUploadedDatas[0].WorkflowState);
             Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
             Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDatas[0].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDatas[0].UploadedDataId);
             Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
 
@@ -291,7 +291,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
             Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
             Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[0].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[0].UploadedDataId);
             Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
 
@@ -305,7 +305,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateUploadedDataVersions[1].WorkflowState);
             Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
             Assert.AreEqual(documentUploadedData.Title, dbCaseTemplateUploadedDataVersions[1].Title);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].CaseTemplateId);
+            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].DocumentId);
             Assert.AreEqual(uploadedData.Id, dbCaseTemplateUploadedDataVersions[1].UploadedDataId);
             Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
         }

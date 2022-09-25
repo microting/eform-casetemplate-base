@@ -5,8 +5,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
 
 public class DocumentProperty : PnBase
 {
-    [ForeignKey("CaseTemplates")]
-    public int CaseTemplateId { get; set; }
+    [ForeignKey("Document")]
+    public int DocumentId { get; set; }
 
     public int PropertyId { get; set; }
 

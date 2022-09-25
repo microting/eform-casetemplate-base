@@ -8,8 +8,8 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
     public class DocumentUploadedData : PnBase
     {
-        [ForeignKey("CaseTemplates")]
-        public int CaseTemplateId { get; set; }
+        [ForeignKey("Document")]
+        public int DocumentId { get; set; }
 
         [ForeignKey("UploadedDatas")]
         public int UploadedDataId { get; set; }
