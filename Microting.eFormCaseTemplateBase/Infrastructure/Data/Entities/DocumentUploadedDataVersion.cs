@@ -25,5 +25,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public int DocumentUploadedDataId { get; set; }
 
         public int LanguageId { get; set; }
+
+        public string Hash { get; set; }
     }
 }

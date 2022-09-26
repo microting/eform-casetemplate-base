@@ -748,6 +748,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<string>("File")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Hash")
+                        .HasColumnType("longtext");
+
                     b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
@@ -804,6 +807,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("File")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Hash")
                         .HasColumnType("longtext");
 
                     b.Property<int>("LanguageId")

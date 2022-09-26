@@ -11,7 +11,7 @@ using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 namespace Microting.eFormCaseTemplateBase.Migrations
 {
     [DbContext(typeof(CaseTemplatePnDbContext))]
-    [Migration("20220926061631_InitialMigration")]
+    [Migration("20220926172305_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -750,6 +750,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<string>("File")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Hash")
+                        .HasColumnType("longtext");
+
                     b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
@@ -806,6 +809,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("File")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Hash")
                         .HasColumnType("longtext");
 
                     b.Property<int>("LanguageId")
