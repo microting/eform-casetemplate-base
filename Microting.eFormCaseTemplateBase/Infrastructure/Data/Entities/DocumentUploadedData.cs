@@ -11,9 +11,6 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         [ForeignKey("Document")]
         public int DocumentId { get; set; }
 
-        [ForeignKey("UploadedDatas")]
-        public int UploadedDataId { get; set; }
-
         public string Name { get; set; }
 
         public string File { get; set; }
@@ -23,8 +20,6 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public bool RetractIfApproved { get; set; }
 
         public virtual Document Document { get; set; }
-
-        public virtual UploadedData UploadedData { get; set; }
 
         public int LanguageId { get; set; }
 
