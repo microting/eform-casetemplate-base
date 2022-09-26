@@ -720,7 +720,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DocumentId = table.Column<int>(type: "int", nullable: false),
                     UploadedDataId = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    File = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Approvable = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RetractIfApproved = table.Column<bool>(type: "tinyint(1)", nullable: false),
@@ -759,7 +761,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DocumentId = table.Column<int>(type: "int", nullable: false),
                     UploadedDataId = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    File = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Approvable = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RetractIfApproved = table.Column<bool>(type: "tinyint(1)", nullable: false),

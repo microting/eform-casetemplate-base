@@ -9,7 +9,9 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
         public int UploadedDataId { get; set; }
 
-        public string Title { get; set; }
+        public string Name { get; set; }
+
+        public string File { get; set; }
 
         public bool Approvable { get; set; }
 
