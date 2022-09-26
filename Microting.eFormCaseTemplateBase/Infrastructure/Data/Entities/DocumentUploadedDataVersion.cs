@@ -19,8 +19,6 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
         public virtual Document Document { get; set; }
 
-        public virtual UploadedData UploadedData { get; set; }
-
         [ForeignKey("DocumentUploadedDatas")]
         public int DocumentUploadedDataId { get; set; }
 

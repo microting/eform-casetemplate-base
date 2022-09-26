@@ -780,8 +780,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
 
                     b.HasIndex("DocumentId");
 
-                    b.HasIndex("UploadedDataId");
-
                     b.ToTable("DocumentUploadedDatas");
                 });
 
@@ -840,8 +838,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DocumentId");
-
-                    b.HasIndex("UploadedDataId");
 
                     b.ToTable("DocumentUploadedDataVersions");
                 });
@@ -1146,135 +1142,6 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.ToTable("FolderVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Checksum")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("CreatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CurrentFile")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime?>("ExpirationDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Extension")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("FileLocation")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("FileName")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<short?>("Local")
-                        .HasColumnType("smallint");
-
-                    b.Property<string>("OriginalFileName")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("UpdatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UploaderType")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UploadedDatas");
-                });
-
-            modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedDataVersion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Checksum")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("CreatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CurrentFile")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime?>("ExpirationDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Extension")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("FileLocation")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("FileName")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<short?>("Local")
-                        .HasColumnType("smallint");
-
-                    b.Property<string>("OriginalFileName")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("UpdatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UploadedDataId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UploaderType")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UploadedDataVersions");
-                });
-
             modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermission", b =>
                 {
                     b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginPermission", "Permission")
@@ -1330,15 +1197,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
-                        .WithMany()
-                        .HasForeignKey("UploadedDataId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Document");
-
-                    b.Navigation("UploadedData");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.DocumentUploadedDataVersion", b =>
@@ -1349,15 +1208,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.UploadedData", "UploadedData")
-                        .WithMany()
-                        .HasForeignKey("UploadedDataId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Document");
-
-                    b.Navigation("UploadedData");
                 });
 
             modelBuilder.Entity("Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities.Folder", b =>

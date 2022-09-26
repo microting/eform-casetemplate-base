@@ -51,8 +51,6 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data
         public DbSet<FolderTranslationVersion> FolderTranslationVersions { get; set; }
         public DbSet<FolderProperty> FolderProperties { get; set; }
         public DbSet<FolderPropertyVersion> FolderPropertyVersions { get; set; }
-        public DbSet<UploadedData> UploadedDatas { get; set; }
-        public DbSet<UploadedDataVersion> UploadedDataVersions { get; set; }
         public DbSet<DocumentUploadedData> DocumentUploadedDatas { get; set; }
         public DbSet<DocumentUploadedDataVersion> DocumentUploadedDataVersions { get; set; }
         public DbSet<DocumentTranslation> DocumentTranslations { get; set; }
