@@ -21,5 +21,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
         [ForeignKey("DocumentUploadedDatas")]
         public int DocumentUploadedDataId { get; set; }
+
+        public int LanguageId { get; set; }
     }
 }

@@ -745,6 +745,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("RetractIfApproved")
                         .HasColumnType("tinyint(1)");
 
@@ -795,6 +798,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("DocumentUploadedDataId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
                     b.Property<bool>("RetractIfApproved")

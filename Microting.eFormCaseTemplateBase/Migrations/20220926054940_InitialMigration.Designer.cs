@@ -11,7 +11,7 @@ using Microting.eFormCaseTemplateBase.Infrastructure.Data;
 namespace Microting.eFormCaseTemplateBase.Migrations
 {
     [DbContext(typeof(CaseTemplatePnDbContext))]
-    [Migration("20220925194201_InitialMigration")]
+    [Migration("20220926054940_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -747,6 +747,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("RetractIfApproved")
                         .HasColumnType("tinyint(1)");
 
@@ -797,6 +800,9 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("DocumentUploadedDataId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
                     b.Property<bool>("RetractIfApproved")

@@ -724,6 +724,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Approvable = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RetractIfApproved = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkflowState = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
@@ -763,6 +764,7 @@ namespace Microting.eFormCaseTemplateBase.Migrations
                     Approvable = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     RetractIfApproved = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     DocumentUploadedDataId = table.Column<int>(type: "int", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     WorkflowState = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
