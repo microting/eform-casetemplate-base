@@ -18,9 +18,16 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             //Arrange
 
             Random rnd = new Random();
+
+            Document document = new Document()
+            {
+
+            };
+
+            await document.Create(DbContext);
             DocumentSite documentSite = new DocumentSite
             {
-                DocumentId = rnd.Next(1, 255),
+                DocumentId = document.Id,
                 SdkSiteId = rnd.Next(1, 255),
                 SdkCaseId = rnd.Next(1, 255)
             };
@@ -69,9 +76,16 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
              //Arrange
 
             Random rnd = new Random();
+
+            Document document = new Document()
+            {
+
+            };
+
+            await document.Create(DbContext);
             DocumentSite documentSite = new DocumentSite
             {
-                DocumentId = rnd.Next(1, 255),
+                DocumentId = document.Id,
                 SdkSiteId = rnd.Next(1, 255),
                 SdkCaseId = rnd.Next(1, 255)
             };
@@ -85,7 +99,14 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             int oldSdkSiteId = documentSite.SdkSiteId;
             int oldSdkCaseId = documentSite.SdkCaseId;
 
-            documentSite.DocumentId = rnd.Next(1, 255);
+
+            Document NewDocument = new Document()
+            {
+
+            };
+
+            await NewDocument.Create(DbContext);
+            documentSite.DocumentId = NewDocument.Id;
             documentSite.SdkSiteId = rnd.Next(1, 255);
             documentSite.SdkCaseId = rnd.Next(1, 255);
 
@@ -145,9 +166,17 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             //Arrange
 
             Random rnd = new Random();
+
+            Document document = new Document()
+            {
+
+            };
+
+            await document.Create(DbContext);
+
             DocumentSite documentSite = new DocumentSite
             {
-                DocumentId = rnd.Next(1, 255),
+                DocumentId = document.Id,
                 SdkSiteId = rnd.Next(1, 255),
                 SdkCaseId = rnd.Next(1, 255)
             };
