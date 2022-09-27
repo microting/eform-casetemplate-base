@@ -13,5 +13,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 
         [ForeignKey("DocumentSites")]
         public int DocumentSiteId { get; set; }
+
+        public int PropertyId { get; set; }
     }
 }

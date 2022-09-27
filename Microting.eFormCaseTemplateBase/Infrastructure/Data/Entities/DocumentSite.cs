@@ -15,5 +15,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public int SdkSiteId { get; set; }
 
         public int SdkCaseId { get; set; }
+
+        public int PropertyId { get; set; }
     }
 }
