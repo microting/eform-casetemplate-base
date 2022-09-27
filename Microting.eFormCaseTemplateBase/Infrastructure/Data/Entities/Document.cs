@@ -28,5 +28,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public virtual ICollection<DocumentTranslation> DocumentTranslations { get; set; }
 
         public virtual ICollection<DocumentProperty> DocumentProperties { get; set; }
+
+        public bool Status { get; set; }
     }
 }
