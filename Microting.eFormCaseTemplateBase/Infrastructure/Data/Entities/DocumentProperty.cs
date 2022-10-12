@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microting.eForm.Infrastructure.Data.Entities;
 
@@ -9,5 +10,7 @@ public class DocumentProperty : PnBase
     public int DocumentId { get; set; }
 
     public int PropertyId { get; set; }
+
+    public DateTime? ExpireDate { get; set; }
 
 }

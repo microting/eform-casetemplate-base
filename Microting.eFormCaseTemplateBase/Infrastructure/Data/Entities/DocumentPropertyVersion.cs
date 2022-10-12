@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microting.eForm.Infrastructure.Data.Entities;
 
@@ -10,5 +11,7 @@ public class DocumentPropertyVersion : BaseEntity
     public int PropertyId { get; set; }
 
     public int DocumentPropertyId { get; set; }
+
+    public DateTime? ExpireDate { get; set; }
 
 }
