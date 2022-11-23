@@ -32,5 +32,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public virtual ICollection<DocumentSite> DocumentSites { get; set; }
 
         public bool Status { get; set; }
+
+        public bool IsLocked { get; set; }
     }
 }

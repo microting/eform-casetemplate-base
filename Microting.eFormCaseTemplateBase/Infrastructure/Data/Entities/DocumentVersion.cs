@@ -29,5 +29,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public int DocumentId { get; set; }
 
         public bool Status { get; set; }
+
+        public bool IsLocked { get; set; }
     }
 }
