@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities;
 
@@ -16,4 +15,5 @@ public class DocumentTranslation : PnBase
 
     public int LanguageId { get; set; }
 
+    public string ExtensionFile { get; set; }
 }

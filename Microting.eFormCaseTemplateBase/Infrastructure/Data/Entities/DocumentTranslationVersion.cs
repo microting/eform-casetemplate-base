@@ -18,4 +18,5 @@ public class DocumentTranslationVersion: BaseEntity
 
     public int LanguageId { get; set; }
 
+    public string ExtensionFile { get; set; }
 }
