@@ -1,8 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using Microting.eForm.Infrastructure.Constants;
-using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
 {
@@ -26,5 +22,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public string Hash { get; set; }
 
         public string SdkHash { get; set; }
-    }
+
+        public string Extension { get; set; }
+	}
 }

@@ -25,5 +25,7 @@ namespace Microting.eFormCaseTemplateBase.Infrastructure.Data.Entities
         public string Hash { get; set; }
 
         public string SdkHash { get; set; }
-    }
+
+        public string Extension { get; set; }
+	}
 }
