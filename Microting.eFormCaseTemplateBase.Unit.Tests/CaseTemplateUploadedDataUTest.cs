@@ -51,37 +51,37 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<DocumentUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.DocumentUploadedDataVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbCaseTemplateUploadedDatas);
-            Assert.NotNull(dbCaseTemplateUploadedDataVersions);
+            Assert.That(dbCaseTemplateUploadedDatas, Is.Not.Null);
+            Assert.That(dbCaseTemplateUploadedDataVersions, Is.Not.Null);
 
-            Assert.AreEqual(1, dbCaseTemplateUploadedDatas.Count);
-            Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions.Count);
+            Assert.That(dbCaseTemplateUploadedDatas.Count, Is.EqualTo(1));
+            Assert.That(dbCaseTemplateUploadedDataVersions.Count, Is.EqualTo(1));
 
 
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
-            Assert.AreEqual(documentUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDatas[0].WorkflowState);
-            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
-            Assert.AreEqual(documentUploadedData.Name, dbCaseTemplateUploadedDatas[0].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].DocumentId);
-            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDatas[0].Id, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Version, Is.EqualTo(documentUploadedData.Version));
+            Assert.That(dbCaseTemplateUploadedDatas[0].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString(), Is.EqualTo(documentUploadedData.UpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDatas[0].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDatas[0].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDatas[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Approvable, Is.EqualTo(documentUploadedData.Approvable));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Name, Is.EqualTo(documentUploadedData.Name));
+            Assert.That(dbCaseTemplateUploadedDatas[0].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDatas[0].RetractIfApproved, Is.EqualTo(documentUploadedData.RetractIfApproved));
 
             //Versions
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
-            Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions[0].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
-            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
-            Assert.AreEqual(documentUploadedData.Name, dbCaseTemplateUploadedDataVersions[0].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].DocumentId);
-            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Id, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Version, Is.EqualTo(1));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString(), Is.EqualTo(documentUploadedData.UpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Approvable, Is.EqualTo(documentUploadedData.Approvable));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Name, Is.EqualTo(documentUploadedData.Name));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].RetractIfApproved, Is.EqualTo(documentUploadedData.RetractIfApproved));
         }
 
         [Test]
@@ -131,50 +131,50 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<DocumentUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.DocumentUploadedDataVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbCaseTemplateUploadedDatas);
-            Assert.NotNull(dbCaseTemplateUploadedDataVersions);
+            Assert.That(dbCaseTemplateUploadedDatas, Is.Not.Null);
+            Assert.That(dbCaseTemplateUploadedDataVersions, Is.Not.Null);
 
-            Assert.AreEqual(1, dbCaseTemplateUploadedDatas.Count);
-            Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions.Count);
+            Assert.That(dbCaseTemplateUploadedDatas.Count, Is.EqualTo(1));
+            Assert.That(dbCaseTemplateUploadedDataVersions.Count, Is.EqualTo(2));
 
 
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
-            Assert.AreEqual(documentUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDatas[0].WorkflowState);
-            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
-            Assert.AreEqual(documentUploadedData.Name, dbCaseTemplateUploadedDatas[0].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].DocumentId);
-            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDatas[0].Id, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Version, Is.EqualTo(documentUploadedData.Version));
+            Assert.That(dbCaseTemplateUploadedDatas[0].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString(), Is.EqualTo(documentUploadedData.UpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDatas[0].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDatas[0].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDatas[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Approvable, Is.EqualTo(documentUploadedData.Approvable));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Name, Is.EqualTo(documentUploadedData.Name));
+            Assert.That(dbCaseTemplateUploadedDatas[0].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDatas[0].RetractIfApproved, Is.EqualTo(documentUploadedData.RetractIfApproved));
 
             //Old Version
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
-            Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions[0].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
-            Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
-            Assert.AreEqual(oldApprovable, dbCaseTemplateUploadedDataVersions[0].Approvable);
-            Assert.AreEqual(oldName, dbCaseTemplateUploadedDataVersions[0].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].DocumentId);
-            Assert.AreEqual(oldRetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Id, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Version, Is.EqualTo(1));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString(), Is.EqualTo(oldUpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Approvable, Is.EqualTo(oldApprovable));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Name, Is.EqualTo(oldName));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].RetractIfApproved, Is.EqualTo(oldRetractIfApproved));
 
             //New Version
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].DocumentUploadedDataId);
-            Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions[1].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[1].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[1].WorkflowState);
-            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
-            Assert.AreEqual(documentUploadedData.Name, dbCaseTemplateUploadedDataVersions[1].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].DocumentId);
-            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].DocumentUploadedDataId, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].Version, Is.EqualTo(2));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString(), Is.EqualTo(documentUploadedData.UpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].Approvable, Is.EqualTo(documentUploadedData.Approvable));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].Name, Is.EqualTo(documentUploadedData.Name));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].RetractIfApproved, Is.EqualTo(documentUploadedData.RetractIfApproved));
         }
 
         [Test]
@@ -219,50 +219,50 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<DocumentUploadedDataVersion> dbCaseTemplateUploadedDataVersions = DbContext.DocumentUploadedDataVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbCaseTemplateUploadedDatas);
-            Assert.NotNull(dbCaseTemplateUploadedDataVersions);
+            Assert.That(dbCaseTemplateUploadedDatas, Is.Not.Null);
+            Assert.That(dbCaseTemplateUploadedDataVersions, Is.Not.Null);
 
-            Assert.AreEqual(1, dbCaseTemplateUploadedDatas.Count);
-            Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions.Count);
+            Assert.That(dbCaseTemplateUploadedDatas.Count, Is.EqualTo(1));
+            Assert.That(dbCaseTemplateUploadedDataVersions.Count, Is.EqualTo(2));
 
 
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDatas[0].Id);
-            Assert.AreEqual(documentUploadedData.Version, dbCaseTemplateUploadedDatas[0].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDatas[0].CreatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDatas[0].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDatas[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateUploadedDatas[0].WorkflowState);
-            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDatas[0].Approvable);
-            Assert.AreEqual(documentUploadedData.Name, dbCaseTemplateUploadedDatas[0].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDatas[0].DocumentId);
-            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDatas[0].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDatas[0].Id, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Version, Is.EqualTo(documentUploadedData.Version));
+            Assert.That(dbCaseTemplateUploadedDatas[0].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDatas[0].UpdatedAt.ToString(), Is.EqualTo(documentUploadedData.UpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDatas[0].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDatas[0].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDatas[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Approvable, Is.EqualTo(documentUploadedData.Approvable));
+            Assert.That(dbCaseTemplateUploadedDatas[0].Name, Is.EqualTo(documentUploadedData.Name));
+            Assert.That(dbCaseTemplateUploadedDatas[0].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDatas[0].RetractIfApproved, Is.EqualTo(documentUploadedData.RetractIfApproved));
 
             //Old Version
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[0].Id);
-            Assert.AreEqual(1, dbCaseTemplateUploadedDataVersions[0].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString());
-            Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[0].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseTemplateUploadedDataVersions[0].WorkflowState);
-            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[0].Approvable);
-            Assert.AreEqual(documentUploadedData.Name, dbCaseTemplateUploadedDataVersions[0].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[0].DocumentId);
-            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[0].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Id, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Version, Is.EqualTo(1));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].UpdatedAt.ToString(), Is.EqualTo(oldUpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Approvable, Is.EqualTo(documentUploadedData.Approvable));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].Name, Is.EqualTo(documentUploadedData.Name));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[0].RetractIfApproved, Is.EqualTo(documentUploadedData.RetractIfApproved));
 
             //New Version
-            Assert.AreEqual(documentUploadedData.Id, dbCaseTemplateUploadedDataVersions[1].DocumentUploadedDataId);
-            Assert.AreEqual(2, dbCaseTemplateUploadedDataVersions[1].Version);
-            Assert.AreEqual(documentUploadedData.CreatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.UpdatedAt.ToString(), dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(documentUploadedData.CreatedByUserId, dbCaseTemplateUploadedDataVersions[1].CreatedByUserId);
-            Assert.AreEqual(documentUploadedData.UpdatedByUserId, dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseTemplateUploadedDataVersions[1].WorkflowState);
-            Assert.AreEqual(documentUploadedData.Approvable, dbCaseTemplateUploadedDataVersions[1].Approvable);
-            Assert.AreEqual(documentUploadedData.Name, dbCaseTemplateUploadedDataVersions[1].Name);
-            Assert.AreEqual(document.Id, dbCaseTemplateUploadedDataVersions[1].DocumentId);
-            Assert.AreEqual(documentUploadedData.RetractIfApproved, dbCaseTemplateUploadedDataVersions[1].RetractIfApproved);
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].DocumentUploadedDataId, Is.EqualTo(documentUploadedData.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].Version, Is.EqualTo(2));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].CreatedAt.ToString(), Is.EqualTo(documentUploadedData.CreatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].UpdatedAt.ToString(), Is.EqualTo(documentUploadedData.UpdatedAt.ToString()));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].CreatedByUserId, Is.EqualTo(documentUploadedData.CreatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].UpdatedByUserId, Is.EqualTo(documentUploadedData.UpdatedByUserId));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].Approvable, Is.EqualTo(documentUploadedData.Approvable));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].Name, Is.EqualTo(documentUploadedData.Name));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].DocumentId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseTemplateUploadedDataVersions[1].RetractIfApproved, Is.EqualTo(documentUploadedData.RetractIfApproved));
         }
     }
 }

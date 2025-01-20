@@ -28,7 +28,7 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
         [Test]
         public void CanPeep()
         {
-            Assert.True(true);
+            Assert.That(true);
         }
     }
 }

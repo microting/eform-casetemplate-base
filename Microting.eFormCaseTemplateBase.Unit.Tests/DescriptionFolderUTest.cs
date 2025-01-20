@@ -41,35 +41,35 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<FolderVersion> dbDescriptionFolderVersions = DbContext.FolderVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbDescriptionFolders);
-            Assert.NotNull(dbDescriptionFolderVersions);
+            Assert.That(dbDescriptionFolders, Is.Not.Null);
+            Assert.That(dbDescriptionFolderVersions, Is.Not.Null);
 
-            Assert.AreEqual(2, dbDescriptionFolders.Count);
-            Assert.AreEqual(2, dbDescriptionFolderVersions.Count);
+            Assert.That(dbDescriptionFolders.Count, Is.EqualTo(2));
+            Assert.That(dbDescriptionFolderVersions.Count, Is.EqualTo(2));
 
 
-            Assert.AreEqual(folder.Id, dbDescriptionFolders[1].Id);
-            Assert.AreEqual(folder.Version, dbDescriptionFolders[1].Version);
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
-            Assert.AreEqual(folder.UpdatedAt.ToString(), dbDescriptionFolders[1].UpdatedAt.ToString());
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolders[1].CreatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolders[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolders[1].WorkflowState);
-            // Assert.AreEqual(folder.Name, dbDescriptionFolders[1].Name);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolders[1].ParentId);
-            // Assert.AreEqual(folder.SdkFolderId, dbDescriptionFolders[1].SdkFolderId);
+            Assert.That(dbDescriptionFolders[1].Id, Is.EqualTo(folder.Id));
+            Assert.That(dbDescriptionFolders[1].Version, Is.EqualTo(folder.Version));
+            Assert.That(dbDescriptionFolders[1].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolders[1].UpdatedAt.ToString(), Is.EqualTo(folder.UpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolders[1].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolders[1].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolders[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            // Assert.That(dbDescriptionFolders[1].Name, Is.EqualTo(folder.Name));
+            Assert.That(dbDescriptionFolders[1].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolders[1].SdkFolderId, Is.EqualTo(folder.SdkFolderId));
 
             //Versions
-            Assert.AreEqual(folder.Id, dbDescriptionFolderVersions[1].Id);
-            Assert.AreEqual(1, dbDescriptionFolderVersions[1].Version);
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolderVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(folder.UpdatedAt.ToString(), dbDescriptionFolderVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolderVersions[1].CreatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolderVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolderVersions[1].WorkflowState);
-            // Assert.AreEqual(folder.Name, dbDescriptionFolderVersions[1].Name);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolderVersions[1].ParentId);
-            // Assert.AreEqual(folder.SdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
+            Assert.That(dbDescriptionFolderVersions[1].Id, Is.EqualTo(folder.Id));
+            Assert.That(dbDescriptionFolderVersions[1].Version, Is.EqualTo(1));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedAt.ToString(), Is.EqualTo(folder.UpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            // Assert.That(dbDescriptionFolderVersions[1].Name, Is.EqualTo(folder.Name));
+            Assert.That(dbDescriptionFolderVersions[1].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolderVersions[1].SdkFolderId, Is.EqualTo(folder.SdkFolderId));
         }
 
         [Test]
@@ -108,56 +108,57 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<FolderVersion> dbDescriptionFolderVersions = DbContext.FolderVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbDescriptionFolders);
-            Assert.NotNull(dbDescriptionFolderVersions);
+            //Assert
+            Assert.That(dbDescriptionFolders, Is.Not.Null);
+            Assert.That(dbDescriptionFolderVersions, Is.Not.Null);
 
-            Assert.AreEqual(2, dbDescriptionFolders.Count);
-            Assert.AreEqual(2, dbDescriptionFolderVersions.Count);
-            // Assert.AreEqual(3, dbDescriptionFolderVersions.Count);
+            Assert.That(dbDescriptionFolders.Count, Is.EqualTo(2));
+            Assert.That(dbDescriptionFolderVersions.Count, Is.EqualTo(2));
+            // Assert.That(dbDescriptionFolderVersions.Count, Is.EqualTo(3));
 
 
-            Assert.AreEqual(folder.Id, dbDescriptionFolders[1].Id);
-            Assert.AreEqual(folder.Version, dbDescriptionFolders[1].Version);
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
-            Assert.AreEqual(folder.UpdatedAt.ToString(), dbDescriptionFolders[1].UpdatedAt.ToString());
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolders[1].CreatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolders[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolders[1].WorkflowState);
-            // Assert.AreEqual(folder.Name, dbDescriptionFolders[1].Name);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolders[1].ParentId);
-            // Assert.AreEqual(folder.SdkFolderId, dbDescriptionFolders[1].SdkFolderId);
+            Assert.That(dbDescriptionFolders[1].Id, Is.EqualTo(folder.Id));
+            Assert.That(dbDescriptionFolders[1].Version, Is.EqualTo(folder.Version));
+            Assert.That(dbDescriptionFolders[1].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolders[1].UpdatedAt.ToString(), Is.EqualTo(folder.UpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolders[1].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolders[1].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolders[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            // Assert.That(dbDescriptionFolders[1].Name, Is.EqualTo(folder.Name));
+            Assert.That(dbDescriptionFolders[1].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolders[1].SdkFolderId, Is.EqualTo(folder.SdkFolderId));
 
             //Old Version
-            // Assert.AreEqual(folder.Id, dbDescriptionFolderVersions[1].DescriptionFolderId);
-            Assert.AreEqual(1, dbDescriptionFolderVersions[1].Version);
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolderVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(oldUpdatedAt.ToString(), dbDescriptionFolderVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolderVersions[1].CreatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolderVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolderVersions[1].WorkflowState);
-            // Assert.AreEqual(oldName, dbDescriptionFolderVersions[1].Name);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolderVersions[1].ParentId);
-            // Assert.AreEqual(oldSdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
+            // Assert.That(dbDescriptionFolderVersions[1].DescriptionFolderId, Is.EqualTo(folder.Id));
+            Assert.That(dbDescriptionFolderVersions[1].Version, Is.EqualTo(1));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedAt.ToString(), Is.EqualTo(oldUpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            // Assert.That(dbDescriptionFolderVersions[1].Name, Is.EqualTo(oldName));
+            Assert.That(dbDescriptionFolderVersions[1].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolderVersions[1].SdkFolderId, Is.EqualTo(oldSdkFolderId));
 
             //New Version
-            // Assert.AreEqual(folder.Id, dbDescriptionFolderVersions[2].DescriptionFolderId);
-            // Assert.AreEqual(2, dbDescriptionFolderVersions[2].Version);
-            // Assert.AreEqual(2, dbDescriptionFolderVersions[2].Version);
-            Assert.AreEqual(1, dbDescriptionFolderVersions[1].Version);
-            // Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolderVersions[2].CreatedAt.ToString());
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolderVersions[1].CreatedAt.ToString());
-            // Assert.AreEqual(folder.UpdatedAt.ToString(), dbDescriptionFolderVersions[2].UpdatedAt.ToString());
-            Assert.AreEqual(folder.UpdatedAt.ToString(), dbDescriptionFolderVersions[1].UpdatedAt.ToString());
-            // Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolderVersions[2].CreatedByUserId);
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolderVersions[1].CreatedByUserId);
-            // Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolderVersions[2].UpdatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolderVersions[1].UpdatedByUserId);
-            // Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolderVersions[2].WorkflowState);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolderVersions[1].WorkflowState);
-            // Assert.AreEqual(folder.Name, dbDescriptionFolderVersions[2].Name);
-            // Assert.AreEqual(parentFolder.Id, dbDescriptionFolderVersions[2].ParentId);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolderVersions[1].ParentId);
-            // Assert.AreEqual(folder.SdkFolderId, dbDescriptionFolderVersions[2].SdkFolderId);
+            // Assert.That(dbDescriptionFolderVersions[2].DescriptionFolderId, Is.EqualTo(folder.Id));
+            // Assert.That(dbDescriptionFolderVersions[2].Version, Is.EqualTo(2));
+            // Assert.That(dbDescriptionFolderVersions[2].Version, Is.EqualTo(2));
+            Assert.That(dbDescriptionFolderVersions[1].Version, Is.EqualTo(1));
+            // Assert.That(dbDescriptionFolderVersions[2].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            // Assert.That(dbDescriptionFolderVersions[2].UpdatedAt.ToString(), Is.EqualTo(folder.UpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedAt.ToString(), Is.EqualTo(folder.UpdatedAt.ToString()));
+            // Assert.That(dbDescriptionFolderVersions[2].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            // Assert.That(dbDescriptionFolderVersions[2].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            // Assert.That(dbDescriptionFolderVersions[2].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            Assert.That(dbDescriptionFolderVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            // Assert.That(dbDescriptionFolderVersions[2].Name, Is.EqualTo(folder.Name));
+            // Assert.That(dbDescriptionFolderVersions[2].ParentId, Is.EqualTo(parentFolder.Id));
+            Assert.That(dbDescriptionFolderVersions[1].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolderVersions[2].SdkFolderId, Is.EqualTo(folder.SdkFolderId));
         }
 
         [Test]
@@ -193,47 +194,47 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<FolderVersion> dbDescriptionFolderVersions = DbContext.FolderVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbDescriptionFolders);
-            Assert.NotNull(dbDescriptionFolderVersions);
+            Assert.That(dbDescriptionFolders, Is.Not.Null);
+            Assert.That(dbDescriptionFolderVersions, Is.Not.Null);
 
-            Assert.AreEqual(2, dbDescriptionFolders.Count);
-            Assert.AreEqual(3, dbDescriptionFolderVersions.Count);
+            Assert.That(dbDescriptionFolders.Count, Is.EqualTo(2));
+            Assert.That(dbDescriptionFolderVersions.Count, Is.EqualTo(3));
 
 
-            Assert.AreEqual(folder.Id, dbDescriptionFolders[1].Id);
-            Assert.AreEqual(folder.Version, dbDescriptionFolders[1].Version);
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolders[1].CreatedAt.ToString());
-            Assert.AreEqual(folder.UpdatedAt.ToString(), dbDescriptionFolders[1].UpdatedAt.ToString());
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolders[1].CreatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolders[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbDescriptionFolders[1].WorkflowState);
-            // Assert.AreEqual(folder.Name, dbDescriptionFolders[1].Name);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolders[1].ParentId);
-            // Assert.AreEqual(folder.SdkFolderId, dbDescriptionFolders[1].SdkFolderId);
+            Assert.That(dbDescriptionFolders[1].Id, Is.EqualTo(folder.Id));
+            Assert.That(dbDescriptionFolders[1].Version, Is.EqualTo(folder.Version));
+            Assert.That(dbDescriptionFolders[1].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolders[1].UpdatedAt.ToString(), Is.EqualTo(folder.UpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolders[1].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolders[1].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolders[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
+            // Assert.That(dbDescriptionFolders[1].Name, Is.EqualTo(folder.Name));
+            Assert.That(dbDescriptionFolders[1].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolders[1].SdkFolderId, Is.EqualTo(folder.SdkFolderId));
 
             //Old Version
-            // Assert.AreEqual(folder.Id, dbDescriptionFolderVersions[1].DescriptionFolderId);
-            Assert.AreEqual(1, dbDescriptionFolderVersions[1].Version);
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolderVersions[1].CreatedAt.ToString());
-            Assert.AreEqual(oldUpdatedAt.ToString(), dbDescriptionFolderVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolderVersions[1].CreatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolderVersions[1].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbDescriptionFolderVersions[1].WorkflowState);
-            // Assert.AreEqual(folder.Name, dbDescriptionFolderVersions[1].Name);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolderVersions[1].ParentId);
-            // Assert.AreEqual(folder.SdkFolderId, dbDescriptionFolderVersions[1].SdkFolderId);
+            // Assert.That(dbDescriptionFolderVersions[1].DescriptionFolderId, Is.EqualTo(folder.Id));
+            Assert.That(dbDescriptionFolderVersions[1].Version, Is.EqualTo(1));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedAt.ToString(), Is.EqualTo(oldUpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[1].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
+            // Assert.That(dbDescriptionFolderVersions[1].Name, Is.EqualTo(folder.Name));
+            Assert.That(dbDescriptionFolderVersions[1].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolderVersions[1].SdkFolderId, Is.EqualTo(folder.SdkFolderId));
 
             //New Version
-            // Assert.AreEqual(folder.Id, dbDescriptionFolderVersions[2].DescriptionFolderId);
-            Assert.AreEqual(2, dbDescriptionFolderVersions[2].Version);
-            Assert.AreEqual(folder.CreatedAt.ToString(), dbDescriptionFolderVersions[2].CreatedAt.ToString());
-            Assert.AreEqual(folder.UpdatedAt.ToString(), dbDescriptionFolderVersions[2].UpdatedAt.ToString());
-            Assert.AreEqual(folder.CreatedByUserId, dbDescriptionFolderVersions[2].CreatedByUserId);
-            Assert.AreEqual(folder.UpdatedByUserId, dbDescriptionFolderVersions[2].UpdatedByUserId);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbDescriptionFolderVersions[2].WorkflowState);
-            // Assert.AreEqual(folder.Name, dbDescriptionFolderVersions[2].Name);
-            Assert.AreEqual(parentFolder.Id, dbDescriptionFolderVersions[2].ParentId);
-            // Assert.AreEqual(folder.SdkFolderId, dbDescriptionFolderVersions[2].SdkFolderId);
+            // Assert.That(dbDescriptionFolderVersions[2].DescriptionFolderId, Is.EqualTo(folder.Id));
+            Assert.That(dbDescriptionFolderVersions[2].Version, Is.EqualTo(2));
+            Assert.That(dbDescriptionFolderVersions[2].CreatedAt.ToString(), Is.EqualTo(folder.CreatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[2].UpdatedAt.ToString(), Is.EqualTo(folder.UpdatedAt.ToString()));
+            Assert.That(dbDescriptionFolderVersions[2].CreatedByUserId, Is.EqualTo(folder.CreatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[2].UpdatedByUserId, Is.EqualTo(folder.UpdatedByUserId));
+            Assert.That(dbDescriptionFolderVersions[2].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
+            // Assert.That(dbDescriptionFolderVersions[2].Name, Is.EqualTo(folder.Name));
+            Assert.That(dbDescriptionFolderVersions[2].ParentId, Is.EqualTo(parentFolder.Id));
+            // Assert.That(dbDescriptionFolderVersions[2].SdkFolderId, Is.EqualTo(folder.SdkFolderId));
         }
     }
 }

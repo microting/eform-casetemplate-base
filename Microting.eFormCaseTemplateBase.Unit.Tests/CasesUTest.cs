@@ -63,24 +63,24 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
             List<CaseVersion> dbCaseVersions = DbContext.CaseVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbCases);
-            Assert.NotNull(dbCaseVersions);
+            Assert.That(dbCases, Is.Not.Null);
+            Assert.That(dbCaseVersions, Is.Not.Null);
 
-            Assert.AreEqual(1, dbCases.Count);
-            Assert.AreEqual(1, dbCaseVersions.Count);
+            Assert.That(dbCases.Count, Is.EqualTo(1));
+            Assert.That(dbCaseVersions.Count, Is.EqualTo(1));
 
-            Assert.AreEqual(@case.Status, dbCases[0].Status);
-            Assert.AreEqual(@case.Type, dbCases[0].Type);
-            Assert.AreEqual(@case.DoneAt.ToString(), dbCases[0].DoneAt.ToString());
-            Assert.AreEqual(@case.eFormId, dbCases[0].eFormId);
-            Assert.AreEqual(@case.SiteId, dbCases[0].SiteId);
-            Assert.AreEqual(@case.UnitId, dbCases[0].UnitId);
-            Assert.AreEqual(@case.WorkerId, dbCases[0].WorkerId);
-            Assert.AreEqual(@case.CaseTemplateId, dbCases[0].CaseTemplateId);
-            Assert.AreEqual(@case.FetchedByTablet, dbCases[0].FetchedByTablet);
-            Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCases[0].FetchedByTabletAt.ToString());
-            Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCases[0].ReceiptRetrievedFromUser);
-            Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCases[0].ReceiptRetrievedFromUserAt.ToString());
+            Assert.That(dbCases[0].Status, Is.EqualTo(@case.Status));
+            Assert.That(dbCases[0].Type, Is.EqualTo(@case.Type));
+            Assert.That(dbCases[0].DoneAt.ToString(), Is.EqualTo(@case.DoneAt.ToString()));
+            Assert.That(dbCases[0].eFormId, Is.EqualTo(@case.eFormId));
+            Assert.That(dbCases[0].SiteId, Is.EqualTo(@case.SiteId));
+            Assert.That(dbCases[0].UnitId, Is.EqualTo(@case.UnitId));
+            Assert.That(dbCases[0].WorkerId, Is.EqualTo(@case.WorkerId));
+            Assert.That(dbCases[0].CaseTemplateId, Is.EqualTo(@case.CaseTemplateId));
+            Assert.That(dbCases[0].FetchedByTablet, Is.EqualTo(@case.FetchedByTablet));
+            Assert.That(dbCases[0].FetchedByTabletAt.ToString(), Is.EqualTo(@case.FetchedByTabletAt.ToString()));
+            Assert.That(dbCases[0].ReceiptRetrievedFromUser, Is.EqualTo(@case.ReceiptRetrievedFromUser));
+            Assert.That(dbCases[0].ReceiptRetrievedFromUserAt.ToString(), Is.EqualTo(@case.ReceiptRetrievedFromUserAt.ToString()));
         }
 
         [Test]
@@ -159,59 +159,59 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
 
             //Assert
 
-            Assert.NotNull(dbCases);
-            Assert.NotNull(dbCaseVersions);
+            Assert.That(dbCases, Is.Not.Null);
+            Assert.That(dbCaseVersions, Is.Not.Null);
 
-            Assert.AreEqual(1, dbCases.Count);
-            Assert.AreEqual(2, dbCaseVersions.Count);
+            Assert.That(dbCases.Count, Is.EqualTo(1));
+            Assert.That(dbCaseVersions.Count, Is.EqualTo(2));
 
-            Assert.AreEqual(@case.Status, dbCases[0].Status);
-            Assert.AreEqual(@case.Type, dbCases[0].Type);
-            Assert.AreEqual(@case.DoneAt.ToString(), dbCases[0].DoneAt.ToString());
-            Assert.AreEqual(@case.eFormId, dbCases[0].eFormId);
-            Assert.AreEqual(@case.SiteId, dbCases[0].SiteId);
-            Assert.AreEqual(@case.UnitId, dbCases[0].UnitId);
-            Assert.AreEqual(@case.WorkerId, dbCases[0].WorkerId);
-            Assert.AreEqual(document.Id, dbCases[0].CaseTemplateId);
-            Assert.AreEqual(@case.FetchedByTablet, dbCases[0].FetchedByTablet);
-            Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCases[0].FetchedByTabletAt.ToString());
-            Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCases[0].ReceiptRetrievedFromUser);
-            Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCases[0].ReceiptRetrievedFromUserAt.ToString());
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCases[0].WorkflowState);
+            Assert.That(dbCases[0].Status, Is.EqualTo(@case.Status));
+            Assert.That(dbCases[0].Type, Is.EqualTo(@case.Type));
+            Assert.That(dbCases[0].DoneAt.ToString(), Is.EqualTo(@case.DoneAt.ToString()));
+            Assert.That(dbCases[0].eFormId, Is.EqualTo(@case.eFormId));
+            Assert.That(dbCases[0].SiteId, Is.EqualTo(@case.SiteId));
+            Assert.That(dbCases[0].UnitId, Is.EqualTo(@case.UnitId));
+            Assert.That(dbCases[0].WorkerId, Is.EqualTo(@case.WorkerId));
+            Assert.That(dbCases[0].CaseTemplateId, Is.EqualTo(document.Id));
+            Assert.That(dbCases[0].FetchedByTablet, Is.EqualTo(@case.FetchedByTablet));
+            Assert.That(dbCases[0].FetchedByTabletAt.ToString(), Is.EqualTo(@case.FetchedByTabletAt.ToString()));
+            Assert.That(dbCases[0].ReceiptRetrievedFromUser, Is.EqualTo(@case.ReceiptRetrievedFromUser));
+            Assert.That(dbCases[0].ReceiptRetrievedFromUserAt.ToString(), Is.EqualTo(@case.ReceiptRetrievedFromUserAt.ToString()));
+            Assert.That(dbCases[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
 
 
             //Old version
-            Assert.AreEqual(oldStatus, dbCaseVersions[0].Status);
-            Assert.AreEqual(oldType, dbCaseVersions[0].Type);
-            Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(@case.DoneAt.ToString(), dbCaseVersions[0].DoneAt.ToString());
-            Assert.AreEqual(oldeFormId, dbCaseVersions[0].eFormId);
-            Assert.AreEqual(oldSiteId, dbCaseVersions[0].SiteId);
-            Assert.AreEqual(oldUnitId, dbCaseVersions[0].UnitId);
-            Assert.AreEqual(oldWorkerId, dbCaseVersions[0].WorkerId);
-            Assert.AreEqual(document.Id, dbCaseVersions[0].CaseTemplateId);
-            Assert.AreEqual(oldFetchedByTablet, dbCaseVersions[0].FetchedByTablet);
-            Assert.AreEqual(oldFetchedByTabletAt.ToString(), dbCaseVersions[0].FetchedByTabletAt.ToString());
-            Assert.AreEqual(oldReceiptRetrievedFromUser, dbCaseVersions[0].ReceiptRetrievedFromUser);
-            Assert.AreEqual(oldReceiptRetrievedFromUserAt.ToString(), dbCaseVersions[0].ReceiptRetrievedFromUserAt.ToString());
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseVersions[0].WorkflowState);
+            Assert.That(dbCaseVersions[0].Status, Is.EqualTo(oldStatus));
+            Assert.That(dbCaseVersions[0].Type, Is.EqualTo(oldType));
+            Assert.That(dbCaseVersions[0].UpdatedAt.ToString(), Is.EqualTo(oldUpdatedAt.ToString()));
+            Assert.That(dbCaseVersions[0].DoneAt.ToString(), Is.EqualTo(@case.DoneAt.ToString()));
+            Assert.That(dbCaseVersions[0].eFormId, Is.EqualTo(oldeFormId));
+            Assert.That(dbCaseVersions[0].SiteId, Is.EqualTo(oldSiteId));
+            Assert.That(dbCaseVersions[0].UnitId, Is.EqualTo(oldUnitId));
+            Assert.That(dbCaseVersions[0].WorkerId, Is.EqualTo(oldWorkerId));
+            Assert.That(dbCaseVersions[0].CaseTemplateId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseVersions[0].FetchedByTablet, Is.EqualTo(oldFetchedByTablet));
+            Assert.That(dbCaseVersions[0].FetchedByTabletAt.ToString(), Is.EqualTo(oldFetchedByTabletAt.ToString()));
+            Assert.That(dbCaseVersions[0].ReceiptRetrievedFromUser, Is.EqualTo(oldReceiptRetrievedFromUser));
+            Assert.That(dbCaseVersions[0].ReceiptRetrievedFromUserAt.ToString(), Is.EqualTo(oldReceiptRetrievedFromUserAt.ToString()));
+            Assert.That(dbCaseVersions[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
 
 
             //New Version
-            Assert.AreEqual(@case.Status, dbCaseVersions[1].Status);
-            Assert.AreEqual(@case.Type, dbCaseVersions[1].Type);
-            Assert.AreEqual(@case.UpdatedAt.ToString(), dbCaseVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(@case.DoneAt.ToString(), dbCaseVersions[1].DoneAt.ToString());
-            Assert.AreEqual(@case.eFormId, dbCaseVersions[1].eFormId);
-            Assert.AreEqual(@case.SiteId, dbCaseVersions[1].SiteId);
-            Assert.AreEqual(@case.UnitId, dbCaseVersions[1].UnitId);
-            Assert.AreEqual(@case.WorkerId, dbCaseVersions[1].WorkerId);
-            Assert.AreEqual(document.Id, dbCaseVersions[1].CaseTemplateId);
-            Assert.AreEqual(@case.FetchedByTablet, dbCaseVersions[1].FetchedByTablet);
-            Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCaseVersions[1].FetchedByTabletAt.ToString());
-            Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCaseVersions[1].ReceiptRetrievedFromUser);
-            Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCaseVersions[1].ReceiptRetrievedFromUserAt.ToString());
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseVersions[1].WorkflowState);
+            Assert.That(dbCaseVersions[1].Status, Is.EqualTo(@case.Status));
+            Assert.That(dbCaseVersions[1].Type, Is.EqualTo(@case.Type));
+            Assert.That(dbCaseVersions[1].UpdatedAt.ToString(), Is.EqualTo(@case.UpdatedAt.ToString()));
+            Assert.That(dbCaseVersions[1].DoneAt.ToString(), Is.EqualTo(@case.DoneAt.ToString()));
+            Assert.That(dbCaseVersions[1].eFormId, Is.EqualTo(@case.eFormId));
+            Assert.That(dbCaseVersions[1].SiteId, Is.EqualTo(@case.SiteId));
+            Assert.That(dbCaseVersions[1].UnitId, Is.EqualTo(@case.UnitId));
+            Assert.That(dbCaseVersions[1].WorkerId, Is.EqualTo(@case.WorkerId));
+            Assert.That(dbCaseVersions[1].CaseTemplateId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseVersions[1].FetchedByTablet, Is.EqualTo(@case.FetchedByTablet));
+            Assert.That(dbCaseVersions[1].FetchedByTabletAt.ToString(), Is.EqualTo(@case.FetchedByTabletAt.ToString()));
+            Assert.That(dbCaseVersions[1].ReceiptRetrievedFromUser, Is.EqualTo(@case.ReceiptRetrievedFromUser));
+            Assert.That(dbCaseVersions[1].ReceiptRetrievedFromUserAt.ToString(), Is.EqualTo(@case.ReceiptRetrievedFromUserAt.ToString()));
+            Assert.That(dbCaseVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
         }
 
         [Test]
@@ -266,59 +266,59 @@ namespace Microting.eFormCaseTemplateCase.Unit.Tests
 
             //Assert
 
-            Assert.NotNull(dbCases);
-            Assert.NotNull(dbCaseVersions);
+            Assert.That(dbCases, Is.Not.Null);
+            Assert.That(dbCaseVersions, Is.Not.Null);
 
-            Assert.AreEqual(1, dbCases.Count);
-            Assert.AreEqual(2, dbCaseVersions.Count);
+            Assert.That(dbCases.Count, Is.EqualTo(1));
+            Assert.That(dbCaseVersions.Count, Is.EqualTo(2));
 
-            Assert.AreEqual(@case.Status, dbCases[0].Status);
-            Assert.AreEqual(@case.Type, dbCases[0].Type);
-            Assert.AreEqual(@case.UpdatedAt.ToString(), dbCases[0].UpdatedAt.ToString());
-            Assert.AreEqual(@case.DoneAt.ToString(), dbCases[0].DoneAt.ToString());
-            Assert.AreEqual(@case.eFormId, dbCases[0].eFormId);
-            Assert.AreEqual(@case.SiteId, dbCases[0].SiteId);
-            Assert.AreEqual(@case.UnitId, dbCases[0].UnitId);
-            Assert.AreEqual(@case.WorkerId, dbCases[0].WorkerId);
-            Assert.AreEqual(document.Id, dbCases[0].CaseTemplateId);
-            Assert.AreEqual(@case.FetchedByTablet, dbCases[0].FetchedByTablet);
-            Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCases[0].FetchedByTabletAt.ToString());
-            Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCases[0].ReceiptRetrievedFromUser);
-            Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCases[0].ReceiptRetrievedFromUserAt.ToString());
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbCases[0].WorkflowState);
+            Assert.That(dbCases[0].Status, Is.EqualTo(@case.Status));
+            Assert.That(dbCases[0].Type, Is.EqualTo(@case.Type));
+            Assert.That(dbCases[0].UpdatedAt.ToString(), Is.EqualTo(@case.UpdatedAt.ToString()));
+            Assert.That(dbCases[0].DoneAt.ToString(), Is.EqualTo(@case.DoneAt.ToString()));
+            Assert.That(dbCases[0].eFormId, Is.EqualTo(@case.eFormId));
+            Assert.That(dbCases[0].SiteId, Is.EqualTo(@case.SiteId));
+            Assert.That(dbCases[0].UnitId, Is.EqualTo(@case.UnitId));
+            Assert.That(dbCases[0].WorkerId, Is.EqualTo(@case.WorkerId));
+            Assert.That(dbCases[0].CaseTemplateId, Is.EqualTo(document.Id));
+            Assert.That(dbCases[0].FetchedByTablet, Is.EqualTo(@case.FetchedByTablet));
+            Assert.That(dbCases[0].FetchedByTabletAt.ToString(), Is.EqualTo(@case.FetchedByTabletAt.ToString()));
+            Assert.That(dbCases[0].ReceiptRetrievedFromUser, Is.EqualTo(@case.ReceiptRetrievedFromUser));
+            Assert.That(dbCases[0].ReceiptRetrievedFromUserAt.ToString(), Is.EqualTo(@case.ReceiptRetrievedFromUserAt.ToString()));
+            Assert.That(dbCases[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
 
 
             //Old Version
-            Assert.AreEqual(@case.Status, dbCaseVersions[0].Status);
-            Assert.AreEqual(@case.Type, dbCaseVersions[0].Type);
-            Assert.AreEqual(oldUpdatedAt.ToString(), dbCaseVersions[0].UpdatedAt.ToString());
-            Assert.AreEqual(@case.DoneAt.ToString(), dbCaseVersions[0].DoneAt.ToString());
-            Assert.AreEqual(@case.eFormId, dbCaseVersions[0].eFormId);
-            Assert.AreEqual(@case.SiteId, dbCaseVersions[0].SiteId);
-            Assert.AreEqual(@case.UnitId, dbCaseVersions[0].UnitId);
-            Assert.AreEqual(@case.WorkerId, dbCaseVersions[0].WorkerId);
-            Assert.AreEqual(document.Id, dbCaseVersions[0].CaseTemplateId);
-            Assert.AreEqual(@case.FetchedByTablet, dbCaseVersions[0].FetchedByTablet);
-            Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCaseVersions[0].FetchedByTabletAt.ToString());
-            Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCaseVersions[0].ReceiptRetrievedFromUser);
-            Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCaseVersions[0].ReceiptRetrievedFromUserAt.ToString());
-            Assert.AreEqual(Constants.WorkflowStates.Created, dbCaseVersions[0].WorkflowState);
+            Assert.That(dbCaseVersions[0].Status, Is.EqualTo(@case.Status));
+            Assert.That(dbCaseVersions[0].Type, Is.EqualTo(@case.Type));
+            Assert.That(dbCaseVersions[0].UpdatedAt.ToString(), Is.EqualTo(oldUpdatedAt.ToString()));
+            Assert.That(dbCaseVersions[0].DoneAt.ToString(), Is.EqualTo(@case.DoneAt.ToString()));
+            Assert.That(dbCaseVersions[0].eFormId, Is.EqualTo(@case.eFormId));
+            Assert.That(dbCaseVersions[0].SiteId, Is.EqualTo(@case.SiteId));
+            Assert.That(dbCaseVersions[0].UnitId, Is.EqualTo(@case.UnitId));
+            Assert.That(dbCaseVersions[0].WorkerId, Is.EqualTo(@case.WorkerId));
+            Assert.That(dbCaseVersions[0].CaseTemplateId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseVersions[0].FetchedByTablet, Is.EqualTo(@case.FetchedByTablet));
+            Assert.That(dbCaseVersions[0].FetchedByTabletAt.ToString(), Is.EqualTo(@case.FetchedByTabletAt.ToString()));
+            Assert.That(dbCaseVersions[0].ReceiptRetrievedFromUser, Is.EqualTo(@case.ReceiptRetrievedFromUser));
+            Assert.That(dbCaseVersions[0].ReceiptRetrievedFromUserAt.ToString(), Is.EqualTo(@case.ReceiptRetrievedFromUserAt.ToString()));
+            Assert.That(dbCaseVersions[0].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Created));
 
             //New Version
-            Assert.AreEqual(@case.Status, dbCaseVersions[1].Status);
-            Assert.AreEqual(@case.Type, dbCaseVersions[1].Type);
-            Assert.AreEqual(@case.UpdatedAt.ToString(), dbCaseVersions[1].UpdatedAt.ToString());
-            Assert.AreEqual(@case.DoneAt.ToString(), dbCaseVersions[1].DoneAt.ToString());
-            Assert.AreEqual(@case.eFormId, dbCaseVersions[1].eFormId);
-            Assert.AreEqual(@case.SiteId, dbCaseVersions[1].SiteId);
-            Assert.AreEqual(@case.UnitId, dbCaseVersions[1].UnitId);
-            Assert.AreEqual(@case.WorkerId, dbCaseVersions[1].WorkerId);
-            Assert.AreEqual(document.Id, dbCaseVersions[1].CaseTemplateId);
-            Assert.AreEqual(@case.FetchedByTablet, dbCaseVersions[1].FetchedByTablet);
-            Assert.AreEqual(@case.FetchedByTabletAt.ToString(), dbCaseVersions[1].FetchedByTabletAt.ToString());
-            Assert.AreEqual(@case.ReceiptRetrievedFromUser, dbCaseVersions[1].ReceiptRetrievedFromUser);
-            Assert.AreEqual(@case.ReceiptRetrievedFromUserAt.ToString(), dbCaseVersions[1].ReceiptRetrievedFromUserAt.ToString());
-            Assert.AreEqual(Constants.WorkflowStates.Removed, dbCaseVersions[1].WorkflowState);
+            Assert.That(dbCaseVersions[1].Status, Is.EqualTo(@case.Status));
+            Assert.That(dbCaseVersions[1].Type, Is.EqualTo(@case.Type));
+            Assert.That(dbCaseVersions[1].UpdatedAt.ToString(), Is.EqualTo(@case.UpdatedAt.ToString()));
+            Assert.That(dbCaseVersions[1].DoneAt.ToString(), Is.EqualTo(@case.DoneAt.ToString()));
+            Assert.That(dbCaseVersions[1].eFormId, Is.EqualTo(@case.eFormId));
+            Assert.That(dbCaseVersions[1].SiteId, Is.EqualTo(@case.SiteId));
+            Assert.That(dbCaseVersions[1].UnitId, Is.EqualTo(@case.UnitId));
+            Assert.That(dbCaseVersions[1].WorkerId, Is.EqualTo(@case.WorkerId));
+            Assert.That(dbCaseVersions[1].CaseTemplateId, Is.EqualTo(document.Id));
+            Assert.That(dbCaseVersions[1].FetchedByTablet, Is.EqualTo(@case.FetchedByTablet));
+            Assert.That(dbCaseVersions[1].FetchedByTabletAt.ToString(), Is.EqualTo(@case.FetchedByTabletAt.ToString()));
+            Assert.That(dbCaseVersions[1].ReceiptRetrievedFromUser, Is.EqualTo(@case.ReceiptRetrievedFromUser));
+            Assert.That(dbCaseVersions[1].ReceiptRetrievedFromUserAt.ToString(), Is.EqualTo(@case.ReceiptRetrievedFromUserAt.ToString()));
+            Assert.That(dbCaseVersions[1].WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
         }
 
     }
