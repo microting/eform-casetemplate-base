@@ -21,7 +21,7 @@
         <PrivateAssets>all</PrivateAssets>
       </PackageReference>
       <PackageReference Include="Microting.eForm" Version="9.0.32" />
-      <PackageReference Include="Microting.eFormApi.BasePn" Version="9.0.31" />
+      <PackageReference Include="Microting.eFormApi.BasePn" Version="9.0.32" />
     </ItemGroup>
 
 </Project>
